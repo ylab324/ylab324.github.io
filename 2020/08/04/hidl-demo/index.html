@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xtg1800.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="简单记录，可以直接使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HIDL demo">
+<meta property="og:url" content="https://xtg1800.github.io/2020/08/04/hidl-demo/">
+<meta property="og:site_name" content="网站标题">
+<meta property="og:description" content="简单记录，可以直接使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/04/KfyYMuRGtl16PSD.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/04/zIsYiW4gtxKh5Ue.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/04/jSbq4dc63CHeI7D.png">
+<meta property="article:published_time" content="2020-08-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-03T16:27:26.645Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="demo">
+<meta property="article:tag" content="hidl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/04/KfyYMuRGtl16PSD.png">
+
+<link rel="canonical" href="https://xtg1800.github.io/2020/08/04/hidl-demo/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HIDL demo | 网站标题</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">网站标题</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2020/08/04/hidl-demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="网站标题">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HIDL demo
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-04 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-04T00:00:00+08:00">2020-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-04 00:27:26" itemprop="dateModified" datetime="2021-06-04T00:27:26+08:00">2021-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>简单记录，可以直接使用。</p>
+<span id="more"></span>
+
+<h3 id="1-添加hal目录、定义hal接口"><a href="#1-添加hal目录、定义hal接口" class="headerlink" title="1.添加hal目录、定义hal接口"></a>1.添加hal目录、定义hal接口</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ mkdir -p vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/default</span><br><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/IHello.hal</span><br></pre></td></tr></table></figure>
+
+<p>接口如下：  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//IHello.hal</span></span><br><span class="line"></span><br><span class="line">package vendor.realtek.hello@<span class="number">1.0</span>;</span><br><span class="line"></span><br><span class="line">interface IHello &#123;</span><br><span class="line">    <span class="built_in">helloWorld</span> (string name) <span class="built_in">generates</span> (string result);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-根据hal自动生成cpp实现"><a href="#2-根据hal自动生成cpp实现" class="headerlink" title="2.根据hal自动生成cpp实现"></a>2.根据hal自动生成cpp实现</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ source build/envsetup.sh</span><br><span class="line">foo@bar:~$ lunch</span><br><span class="line">foo@bar:~$ make hidl-gen</span><br><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/genImpHidl.sh</span><br><span class="line">foo@bar:~$ chmod u+x vendor/realtek/common/ATV/hardware/interfaces/hello/genImpHidl.sh</span><br><span class="line">foo@bar:~$ ./vendor/realtek/common/ATV/hardware/interfaces/hello/genImpHidl.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//genImpHidl.sh</span><br><span class="line"></span><br><span class="line">PACKAGE=vendor.realtek.hello@1.0</span><br><span class="line">LOC=vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/default</span><br><span class="line"></span><br><span class="line">hidl-gen -o $LOC -Lc++-impl -rvendor.realtek:vendor/realtek/common/ATV/hardware/interfaces \</span><br><span class="line">    -randroid.hidl:system/libhidl/transport $PACKAGE</span><br><span class="line">hidl-gen -o $LOC -Landroidbp-impl -rvendor.realtek:vendor/realtek/common/ATV/hardware/interfaces \</span><br><span class="line">    -randroid.hidl:system/libhidl/transport $PACKAGE</span><br></pre></td></tr></table></figure>
+
+<p>执行genImpHidl.sh后，default目录生成Android.bp、Hello.cpp和Hello.h文件。  </p>
+<p><img src="https://i.loli.net/2020/08/04/KfyYMuRGtl16PSD.png" alt="1_genImplHidl.png">  </p>
+<p>编写Hello.cpp  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/default/Hello.cpp</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Hello.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="doctag">FIXME:</span> your file license if you have one</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Hello.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> vendor &#123;</span><br><span class="line"><span class="keyword">namespace</span> realtek &#123;</span><br><span class="line"><span class="keyword">namespace</span> hello &#123;</span><br><span class="line"><span class="keyword">namespace</span> V1_0 &#123;</span><br><span class="line"><span class="keyword">namespace</span> implementation &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Methods from ::vendor::realtek::hello::V1_0::IHello follow.</span></span><br><span class="line"><span class="function">Return&lt;<span class="keyword">void</span>&gt; <span class="title">Hello::helloWorld</span><span class="params">(<span class="keyword">const</span> hidl_string&amp; name, helloWorld_cb _hidl_cb)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO implement</span></span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">100</span>];</span><br><span class="line">    ::<span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="number">100</span>);</span><br><span class="line">    ::<span class="built_in">snprintf</span>(buf, <span class="number">100</span>, <span class="string">&quot;Hello World, %s&quot;</span>, name.<span class="built_in">c_str</span>());</span><br><span class="line">    <span class="function">hidl_string <span class="title">result</span><span class="params">(buf)</span></span>;</span><br><span class="line">    _hidl_cb(result);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Void</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Methods from ::android::hidl::base::V1_0::IBase follow.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//IHello* HIDL_FETCH_IHello(const char* /* name */) &#123;</span></span><br><span class="line">    <span class="comment">//return new Hello();</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&#125;  <span class="comment">// namespace implementation</span></span><br><span class="line">&#125;  <span class="comment">// namespace V1_0</span></span><br><span class="line">&#125;  <span class="comment">// namespace hello</span></span><br><span class="line">&#125;  <span class="comment">// namespace realtek</span></span><br><span class="line">&#125;  <span class="comment">// namespace vendor</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>HIDL的实现有两种方式，如果打开HIDL_FETCH的注释，就是passthrough，否则是Binderized方式，这里使用默认的Binderized方式。  </p>
+<h3 id="3-开机启动服务"><a href="#3-开机启动服务" class="headerlink" title="3.开机启动服务"></a>3.开机启动服务</h3><p>添加service.cpp文件；  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/default/service.cpp</span><br></pre></td></tr></table></figure>
+
+<p>内容如下：  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//service.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_TAG <span class="meta-string">&quot;vendor.realtek.hello@1.0-service&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vendor/realtek/hello/1.0/IHello.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;hidl/HidlTransportSupport.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Hello.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> android::hardware::configureRpcThreadpool;</span><br><span class="line"><span class="keyword">using</span> android::hardware::joinRpcThreadpool;</span><br><span class="line"><span class="keyword">using</span> vendor::realtek::hello::V1_0::IHello;</span><br><span class="line"><span class="keyword">using</span> vendor::realtek::hello::V1_0::implementation::Hello;</span><br><span class="line"><span class="keyword">using</span> android::sp;</span><br><span class="line"><span class="keyword">using</span> android::<span class="keyword">status_t</span>;</span><br><span class="line"><span class="keyword">using</span> android::OK;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> vendor::realtek::hello::V1_0;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> tune the max thread count.</span></span><br><span class="line">    <span class="built_in">configureRpcThreadpool</span>(<span class="number">10</span>, <span class="literal">true</span>);</span><br><span class="line">    sp&lt;IHello&gt; mHello = <span class="keyword">new</span> <span class="built_in">Hello</span>();</span><br><span class="line">    <span class="keyword">status_t</span> status = mHello-&gt;<span class="built_in">registerAsService</span>();</span><br><span class="line">    <span class="built_in">LOG_ALWAYS_FATAL_IF</span>(status != OK, <span class="string">&quot;Could not register IHello&quot;</span>);</span><br><span class="line">    <span class="built_in">ALOGD</span>(<span class="string">&quot;IHello vendor.realtek.hello@1.0-service start\n&quot;</span>);</span><br><span class="line">    <span class="comment">// other interface registration comes here</span></span><br><span class="line">    <span class="built_in">joinRpcThreadpool</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>添加<a href="mailto:&#x76;&#x65;&#110;&#x64;&#111;&#x72;&#46;&#x72;&#x65;&#x61;&#108;&#116;&#x65;&#107;&#x2e;&#104;&#x65;&#x6c;&#108;&#111;&#x40;&#x31;&#46;&#x30;&#x2d;&#115;&#x65;&#114;&#x76;&#105;&#x63;&#x65;&#46;&#x72;&#99;">&#x76;&#x65;&#110;&#x64;&#111;&#x72;&#46;&#x72;&#x65;&#x61;&#108;&#116;&#x65;&#107;&#x2e;&#104;&#x65;&#x6c;&#108;&#111;&#x40;&#x31;&#46;&#x30;&#x2d;&#115;&#x65;&#114;&#x76;&#105;&#x63;&#x65;&#46;&#x72;&#99;</a>文件；  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/default/vendor.realtek.hello@1.0-service.rc</span><br></pre></td></tr></table></figure>
+
+<p>内容如下：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//vendor.realtek.hello@1.0-service.rc</span><br><span class="line">service hello-1-0 /vendor/bin/hw/vendor.realtek.hello@1.0-service</span><br><span class="line">    class hal</span><br><span class="line">    user system</span><br><span class="line">    group system</span><br></pre></td></tr></table></figure>
+
+<p>修改Android.bp；  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/default/Android.bp</span><br></pre></td></tr></table></figure>
+
+<p>内容如下：  </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">//hello/1.0/default/Android.bp</span><br><span class="line"></span><br><span class="line">// FIXME: your file license if you have one</span><br><span class="line"></span><br><span class="line">cc_library_shared &#123;</span><br><span class="line">    // FIXME: this should only be -impl for a passthrough hal.</span><br><span class="line">    // In most cases, to convert this to a binderized implementation, you should:</span><br><span class="line">    // - change &#x27;-impl&#x27; to &#x27;-service&#x27; here and make it a cc_binary instead of a</span><br><span class="line">    //   cc_library_shared.</span><br><span class="line">    // - add a *.rc file for this module.</span><br><span class="line">    // - delete HIDL_FETCH_I* functions.</span><br><span class="line">    // - call configureRpcThreadpool and registerAsService on the instance.</span><br><span class="line">    // You may also want to append &#x27;-impl/-service&#x27; with a specific identifier like</span><br><span class="line">    // &#x27;-vendor&#x27; or &#x27;-&lt;hardware identifier&gt;&#x27; etc to distinguish it.</span><br><span class="line">    name: <span class="string">&quot;vendor.realtek.hello@1.0-impl&quot;</span>,</span><br><span class="line">    relative_install_path: <span class="string">&quot;hw&quot;</span>,</span><br><span class="line">    // FIXME: this should be &#x27;vendor: true&#x27; for modules that will eventually be</span><br><span class="line">    // on AOSP.</span><br><span class="line">    proprietary: true,</span><br><span class="line">    srcs: [</span><br><span class="line">        <span class="string">&quot;Hello.cpp&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    shared_libs: [</span><br><span class="line">        <span class="string">&quot;libhidlbase&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libhidltransport&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libutils&quot;</span>,</span><br><span class="line">	<span class="string">&quot;vendor.realtek.hello@1.0&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cc_binary &#123;</span><br><span class="line">    name: <span class="string">&quot;vendor.realtek.hello@1.0-service&quot;</span>,</span><br><span class="line">    defaults: [<span class="string">&quot;hidl_defaults&quot;</span>],</span><br><span class="line">    proprietary: true,</span><br><span class="line">    relative_install_path: <span class="string">&quot;hw&quot;</span>,</span><br><span class="line">    srcs: [</span><br><span class="line">        <span class="string">&quot;Hello.cpp&quot;</span>,</span><br><span class="line">	<span class="string">&quot;service.cpp&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    init_rc: [<span class="string">&quot;vendor.realtek.hello@1.0-service.rc&quot;</span>],</span><br><span class="line">    shared_libs: [</span><br><span class="line">        <span class="string">&quot;liblog&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libhidlbase&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libhidltransport&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libutils&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libcutils&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libbinder&quot;</span>,</span><br><span class="line">	<span class="string">&quot;vendor.realtek.hello@1.0&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-生成hal接口的Android-bp"><a href="#4-生成hal接口的Android-bp" class="headerlink" title="4.生成hal接口的Android.bp"></a>4.生成hal接口的Android.bp</h3><p>看下update-makefiles.sh内容是什么：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">source system/tools/hidl/update-makefiles-helper.sh</span><br><span class="line"></span><br><span class="line">do_makefiles_update \</span><br><span class="line">    &quot;vendor.realtek:vendor/realtek/common/ATV/hardware/interfaces&quot; \</span><br><span class="line">    &quot;android.hidl:system/libhidl/transport&quot;</span><br></pre></td></tr></table></figure>
+
+<p>执行该脚本：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ ./vendor/realtek/common/ATV/hardware/interfaces/update-makefiles.sh</span><br></pre></td></tr></table></figure>
+
+<p>1.0目录就生成了Android.bp文件。  </p>
+<p><img src="https://i.loli.net/2020/08/04/zIsYiW4gtxKh5Ue.png" alt="2_update-makefiles.png">  </p>
+<h3 id="5-更新哈希值"><a href="#5-更新哈希值" class="headerlink" title="5.更新哈希值"></a>5.更新哈希值</h3><p>编写genHash.sh  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/genHash.sh</span><br><span class="line">foo@bar:~$ chmod u+x vendor/realtek/common/ATV/hardware/interfaces/hello/genHash.sh</span><br><span class="line">foo@bar:~$ ./vendor/realtek/common/ATV/hardware/interfaces/hello/genHash.sh</span><br></pre></td></tr></table></figure>
+
+<p>内容如下：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PACKAGE=vendor.realtek.hello@1.0::IHello</span><br><span class="line"></span><br><span class="line">hidl-gen -L hash -rvendor.realtek:vendor/realtek/common/ATV/hardware/interfaces/ -randroid.hidl:system/libhidl/transport $PACKAGE</span><br></pre></td></tr></table></figure>
+
+<p>把输出的hash添加到current.txt  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim ./vendor/realtek/common/ATV/hardware/interfaces/current.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-添加client测试"><a href="#6-添加client测试" class="headerlink" title="6.添加client测试"></a>6.添加client测试</h3><p>添加如下目录和文件：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ mkdir -p vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/vts/functional</span><br><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/vts/functional/VtsHalHelloV1_0TargetTest.cpp</span><br><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/1.0/vts/functional/Android.bp</span><br></pre></td></tr></table></figure>
+
+<p>以下是其内容：  </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cc_test &#123;</span><br><span class="line">    name: <span class="string">&quot;VtsHalHelloV1_0TargetTest&quot;</span>,</span><br><span class="line">    defaults: [<span class="string">&quot;hidl_defaults&quot;</span>],</span><br><span class="line">    srcs: [<span class="string">&quot;VtsHalHelloV1_0TargetTest.cpp&quot;</span>],</span><br><span class="line">    shared_libs: [</span><br><span class="line">        <span class="string">&quot;libbase&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libhidlbase&quot;</span>,</span><br><span class="line">	<span class="string">&quot;liblog&quot;</span>,</span><br><span class="line">	<span class="string">&quot;libutils&quot;</span>,</span><br><span class="line">	<span class="string">&quot;vendor.realtek.hello@1.0&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    static_libs: [<span class="string">&quot;VtsHalHidlTargetTestBase&quot;</span>],</span><br><span class="line">    cflags: [</span><br><span class="line">        <span class="string">&quot;-O0&quot;</span>,</span><br><span class="line">	<span class="string">&quot;-g&quot;</span>,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//VtsHalHelloV1_0TargetTest.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_TAG <span class="meta-string">&quot;HelloHidlHalTest&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;VtsHalHidlTargetTestBase.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android-base/logging.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vendor/realtek/hello/1.0/IHello.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> vendor::realtek::hello::V1_0::IHello;</span><br><span class="line"><span class="keyword">using</span> ::android::hardware::hidl_string;</span><br><span class="line"><span class="keyword">using</span> ::android::hardware::hidl_vec;</span><br><span class="line"><span class="keyword">using</span> ::android::hardware::Return;</span><br><span class="line"><span class="keyword">using</span> ::android::hardware::Void;</span><br><span class="line"><span class="keyword">using</span> ::android::sp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">    sp&lt;IHello&gt; hello = IHello::<span class="built_in">getService</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(hello == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">ALOGD</span>(<span class="string">&quot;Failed to get hello service\n&quot;</span>);</span><br><span class="line">	ret = <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        hello-&gt;<span class="built_in">helloWorld</span>(<span class="string">&quot;Hikari&quot;</span>, [&amp;](hidl_string result) &#123;</span><br><span class="line">	    <span class="built_in">ALOGD</span>(<span class="string">&quot;%s\n&quot;</span>,result.<span class="built_in">c_str</span>());</span><br><span class="line">	&#125;);</span><br><span class="line">	ret = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-添加hello目录的Android-bp"><a href="#7-添加hello目录的Android-bp" class="headerlink" title="7.添加hello目录的Android.bp"></a>7.添加hello目录的Android.bp</h3><p><span style="color:red"> 跑update-makefiles.sh的时候为啥没有生成这个？ </span> 跟rtk代码makefile架构有关吗。</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim vendor/realtek/common/ATV/hardware/interfaces/hello/Android.bp</span><br></pre></td></tr></table></figure>
+
+<p>内容如下：  </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// This is an autogenerated file, do not edit.</span><br><span class="line">subdirs = [</span><br><span class="line">    <span class="string">&quot;1.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;1.0/vts/functional&quot;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-小编"><a href="#8-小编" class="headerlink" title="8.小编"></a>8.小编</h3><p>hello最终文件架构如下：<br><img src="https://i.loli.net/2020/08/04/jSbq4dc63CHeI7D.png" alt="3_end.png">  </p>
+<p>小编试试添加的hello能不能编过：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ mmm vendor/realtek/common/ATV/hardware/interfaces/hello/</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-注册hello并添加进编译"><a href="#9-注册hello并添加进编译" class="headerlink" title="9.注册hello并添加进编译"></a>9.注册hello并添加进编译</h3><p>注册：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim device/realtek/common/manifest.xml</span><br></pre></td></tr></table></figure>
+
+<p>添加内容如下：  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hal</span> <span class="attr">format</span>=<span class="string">&quot;hidl&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>vendor.realtek.hello<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">transport</span>&gt;</span>hwbinder<span class="tag">&lt;/<span class="name">transport</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">interface</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>IHello<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">instance</span>&gt;</span>default<span class="tag">&lt;/<span class="name">instance</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">interface</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hal</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>编译：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim device/realtek/common/product/rtk_base.mk</span><br></pre></td></tr></table></figure>
+
+<p>添加内容如下：  </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PRODUCT_PACKAGES += \</span><br><span class="line">    vendor.realtek.hello@1.0 \</span><br><span class="line">    vendor.realtek.hello@1.0-impl \</span><br><span class="line">    vendor.realtek.hello@1.0-impl \</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-添加seLinux规则"><a href="#10-添加seLinux规则" class="headerlink" title="10.添加seLinux规则"></a>10.添加seLinux规则</h3><p>如果没有此步骤，开机之后<a href="mailto:&#x76;&#x65;&#x6e;&#100;&#111;&#114;&#x2e;&#x72;&#101;&#97;&#108;&#x74;&#101;&#x6b;&#x2e;&#x68;&#x65;&#108;&#x6c;&#111;&#x40;&#x31;&#x2e;&#x30;&#45;&#115;&#101;&#114;&#x76;&#105;&#x63;&#101;">&#x76;&#x65;&#x6e;&#100;&#111;&#114;&#x2e;&#x72;&#101;&#97;&#108;&#x74;&#101;&#x6b;&#x2e;&#x68;&#x65;&#108;&#x6c;&#111;&#x40;&#x31;&#x2e;&#x30;&#45;&#115;&#101;&#114;&#x76;&#105;&#x63;&#101;</a>会跑不起来。<br>修改file_contexts文件  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim device/realtek/common/sepolicy/file_contexts</span><br></pre></td></tr></table></figure>
+<p>补充如下：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/(vendor|system/</span>vendor)<span class="regexp">/bin/</span>hw/vendor\.realtek\.hello@<span class="number">1</span>\.<span class="number">0</span>-service        u:object_r:hal_hello_default_exec:s0</span><br></pre></td></tr></table></figure>
+
+<p>修改hwservice_contexts文件  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim device/realtek/common/sepolicy/hwservice_contexts</span><br></pre></td></tr></table></figure>
+<p>补充如下：  </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor<span class="selector-class">.realtek</span><span class="selector-class">.hello</span>::IHello        u:object_r:hal_hello_service:s0</span><br></pre></td></tr></table></figure>
+
+<p>修改hwservice.te文件  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim device/realtek/common/sepolicy/hwservice.te</span><br></pre></td></tr></table></figure>
+<p>补充如下：  </p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">hal_hello_service,   </span>hwservice_manager_type;</span><br></pre></td></tr></table></figure>
+
+<p>添加hal_hello_default.te文件  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ vim device/realtek/common/sepolicy/hal_hello_default.te</span><br></pre></td></tr></table></figure>
+<p>内容如下：  </p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">type hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span>, domain;</span><br><span class="line">type hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span><span class="number">_</span>exec, exec<span class="number">_</span>type, vendor<span class="number">_f</span>ile<span class="number">_</span>type, file<span class="number">_</span>type;</span><br><span class="line"></span><br><span class="line">init<span class="number">_</span>daemon<span class="number">_</span>domain(hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span>);</span><br><span class="line"></span><br><span class="line">hwbinder<span class="number">_u</span>se(hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span>)</span><br><span class="line">add<span class="number">_</span>hwservice(hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span>, hal<span class="number">_</span>hello<span class="number">_</span>service)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">allow hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span> hwservicemanager<span class="number">_p</span>rop:file r<span class="number">_f</span>ile<span class="number">_p</span>erms;</span><br><span class="line">allow hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span> hwservicemanager:binder &#123; transfer call &#125;;</span><br><span class="line">allow hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span> hal<span class="number">_</span>hello<span class="number">_</span>service:binder call;</span><br><span class="line">allow hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span> hal<span class="number">_</span>hello<span class="number">_</span>service:hwservice<span class="number">_m</span>anager &#123; add find &#125;;</span><br><span class="line">allow hal<span class="number">_</span>hello<span class="number">_</span><span class="keyword">default</span> hidl<span class="number">_</span>base<span class="number">_</span>hwservice:hwservice<span class="number">_m</span>anager add;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>到此为止，开机之后服务依然有可能跑不起来，可以dmesg查看权限相关的avc报错，把相关的报错修掉之后，还有可能跑不起来，直接运行./vendor/bin/hw/<a href="mailto:&#118;&#x65;&#x6e;&#100;&#x6f;&#114;&#46;&#x72;&#x65;&#97;&#x6c;&#x74;&#101;&#x6b;&#46;&#104;&#101;&#x6c;&#x6c;&#x6f;&#x40;&#49;&#46;&#x30;&#x2d;&#115;&#x65;&#114;&#x76;&#x69;&#x63;&#x65;">&#118;&#x65;&#x6e;&#100;&#x6f;&#114;&#46;&#x72;&#x65;&#97;&#x6c;&#x74;&#101;&#x6b;&#46;&#104;&#101;&#x6c;&#x6c;&#x6f;&#x40;&#49;&#46;&#x30;&#x2d;&#115;&#x65;&#114;&#x76;&#x69;&#x63;&#x65;</a>，把avc denied修掉，应该就可以了。如果不确定是不是权限问题引起，可以先setenforce 0后直接运行服务，如果能跑起来，那么就是权限有问题。另外，客户端调用的时候如果看不到效果，可以先用client（参考第6点）调试。  </p>
+<h3 id="11-全编代码验证"><a href="#11-全编代码验证" class="headerlink" title="11.全编代码验证"></a>11.全编代码验证</h3><p>开机可以看到<a href="mailto:&#x76;&#101;&#x6e;&#x64;&#x6f;&#x72;&#46;&#x72;&#x65;&#x61;&#108;&#116;&#101;&#x6b;&#x2e;&#x68;&#101;&#x6c;&#x6c;&#x6f;&#x40;&#x31;&#x2e;&#48;&#45;&#115;&#x65;&#x72;&#118;&#105;&#99;&#x65;">&#x76;&#101;&#x6e;&#x64;&#x6f;&#x72;&#46;&#x72;&#x65;&#x61;&#108;&#116;&#101;&#x6b;&#x2e;&#x68;&#101;&#x6c;&#x6c;&#x6f;&#x40;&#x31;&#x2e;&#48;&#45;&#115;&#x65;&#x72;&#118;&#105;&#99;&#x65;</a>的log：  </p>
+<blockquote>
+<p>01-01 01:01:03.490   328   328 I ServiceManagement: Registered <a href="mailto:&#118;&#101;&#x6e;&#x64;&#x6f;&#114;&#x2e;&#x72;&#101;&#x61;&#x6c;&#x74;&#x65;&#x6b;&#x2e;&#104;&#101;&#108;&#108;&#111;&#64;&#49;&#x2e;&#48;">&#118;&#101;&#x6e;&#x64;&#x6f;&#114;&#x2e;&#x72;&#101;&#x61;&#x6c;&#x74;&#x65;&#x6b;&#x2e;&#104;&#101;&#108;&#108;&#111;&#64;&#49;&#x2e;&#48;</a>::IHello/default (start delay of 261ms)<br>01-01 01:01:03.491   328   328 I ServiceManagement: Removing namespace from process name <a href="mailto:&#x76;&#101;&#x6e;&#100;&#x6f;&#x72;&#x2e;&#x72;&#101;&#x61;&#108;&#116;&#x65;&#107;&#x2e;&#104;&#x65;&#108;&#108;&#111;&#64;&#49;&#x2e;&#x30;&#45;&#x73;&#x65;&#114;&#x76;&#x69;&#99;&#x65;">&#x76;&#101;&#x6e;&#100;&#x6f;&#x72;&#x2e;&#x72;&#101;&#x61;&#108;&#116;&#x65;&#107;&#x2e;&#104;&#x65;&#108;&#108;&#111;&#64;&#49;&#x2e;&#x30;&#45;&#x73;&#x65;&#114;&#x76;&#x69;&#99;&#x65;</a> to <a href="mailto:&#104;&#101;&#x6c;&#108;&#x6f;&#x40;&#49;&#x2e;&#x30;&#45;&#115;&#101;&#114;&#x76;&#x69;&#x63;&#x65;">&#104;&#101;&#x6c;&#108;&#x6f;&#x40;&#49;&#x2e;&#x30;&#45;&#115;&#101;&#114;&#x76;&#x69;&#x63;&#x65;</a>.<br>01-01 01:01:03.491   328   328 D <a href="mailto:&#x76;&#x65;&#110;&#x64;&#x6f;&#x72;&#x2e;&#x72;&#x65;&#x61;&#x6c;&#116;&#x65;&#x6b;&#x2e;&#104;&#x65;&#x6c;&#108;&#x6f;&#64;&#49;&#46;&#48;&#45;&#x73;&#101;&#114;&#x76;&#105;&#99;&#x65;">&#x76;&#x65;&#110;&#x64;&#x6f;&#x72;&#x2e;&#x72;&#x65;&#x61;&#x6c;&#116;&#x65;&#x6b;&#x2e;&#104;&#x65;&#x6c;&#108;&#x6f;&#64;&#49;&#46;&#48;&#45;&#x73;&#101;&#114;&#x76;&#105;&#99;&#x65;</a>: IHello <a href="mailto:&#118;&#101;&#110;&#x64;&#111;&#114;&#x2e;&#114;&#x65;&#97;&#108;&#x74;&#x65;&#x6b;&#x2e;&#104;&#x65;&#x6c;&#108;&#111;&#x40;&#x31;&#46;&#x30;&#x2d;&#115;&#x65;&#x72;&#118;&#x69;&#x63;&#101;">&#118;&#101;&#110;&#x64;&#111;&#114;&#x2e;&#114;&#x65;&#97;&#108;&#x74;&#x65;&#x6b;&#x2e;&#104;&#x65;&#x6c;&#108;&#111;&#x40;&#x31;&#46;&#x30;&#x2d;&#115;&#x65;&#x72;&#118;&#x69;&#x63;&#101;</a> start  </p>
+</blockquote>
+<p>在data/nativetest/VtsHalHelloV1_0TargetTest目录可以找到VtsHalHelloV1_0TargetTest文件，这个就是测试client，执行这个程序：  </p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ ./data/nativetest/VtsHalHelloV1_0TargetTest/VtsHalHelloV1_0TargetTest</span><br></pre></td></tr></table></figure>
+
+<p>可以看到：  </p>
+<blockquote>
+<p>08-04 10:06:24.211  2063  2063 D HelloHidlHalTest: Hello World, Hikari  </p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/android/" rel="tag"># android</a>
+              <a href="/tags/demo/" rel="tag"># demo</a>
+              <a href="/tags/hidl/" rel="tag"># hidl</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/03/uboot-kernel/" rel="prev" title="boot到kernel的传递">
+      <i class="fa fa-chevron-left"></i> boot到kernel的传递
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/05/new-android-partition/" rel="next" title="新建分区">
+      新建分区 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0hal%E7%9B%AE%E5%BD%95%E3%80%81%E5%AE%9A%E4%B9%89hal%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">1.添加hal目录、定义hal接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A0%B9%E6%8D%AEhal%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90cpp%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">2.根据hal自动生成cpp实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">3.开机启动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%94%9F%E6%88%90hal%E6%8E%A5%E5%8F%A3%E7%9A%84Android-bp"><span class="nav-number">4.</span> <span class="nav-text">4.生成hal接口的Android.bp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9B%B4%E6%96%B0%E5%93%88%E5%B8%8C%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">5.更新哈希值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B7%BB%E5%8A%A0client%E6%B5%8B%E8%AF%95"><span class="nav-number">6.</span> <span class="nav-text">6.添加client测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%B7%BB%E5%8A%A0hello%E7%9B%AE%E5%BD%95%E7%9A%84Android-bp"><span class="nav-number">7.</span> <span class="nav-text">7.添加hello目录的Android.bp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%B0%8F%E7%BC%96"><span class="nav-number">8.</span> <span class="nav-text">8.小编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E6%B3%A8%E5%86%8Chello%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%BF%9B%E7%BC%96%E8%AF%91"><span class="nav-number">9.</span> <span class="nav-text">9.注册hello并添加进编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E6%B7%BB%E5%8A%A0seLinux%E8%A7%84%E5%88%99"><span class="nav-number">10.</span> <span class="nav-text">10.添加seLinux规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E5%85%A8%E7%BC%96%E4%BB%A3%E7%A0%81%E9%AA%8C%E8%AF%81"><span class="nav-number">11.</span> <span class="nav-text">11.全编代码验证</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

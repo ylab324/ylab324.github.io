@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xtg1800.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="使用json做客制化配置，一开始每份客制化用一份json配置，直接用复制替换的方式切换，虽然不高明但是很实用。后来领导的要求越来越花哨，大致需要先去解析json的内容，然后再去客制化，这里记录过程中用到的jq操作，方便以后有类似需求时直接参考。官方文档在这里  ，虽然是英文，但是还算方便，虽说不一定看懂。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jq使用">
+<meta property="og:url" content="https://xtg1800.github.io/2021/05/31/jq/">
+<meta property="og:site_name" content="网站标题">
+<meta property="og:description" content="使用json做客制化配置，一开始每份客制化用一份json配置，直接用复制替换的方式切换，虽然不高明但是很实用。后来领导的要求越来越花哨，大致需要先去解析json的内容，然后再去客制化，这里记录过程中用到的jq操作，方便以后有类似需求时直接参考。官方文档在这里  ，虽然是英文，但是还算方便，虽说不一定看懂。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-03T16:29:42.798Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="json">
+<meta property="article:tag" content="jq">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xtg1800.github.io/2021/05/31/jq/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>jq使用 | 网站标题</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">网站标题</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2021/05/31/jq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="网站标题">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jq使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-31 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-31T00:00:00+08:00">2021-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-04 00:29:42" itemprop="dateModified" datetime="2021-06-04T00:29:42+08:00">2021-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>使用<code>json</code>做客制化配置，一开始每份客制化用一份<code>json</code>配置，直接用复制替换的方式切换，虽然不高明但是很实用。后来领导的要求越来越花哨，大致需要先去解析<code>json</code>的内容，然后再去客制化，这里记录过程中用到的<code>jq</code>操作，方便以后有类似需求时直接参考。<br>官方文档在<a target="_blank" rel="noopener" href="https://stedolan.github.io/jq/manual/">这里</a>  ，虽然是英文，但是还算方便，虽说不一定看懂。</p>
+<span id="more"></span>
+
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>较简单使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cat built.json | jq <span class="comment"># 不使用过滤器，则原样输出</span></span><br><span class="line">$ cat built.json | jq <span class="string">&#x27;.&#x27;</span> <span class="comment"># 使用 . 过滤器获取 key 的值，这里原样输出</span></span><br><span class="line">$ jq <span class="string">&#x27;.&#x27;</span> built.json <span class="comment"># 使用 . 过滤器获取 key 的值，这里原厂输出</span></span><br><span class="line">$ jq <span class="string">&#x27;.config.built&#x27;</span> built.json <span class="comment"># 使用 . 过滤器获取 key 的值</span></span><br><span class="line">$ jq <span class="string">&#x27;.config.built.fw_builtdate | tonumber&#x27;</span> built.json <span class="comment"># 将格式正确的字符串转换成对应的数字</span></span><br><span class="line">$ jq -c <span class="string">&#x27;.&#x27;</span> built.json <span class="comment"># 将json在一行输出</span></span><br></pre></td></tr></table></figure></li>
+<li><p>简单使用</p>
+<ul>
+<li><p><code>--slurp/-s</code>参数</p>
+<blockquote>
+<p>Instead of running the filter for each JSON object in the input, read the entire input stream into a large array and run the filter just once.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jq -s <span class="string">&#x27;.[0] * .[1]&#x27;</span> built.json irmap.json <span class="comment"># 将两份json合并</span></span><br></pre></td></tr></table></figure></li>
+<li><p><code>--argjson</code>参数</p>
+<p>将一个<code>json</code>对象给变量赋值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SMARTTVJSON=smarttv/smarttv.json</span><br><span class="line">jq -n --argjson order <span class="string">&quot;<span class="subst">$(&lt;<span class="string">&quot;<span class="variable">$&#123;SMARTTVJSON&#125;</span>&quot;</span>)</span>&quot;</span> <span class="string">&#x27;&#123;&quot;smarttv&quot;:null&#125; | .smarttv = $order&#x27;</span> &gt; smarttv.json</span><br></pre></td></tr></table></figure>
+
+<p>将smarttv.json的内容，转换成<code>json</code>对象，然后把这个<code>json</code>对象，赋给变量order；</p>
+<p>过滤器添加一个smarttv的空key，接着把变量order的值给到smarttv这个key；</p>
+<p>最后把处理后的数据重定向到一个<code>json</code>文件。</p>
+</li>
+<li><p><code>--slurpfile</code>参数</p>
+<p>将一个<code>json</code>文件给变量赋值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">COMMON_JSON=public/public.json</span><br><span class="line">ORDER_JSON=order/order.json</span><br><span class="line">jq --slurpfile public <span class="variable">$&#123;COMMON_JSON&#125;</span> <span class="string">&#x27;paths(scalars) as $order | $public[] | getpath($order)&#x27;</span> <span class="variable">$&#123;ORDER_JSON&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>将public.json文件，赋给变量public；</p>
+<p>过滤器，将order.json文件的非null（这个不太理解，只是刚好功能OK）的key的路径赋给order变量，然后拿到public.json对应的这些路径的key的值（如果是null，说明public.json没有这个key）。</p>
+<p>过滤器这样设计，是要找出order.json里比public.json多的有效值（这个key的值不是null）。</p>
+<p><code>paths(scalars)</code>在<code>builtin.jq</code>里的定义：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def scalars: select(<span class="built_in">type</span>|. != <span class="string">&quot;array&quot;</span> and . != <span class="string">&quot;object&quot;</span>);</span><br><span class="line">def paths(node_filter): . as <span class="variable">$dot</span>|paths|select(. as <span class="variable">$p</span>|<span class="variable">$dot</span>|getpath(<span class="variable">$p</span>)|node_filter);</span><br><span class="line">def leaf_paths: paths(scalars);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>-f</code>参数</p>
+<p>从文件中读取过滤器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jq -f mergeorder.jq -s public.json order.json &gt; order.json</span><br></pre></td></tr></table></figure>
+
+<p>过滤器mergeorder.jq内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def mergeorder(a;b):</span><br><span class="line">    reduce b[] as <span class="variable">$item</span> (a;</span><br><span class="line">        reduce (<span class="variable">$item</span> | keys_unsorted[]) as <span class="variable">$key</span> (.;</span><br><span class="line">            <span class="variable">$item</span>[<span class="variable">$key</span>] as <span class="variable">$val</span> | (<span class="variable">$val</span> | <span class="built_in">type</span>) as <span class="variable">$type</span> | .[<span class="variable">$key</span>] = <span class="keyword">if</span> (<span class="variable">$type</span> == <span class="string">&quot;object&quot;</span>) <span class="keyword">then</span></span><br><span class="line">            mergeorder(&#123;&#125;; [<span class="keyword">if</span> .[<span class="variable">$key</span>] == null <span class="keyword">then</span> &#123;&#125; <span class="keyword">else</span> .[<span class="variable">$key</span>] end, <span class="variable">$val</span>])</span><br><span class="line">            <span class="keyword">elif</span> (<span class="variable">$type</span> == <span class="string">&quot;null&quot;</span>) <span class="keyword">then</span></span><br><span class="line">            .[<span class="variable">$key</span>]</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            <span class="variable">$val</span></span><br><span class="line">            end)</span><br><span class="line">        );</span><br><span class="line">    mergeorder(&#123;&#125;; .)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>:joy:</p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/40577">如何使用JQ合并2个 JSON文件？</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66024299/how-to-merge-two-json-files-using-jq-or-any-tool">How to merge two JSON files using jq or any tool?</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19529688/how-to-merge-2-json-objects-from-2-files-using-jq">How to merge 2 JSON objects from 2 files using jq?</a></p>
+<p><a target="_blank" rel="noopener" href="https://justcode.ikeepstudying.com/2018/02/shell%EF%BC%9A%E6%97%A0%E6%AF%94%E5%BC%BA%E5%A4%A7%E7%9A%84shell%E4%B9%8Bjson%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7jq-linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90json-jq%E8%A7%A3%E6%9E%90-json/">Shell：无比强大的shell之json解析工具jq , Linux命令行解析json, jq解析 json 实例</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kevingrace/p/7565371.html">JSON格式化输出和解析工具 - jq</a></p>
+<p><a target="_blank" rel="noopener" href="https://e.printstacktrace.blog/merging-json-files-recursively-in-the-command-line/">Merging JSON files recursively in the command-line</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uIKvYgix-L4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/json/" rel="tag"># json</a>
+              <a href="/tags/jq/" rel="tag"># jq</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/24/linux-shell/" rel="prev" title="Linux Shell">
+      <i class="fa fa-chevron-left"></i> Linux Shell
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

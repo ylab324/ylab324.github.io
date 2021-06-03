@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xtg1800.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="(这特么写的啥？:joy:20200910)还有一些一直没搞懂，先记一部分下来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EDID">
+<meta property="og:url" content="https://xtg1800.github.io/2017/09/04/edid/">
+<meta property="og:site_name" content="网站标题">
+<meta property="og:description" content="(这特么写的啥？:joy:20200910)还有一些一直没搞懂，先记一部分下来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-09-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-03T16:13:47.532Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="tv">
+<meta property="article:tag" content="edid">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xtg1800.github.io/2017/09/04/edid/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>EDID | 网站标题</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">网站标题</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2017/09/04/edid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="网站标题">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EDID
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-09-04 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-04T00:00:00+08:00">2017-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-04 00:13:47" itemprop="dateModified" datetime="2021-06-04T00:13:47+08:00">2021-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TV/" itemprop="url" rel="index"><span itemprop="name">TV</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>(这特么写的啥？:joy:20200910)<br>还有一些一直没搞懂，先记一部分下来。</p>
+<span id="more"></span>
+
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>PC：在任意分辨率下，连接电脑主机GeForce GTX750，显示Unsupported。多次实验。主机重启后画面能正常出来，但仍然无法读取EDID。测试了4台主机（其他3台显卡型号不确定），只有一台正常。</p>
+<h3 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h3><p>搜集到以下资讯：</p>
+<blockquote>
+<ul>
+<li>显示设备生产由于切割成本等原因都是1366X768，而视频讯号都是1360X768</li>
+<li>知乎问题：《为什么说 1366 * 768 是「反人类」的分辨率？》<br>回答1：这个分辨率，横向不能被4整除。在一些情况下不适合使用。影响是，这个分辨率单行扫描不能32位字节对齐。而我们知道主流机器的int是32位（64位机的int也同样是32位）。这会导致经常需要为它额外留空。所以你会看到在某些场合只能用 1360 * 768 代替这个1366分辨率。<br>回答2：16:9屏幕是成本竞争的产物：细心的朋友会发现16:9的屏幕面积要比16：10的屏幕小0.1英寸。这0.1英寸看起来不多，其实它的面积并不小，大规模的切割母版时能多切几块。如果相同尺寸的母版按照14.1英寸能切出30块，那么14.0英寸的屏幕或许就能切出40块。如果总成本是6万元，那么16:10的屏幕是2000元一块，而16：9的屏幕就是1500元一块。<br>回答3：因为分辨率太小，强行16:9，为了面板切割的更多，导致高度只有768，网页竖着显示不了多少内容。而16:9作为看电影的最佳比例，1366 * 768 又远达不到1080P。最终为了赚钱，市面上全都是 1366 * 768，导致大量的反感。<br>回答4：1366 * 768 是对成本妥协的产物，在切割液晶板时最经济。<br>回答5：切割效率最高。每一代液晶面板都有自己最大效率的分辨率，比例，以及尺寸大小，以尽量减少浪费为前提的切割。</li>
+<li>早期很多显卡里面都没有设置 1366 * 768，所以早期的显卡都没法识别 1366 * 768，只有 1360 * 768。</li>
+<li>1366x768 appears most commonly on monitors and laptop displays. I’ve seen 1360x768 creep its way onto cheap ass TVs though. My older TV’s native resolution, for example, is 1360x768.  Nevertheless, I’d go for 1360x768 if you wanted 16:9 content, as 1366x768 cannot display anything at a native 16:9 without rounding, while 1360x768 can (at 1360x765; if you check YouTube and it displaying a video when your fullscreen resolution is 1360x768, you’ll see).</li>
+<li>At the time the first computer wide-screens became popular, the usual resolution on 4:3 panels was 1024×768 (the XGA display standard). For simplicity and backward compatibility, the XGA resolution was kept as a basis when making the WXGA resolution (so that XGA graphics could be easily displayed on WXGA screens).<br>Just extending the width and keeping the same height was also simpler technically because you would only have to tweak the horizontal refresh rate timing to achieve it. However, the standard aspect ratio for wide displays was 16:9, which is not possible with 768 pixels, so the nearest value was chosen, 1366×768.<br>WXGA can also refer to a 1360×768 resolution (and some others that are less common), which was made to reduce costs in integrated circuits. 1366×768 8-bit pixels would take just above 1-MiB to be stored (1024.5KiB), so that would not fit into an 8-Mbit memory chip and you would have to have a 16-Mbit memory chip just to store a few pixels. That is why something a bit lower that 1366 was chosen. Why 1360? Because you can divide it by 8 (or even 16) which is far simpler to handle when processing graphics (and could bring to optimized algorithms).</li>
+<li>1366×768 8-bit pixels is just above 1MiB (by 512 bytes), so it does not fit into an 8Mbit memory chip.<br>1360 is also divisible with both 8 and 16, enabling simplified and optimized algorithms for processing graphics.</li>
+</ul>
+</blockquote>
+<p>总结下来就是：</p>
+<ul>
+<li>1366 * 768 是硬件分辨率，1360 * 768 是VESA规定的显示标准,如要输出1366，需要驱动或特别的软件支持</li>
+<li>笔记本用 1366 * 768，切割效率高，节省面板成本</li>
+<li>1366 * 768 更接近16:9，而 1360 * 768 则为16:10</li>
+</ul>
+<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ul>
+<li>EDID最佳分辨率是做 1366 * 768 还是 1360 * 768 ？ – 应该还是 1366 * 768 ？毕竟跟屏匹配才是最佳？</li>
+<li>出货的屏是 1366 * 768，如果EDID最佳分辨率做 1360 * 768，能做点对点吗？ – 即使第一详细时序是 1360 * 768，如果TV软件有 1366 * 768 的支持，就可以点对点，比如在第二详细时序添加 1366 * 768？</li>
+<li>为什么最佳分辨率写了 1360 * 768，屏显还是 1366 * 768？ – 在Win7控制面板里看到的分辨率是 1360 * 768，通过edidw2k工具抓取的EDID也是最佳分辨率 1360 * 768，偏偏屏显上是 1366 * 768。拿CVTE的板子做个对比，发现他们的EDID写的是 1366 * 768，但是屏显又是 1360 * 768？未解之谜。</li>
+</ul>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>后来也是用同样的软件测试，画面能正常出来，EDID也能读到，使用相同的主机，相同的线材，相同的软件，相同的板卡。测试前有做工厂复位。<br>为什么测试那边会出现那样的情况，本来看到“主机重启后画面能正常出来，但仍然无法读取EDID。”，觉得很有可能是电脑的问题了（因为我的笔记本也很难读，台式机比较容易），但是升完级没画面，需要重启才有，这个情况让人困惑。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tv/" rel="tag"># tv</a>
+              <a href="/tags/edid/" rel="tag"># edid</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/24/rda8501-aq/" rel="prev" title="RDA8501调AQ的几点记录">
+      <i class="fa fa-chevron-left"></i> RDA8501调AQ的几点记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/09/27/bitstream-or-pcm/" rel="next" title="Bitstream or PCM？">
+      Bitstream or PCM？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%84%B6%E5%90%8E"><span class="nav-number">2.</span> <span class="nav-text">然后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE"><span class="nav-number">3.</span> <span class="nav-text">疑问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
