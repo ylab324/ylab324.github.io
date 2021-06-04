@@ -6,25 +6,26 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xtg1800.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xtg1800.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="归并排序，是指将两个有序序列合并成一个有序序列的操作。两个有序序列如何获得？通过从上到下递归分解序列，当元素为1时就是有序序列。接着从下到上合并序列，最后得到一个有序序列。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="归并排序">
 <meta property="og:url" content="https://xtg1800.github.io/2019/02/14/merge-sort/">
-<meta property="og:site_name" content="网站标题">
+<meta property="og:site_name" content="Debbie">
 <meta property="og:description" content="归并排序，是指将两个有序序列合并成一个有序序列的操作。两个有序序列如何获得？通过从上到下递归分解序列，当元素为1时就是有序序列。接着从下到上合并序列，最后得到一个有序序列。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-02-13T16:00:00.000Z">
@@ -48,7 +49,7 @@
   };
 </script>
 
-  <title>归并排序 | 网站标题</title>
+  <title>归并排序 | Debbie</title>
   
 
 
@@ -79,6 +80,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -99,7 +102,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">网站标题</h1>
+      <h1 class="site-title">Debbie</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
@@ -179,6 +182,11 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -196,13 +204,13 @@
     <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2019/02/14/merge-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="XTG1800">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="网站标题">
+      <meta itemprop="name" content="Debbie">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -218,13 +226,6 @@
 
               <time title="创建时间：2019-02-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-14T00:00:00+08:00">2019-02-14</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-04 00:18:51" itemprop="dateModified" datetime="2021-06-04T00:18:51+08:00">2021-06-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -249,7 +250,7 @@
         <p>归并排序，是指将两个有序序列合并成一个有序序列的操作。两个有序序列如何获得？通过从上到下递归分解序列，当元素为1时就是有序序列。接着从下到上合并序列，最后得到一个有序序列。  </p>
 <span id="more"></span>
 
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 合并数组</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param arrays</span></span><br><span class="line"><span class="comment"> * @param L      指向数组第一个元素</span></span><br><span class="line"><span class="comment"> * @param M      指向数组分隔的元素</span></span><br><span class="line"><span class="comment"> * @param R      指向数组最后的元素</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> arrays[], <span class="keyword">int</span> L, <span class="keyword">int</span> M, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> lengthLeft = M - L;</span><br><span class="line">	<span class="keyword">int</span> lengthRight = R - M + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//左边的数组的大小</span></span><br><span class="line">	<span class="keyword">int</span> leftArray[lengthLeft];</span><br><span class="line">	<span class="built_in">memset</span>(leftArray,<span class="number">0</span>,lengthLeft*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//右边的数组大小</span></span><br><span class="line">	<span class="keyword">int</span> rightArray[lengthRight];</span><br><span class="line">	<span class="built_in">memset</span>(rightArray,<span class="number">0</span>,lengthRight*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//往这两个数组填充数据</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = L; i &lt; M; i++) &#123;</span><br><span class="line">		leftArray[i - L] = arrays[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = M; i &lt;= R; i++) &#123;</span><br><span class="line">		rightArray[i - M] = arrays[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//arrays数组的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> k = L;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//比较这两个数组的值，哪个小，就往数组上放</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; lengthLeft &amp;&amp; j &lt; lengthRight) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//谁比较小，谁将元素放入大数组中,移动指针，继续比较下一个</span></span><br><span class="line">		<span class="keyword">if</span> (leftArray[i] &lt; rightArray[j]) &#123;</span><br><span class="line">			arrays[k++] = leftArray[i++];</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			arrays[k++] = rightArray[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果左边的数组还没比较完，右边的数都已经完了，那么将左边的数抄到大数组中(剩下的都是大数字)</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; lengthLeft) &#123;</span><br><span class="line">		arrays[k++] = leftArray[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果右边的数组还没比较完，左边的数都已经完了，那么将右边的数抄到大数组中(剩下的都是大数字)</span></span><br><span class="line">	<span class="keyword">while</span> (j &lt; lengthRight) &#123;</span><br><span class="line">		arrays[k++] = rightArray[j++];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 归并排序</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param arrays</span></span><br><span class="line"><span class="comment"> * @param L      指向数组第一个元素</span></span><br><span class="line"><span class="comment"> * @param R      指向数组最后一个元素</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> arrays[], <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果只有一个元素，那就不用排序了</span></span><br><span class="line">	<span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//取中间的数，进行拆分</span></span><br><span class="line">		<span class="keyword">int</span> M = (L + R) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//左边的数不断进行拆分</span></span><br><span class="line">		mergeSort(arrays, L, M);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//右边的数不断进行拆分</span></span><br><span class="line">		mergeSort(arrays, M + <span class="number">1</span>, R);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//合并</span></span><br><span class="line">		merge(arrays, L, M + <span class="number">1</span>, R);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[] = &#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">6</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> length = <span class="keyword">sizeof</span>(a)/<span class="number">4</span>;</span><br><span class="line">	mergeSort(a,<span class="number">0</span>,length<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">	&#123;   </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;a[%d] = %d\n&quot;</span>,i,a[i]);</span><br><span class="line">	&#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 合并数组</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param arrays</span></span><br><span class="line"><span class="comment"> * @param L      指向数组第一个元素</span></span><br><span class="line"><span class="comment"> * @param M      指向数组分隔的元素</span></span><br><span class="line"><span class="comment"> * @param R      指向数组最后的元素</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> arrays[], <span class="keyword">int</span> L, <span class="keyword">int</span> M, <span class="keyword">int</span> R)</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> lengthLeft = M - L;</span><br><span class="line">	<span class="keyword">int</span> lengthRight = R - M + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//左边的数组的大小</span></span><br><span class="line">	<span class="keyword">int</span> leftArray[lengthLeft];</span><br><span class="line">	<span class="built_in">memset</span>(leftArray,<span class="number">0</span>,lengthLeft*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//右边的数组大小</span></span><br><span class="line">	<span class="keyword">int</span> rightArray[lengthRight];</span><br><span class="line">	<span class="built_in">memset</span>(rightArray,<span class="number">0</span>,lengthRight*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//往这两个数组填充数据</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = L; i &lt; M; i++) {</span><br><span class="line">		leftArray[i - L] = arrays[i];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = M; i &lt;= R; i++) {</span><br><span class="line">		rightArray[i - M] = arrays[i];</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//arrays数组的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> k = L;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//比较这两个数组的值，哪个小，就往数组上放</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; lengthLeft &amp;&amp; j &lt; lengthRight) {</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//谁比较小，谁将元素放入大数组中,移动指针，继续比较下一个</span></span><br><span class="line">		<span class="keyword">if</span> (leftArray[i] &lt; rightArray[j]) {</span><br><span class="line">			arrays[k++] = leftArray[i++];</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			arrays[k++] = rightArray[j++];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果左边的数组还没比较完，右边的数都已经完了，那么将左边的数抄到大数组中(剩下的都是大数字)</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; lengthLeft) {</span><br><span class="line">		arrays[k++] = leftArray[i++];</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">//如果右边的数组还没比较完，左边的数都已经完了，那么将右边的数抄到大数组中(剩下的都是大数字)</span></span><br><span class="line">	<span class="keyword">while</span> (j &lt; lengthRight) {</span><br><span class="line">		arrays[k++] = rightArray[j++];</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 归并排序</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param arrays</span></span><br><span class="line"><span class="comment"> * @param L      指向数组第一个元素</span></span><br><span class="line"><span class="comment"> * @param R      指向数组最后一个元素</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> arrays[], <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果只有一个元素，那就不用排序了</span></span><br><span class="line">	<span class="keyword">if</span> (L == R) {</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line"></span><br><span class="line">		<span class="comment">//取中间的数，进行拆分</span></span><br><span class="line">		<span class="keyword">int</span> M = (L + R) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//左边的数不断进行拆分</span></span><br><span class="line">		mergeSort(arrays, L, M);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//右边的数不断进行拆分</span></span><br><span class="line">		mergeSort(arrays, M + <span class="number">1</span>, R);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//合并</span></span><br><span class="line">		merge(arrays, L, M + <span class="number">1</span>, R);</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> a[] = {<span class="number">5</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">6</span>};</span><br><span class="line">	<span class="keyword">int</span> length = <span class="keyword">sizeof</span>(a)/<span class="number">4</span>;</span><br><span class="line">	mergeSort(a,<span class="number">0</span>,length<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">	{   </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d] = %d\n"</span>,i,a[i]);</span><br><span class="line">	}   </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ol>
 <li><a target="_blank" rel="noopener" href="https://juejin.im/post/5ab4c7566fb9a028cb2d9126">归并排序就这么简单</a>  </li>
@@ -293,6 +294,13 @@
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -345,8 +353,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">XTG1800</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -375,10 +385,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
 
     </div>
   </aside>
@@ -422,6 +428,8 @@
   
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -521,6 +529,27 @@ window.addEventListener('pjax:success', () => {
   
 
   
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://xtg1800.github.io/2019/02/14/merge-sort/";
+    this.page.identifier = "2019/02/14/merge-sort/";
+    this.page.title = "归并排序";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://xtg1800.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
     </div>
 </body>
