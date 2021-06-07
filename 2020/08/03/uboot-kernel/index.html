@@ -29,7 +29,7 @@
 <meta property="og:description" content="理解不深，简单记录一下。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-06-03T16:27:16.913Z">
+<meta property="article:modified_time" content="2021-06-07T14:19:33.617Z">
 <meta property="article:author" content="XTG1800">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="boot">
@@ -219,6 +219,10 @@
         </h1>
 
         <div class="post-meta">
+
+	  <!-- 置顶插件添加 开始 -->
+	  
+	  <!-- 置顶插件添加 结束 -->
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -256,7 +260,7 @@
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Memory for power on music, video, and image. Include stream buffer and decode buffer */</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> POWER_ON_IR_TABLE_ADDR                  (0x1ffff000)    <span class="comment">// 0x1ffff000 ~ 0x20000000</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> POWER_ON_IR_TABLE_SIZE                  (0x1000 - 128 - 8)              <span class="comment">// 4k</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> POWER_ON_KEYPAD_TABLE_ADDR              (POWER_ON_IR_TABLE_ADDR + POWER_ON_IR_TABLE_SIZE)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> POWER_ON_KEYPAD_TABLE_SIZE              (128 + 8)</span></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></tbody></table></figure>
 <p>这个是共享内存的物理地址，内核可以从这里拿到东西。  </p>
 <p>但是内核怎么知道地址是多少？强制定义也可以（感觉不会有问题）。这里是通过<code>cmdline</code>把东西传给内核，看看boot的启动参数：  </p>
-<figure class="highlight console"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console:/ # cat /proc/cmdline                                                  </span><br><span class="line">androidboot.console=ttyS1 console=ttyS1,115200 androidboot.dtbo_idx=0 bufsize=80000  envp=e4100 wdt=&lt;NULL&gt;  flashtype=emmc mmcparts=rtkemmc:304927k,2097152k(/super),4718592k(/userdata),281808k(/cache),1024k(/persist),1024k(/misc),16384k(/metadata),32768k(/boot),32768k(/recovery),8192k(/dtbo),16384k(/tvconfigs),32768k(/tvdata),24576k(/impdata),1024k(/vbmeta),65536k(/smarttv)  androidboot.boot_devices=18010800.emmc loop.max_part=7 buildvariant=userdebug initrd=0x10000000,0xbd000 keepinitrd reclaim=54M@40M last_image=8M@160M VIP=2M@766M OD=8M@768M bootcode_git_version=c422e6b no_console_suspend androidboot.vbmeta.device=179:13 androidboot.vbmeta.avb_version=1.1 androidboot.vbmeta.device_state=locked androidboot.vbmeta.hash_alg=sha256 androidboot.vbmeta.size=3968 androidboot.vbmeta.digest=7d27ba8f742e398b5827d4a1ab61aec26e4f0ee5192105877cad1e8ebb960359 androidboot.vbmeta.invalidate_on_error=yes androidboot.veritymode=enforcing androidboot.verifiedbootstate=green androidboot.hardware.sku=ATV00003919R01 loglevel=4 earlyprintk androidboot.bootreason=watchdog chip=RTD2851A chip_model=4K androidboot.serialno=001020304050 irda=1-hikeen irda_powerup=74,221,189,16e,2f5,2f6 irda1=7-hikeen dvfs_low=0xC6 dvfs_high=0xFD rtk_rcs=0x4eff000 ir_table=0x1ffff000</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight console"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console:/ # cat /proc/cmdline                                                  </span><br><span class="line">androidboot.console=ttyS1 console=ttyS1,115200 androidboot.dtbo_idx=0 bufsize=80000  envp=e4100 wdt=&lt;NULL&gt;  flashtype=emmc mmcparts=rtkemmc:304927k,2097152k(/super),4718592k(/userdata),281808k(/cache),1024k(/persist),1024k(/misc),16384k(/metadata),32768k(/boot),32768k(/recovery),8192k(/dtbo),16384k(/tvconfigs),32768k(/tvdata),24576k(/impdata),1024k(/vbmeta),65536k(/smarttv)  androidboot.boot_devices=18010800.emmc loop.max_part=7 buildvariant=userdebug initrd=0x10000000,0xbd000 keepinitrd reclaim=54M@40M last_image=8M@160M VIP=2M@766M OD=8M@768M bootcode_git_version=c422e6b no_console_suspend androidboot.vbmeta.device=179:13 androidboot.vbmeta.avb_version=1.1 androidboot.vbmeta.device_state=locked androidboot.vbmeta.hash_alg=sha256 androidboot.vbmeta.size=3968 androidboot.vbmeta.digest=7d27ba8f742e398b5827d4a1ab61aec26e4f0ee5192105877cad1e8ebb960359 androidboot.vbmeta.invalidate_on_error=yes androidboot.veritymode=enforcing androidboot.verifiedbootstate=green androidboot.hardware.sku=ATV00003919R01 loglevel=4 earlyprintk androidboot.bootreason=watchdog chip=RTD2851A chip_model=4K androidboot.serialno=001020304050 irda=1-hk irda_powerup=74,221,189,16e,2f5,2f6 irda1=7-hk dvfs_low=0xC6 dvfs_high=0xFD rtk_rcs=0x4eff000 ir_table=0x1ffff000</span><br></pre></td></tr></tbody></table></figure>
 
 <p>可以找到ir_table=0x1ffff000，内核怎么做？<br>通过<code>early_param</code>解析拿到地址：  </p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> __init <span class="title">venus_ir_input_table_addr_parse</span><span class="params">(<span class="keyword">char</span> *options)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ir_table_phy_address = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(options == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">sscanf</span>(options, <span class="string">"%lx"</span>, &amp;ir_table_phy_address) != <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    g_ir_boot_memory_address = ir_table_phy_address;</span><br><span class="line">    IR_INFO(<span class="string">"g_ir_boot_memory_address == %lx\n"</span>, g_ir_boot_memory_address);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">early_param(<span class="string">"ir_table"</span>, venus_ir_input_table_addr_parse);</span><br></pre></td></tr></tbody></table></figure>
@@ -400,6 +404,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 

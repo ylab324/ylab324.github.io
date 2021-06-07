@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de38c7e.png">
 <meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de40ee6.png">
 <meta property="article:published_time" content="2018-02-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-06-03T16:15:18.835Z">
+<meta property="article:modified_time" content="2021-06-07T14:36:58.090Z">
 <meta property="article:author" content="XTG1800">
 <meta property="article:tag" content="tv">
 <meta property="article:tag" content="rda">
@@ -231,6 +231,10 @@
         </h1>
 
         <div class="post-meta">
+
+	  <!-- 置顶插件添加 开始 -->
+	  
+	  <!-- 置顶插件添加 结束 -->
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -263,7 +267,7 @@
         <p>重写8501AQ相关，作为《RDA8501调AQ的几点记录》的补充或修正。</p>
 <span id="more"></span>
 
-<h3 id="一、频响曲线"><a href="#一、频响曲线" class="headerlink" title="一、频响曲线"></a>一、频响曲线</h3><ul>
+<h3 id="频响曲线"><a href="#频响曲线" class="headerlink" title="频响曲线"></a>频响曲线</h3><ul>
 <li>对频响的理解</li>
 </ul>
 <blockquote>
@@ -301,21 +305,21 @@
 <li><p>调好参数后把数值填充到结构体<strong>g_stSettingDefault_FactoryUser</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/app_data_setting.c</em>）和<strong>g_stAudioSoundModeEqualizerSetting</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/subcustomer_setting.c</em>）</p>
 </li>
 </ul>
-<h3 id="二、最大声音功率"><a href="#二、最大声音功率" class="headerlink" title="二、最大声音功率"></a>二、最大声音功率</h3><p>指TV音量为最大(100)时，喇叭最大功率。不同客户输入信号标准或许不同，一般使用1KHz/-12dB（500mV）输入。<br>比如调一个4W最大声音功率，步骤如下：</p>
+<h3 id="最大声音功率"><a href="#最大声音功率" class="headerlink" title="最大声音功率"></a>最大声音功率</h3><p>指TV音量为最大(100)时，喇叭最大功率。不同客户输入信号标准或许不同，一般使用1KHz/-12dB（500mV）输入。<br>比如调一个4W最大声音功率，步骤如下：</p>
 <ol>
 <li>令工厂菜单Audio-&gt;AVL-&gt;AVL Mode = Disable，Audio-&gt;Power Limiter-&gt; Sp Attack = 0（PLC用于限制后端输出）；</li>
 <li>令工厂菜单Function-&gt;Curve Setting-&gt;Volume Curve-&gt;OSD Volume Value（即TV系统音量）= 100，调Function-&gt;Curve Setting-&gt;Volume Curve-&gt;Vol.Pt.100，使功率达到4W，记录数值用于填回音量曲线表；</li>
 <li>调大输入源幅度或继续增大Vol.Pt.100，使输出大于4W；</li>
 <li>降低PLC Sp Attack，使输出小于等于4W，记录数值设为默认值；</li>
-<li>完成。需要记录的参数是Sp Attack（<strong>PLC_SP_ATTACK</strong>：<em>aps/customer/s2tek/hikeen8501/adaptable/board_config.h</em>）和Vol.Pt.100（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/subcustomer_setting.h</em>）。</li>
+<li>完成。需要记录的参数是Sp Attack（<strong>PLC_SP_ATTACK</strong>：<em>aps/customer/s2tek/hk8501/adaptable/board_config.h</em>）和Vol.Pt.100（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/subcustomer_setting.h</em>）。</li>
 </ol>
-<h3 id="三、音量曲线"><a href="#三、音量曲线" class="headerlink" title="三、音量曲线"></a>三、音量曲线</h3><p>要求制作的音量曲线不可有明显突变，各个通道的曲线尽量接近。<br>步骤：</p>
+<h3 id="音量曲线"><a href="#音量曲线" class="headerlink" title="音量曲线"></a>音量曲线</h3><p>要求制作的音量曲线不可有明显突变，各个通道的曲线尽量接近。<br>步骤：</p>
 <ol>
 <li>调最大声音功率</li>
 <li>依次调Function-&gt;Curve Setting-&gt;Volume Curve-&gt;Vol.Pt各个点，使每个音量点测量得到的功率基本满足客户要求，调试时注意Vol.Pt 值跟OSD Volume Value值匹配；</li>
 <li>记录数值写回音量曲线表（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/subcustomer_setting.h</em>）</li>
 </ol>
-<h3 id="四、AVL（AVC-输入灵敏度）"><a href="#四、AVL（AVC-输入灵敏度）" class="headerlink" title="四、AVL（AVC/输入灵敏度）"></a>四、AVL（AVC/输入灵敏度）</h3><p>AVL用于控制输入信号的强弱（限制前端IC输入）。</p>
+<h3 id="AVL（AVC-输入灵敏度）"><a href="#AVL（AVC-输入灵敏度）" class="headerlink" title="AVL（AVC/输入灵敏度）"></a>AVL（AVC/输入灵敏度）</h3><p>AVL用于控制输入信号的强弱（限制前端IC输入）。</p>
 <ol>
 <li>工厂菜单内容：  <ul>
 <li>AVL Mode：Enable（开启AVL功能），Disable（关闭AVL功能）；AVL功能默认关闭，做输入灵敏度测试的时候先打开AVL功能；Audio -&gt; AVL -&gt; AVL Mode与OSD -&gt; SOUND上的 Auto Volume 功能一致  </li>
@@ -327,7 +331,7 @@
 </li>
 <li>调好后记录数据<strong>g_stSettingDefault_FactoryUser</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/app_data_setting.c</em>）</li>
 </ol>
-<h3 id="五、高低音"><a href="#五、高低音" class="headerlink" title="五、高低音"></a>五、高低音</h3><p>即OSD -&gt; SOUND上的Treble/Bass，如图，当Treble=100，Bass=100时得到红线AB，当 Treble=0，Bass=0时得到红线CD，增益范围在±6dB~±8dB，每一根线都是Treble和Bass作用叠加的效果图：<br><img src="https://i.loli.net/2018/02/27/5a9515e332cbe.png"><br>调试点主要有A、B、C、D四个，标准是增益范围，即A到C的增益差，B到D的增益差，有以下几种情况：  </p>
+<h3 id="高低音"><a href="#高低音" class="headerlink" title="高低音"></a>高低音</h3><p>即OSD -&gt; SOUND上的Treble/Bass，如图，当Treble=100，Bass=100时得到红线AB，当 Treble=0，Bass=0时得到红线CD，增益范围在±6dB~±8dB，每一根线都是Treble和Bass作用叠加的效果图：<br><img src="https://i.loli.net/2018/02/27/5a9515e332cbe.png"><br>调试点主要有A、B、C、D四个，标准是增益范围，即A到C的增益差，B到D的增益差，有以下几种情况：  </p>
 <ol>
 <li><p>如需使A点向下移，即需减小Bass=100时候的增益（Treble也有作用，只不过低频段主要影响的是Bass，所以这时一般不改动Treble的增益），<br><img src="https://i.loli.net/2018/02/27/5a95166f73d1e.png"><br>如需使A点向上移，同理；  </p>
 </li>
@@ -339,8 +343,8 @@
 </li>
 </ol>
 <p>调好参数后把数据填入<strong>g_arAudioBassTable</strong> 和 <strong>g_arAudioTrebleTable</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/subcustomer_setting.c</em>）。</p>
-<h3 id="六、声音模式"><a href="#六、声音模式" class="headerlink" title="六、声音模式"></a>六、声音模式</h3><p>即OSD -&gt; SOUND上的四种音效模式，不同的声音模式的差别是高低音的设定的不同。不建议修改OSD -&gt; SOUNG上Treble/Bass的默认值，而是通过调整Bass/Treble曲线满足客户需求。调试方法参考高低音调试。<br>如图是8501某板卡的声音模式曲线：<br><img src="https://i.loli.net/2018/02/27/5a9516de46c4f.png"> </p>
-<h3 id="七、其他1"><a href="#七、其他1" class="headerlink" title="七、其他1"></a>七、其他1</h3><ul>
+<h3 id="声音模式"><a href="#声音模式" class="headerlink" title="声音模式"></a>声音模式</h3><p>即OSD -&gt; SOUND上的四种音效模式，不同的声音模式的差别是高低音的设定的不同。不建议修改OSD -&gt; SOUNG上Treble/Bass的默认值，而是通过调整Bass/Treble曲线满足客户需求。调试方法参考高低音调试。<br>如图是8501某板卡的声音模式曲线：<br><img src="https://i.loli.net/2018/02/27/5a9516de46c4f.png"> </p>
+<h3 id="其他1"><a href="#其他1" class="headerlink" title="其他1"></a>其他1</h3><ul>
 <li><p>分离度：左、右两个声道相互串扰的程度<br><img src="https://i.loli.net/2018/02/27/5a9516de2dfc1.png">  </p>
 </li>
 <li><p>增益差：左、右两个声道的信号增益之差<br><img src="https://i.loli.net/2018/02/27/5a9516de414d7.png">  </p>
@@ -350,13 +354,13 @@
 <li><p>信噪比：喇叭播放时，正常声音信号强度与噪声信号强度的比值<br><img src="https://i.loli.net/2018/02/27/5a9516de40ee6.png"></p>
 </li>
 </ul>
-<h3 id="八、其他2"><a href="#八、其他2" class="headerlink" title="八、其他2"></a>八、其他2</h3><ul>
-<li><p>AV Out音频输出幅度：带AV Out端子的板卡需要测试这一项目，修改<strong>g_arAudioAuxiliaryVolumeOffset</strong>（<em>aps/customer/s2tek/hikeen8501/adaptable/board_config.c</em>）</p>
+<h3 id="其他2"><a href="#其他2" class="headerlink" title="其他2"></a>其他2</h3><ul>
+<li><p>AV Out音频输出幅度：带AV Out端子的板卡需要测试这一项目，修改<strong>g_arAudioAuxiliaryVolumeOffset</strong>（<em>aps/customer/s2tek/hk8501/adaptable/board_config.c</em>）</p>
 </li>
 <li><p>唇音同步：声音图像同步（AV Sync） Audio–&gt;Misc.-&gt;Lipsync：调整 AV Sync，范围为 -200ms~200ms。修改<strong>g_stSettingDefault_FactoryUser</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/app_data_setting.c</em>）</p>
 </li>
 </ul>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
 <li>测量声音相关参数时需220V交流供电；</li>
 <li>明确各个指标的测试方法和测试标准；测量频响前先确认客户是测电频响（测板卡的）还是声频响（测整机的）；</li>
 <li>调试顺序：首先调频响；最大声音功率 &gt; 声音曲线 &gt; 失真度；高低音&gt; 声音模式。</li>
@@ -454,7 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%A2%91%E5%93%8D%E6%9B%B2%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">一、频响曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%9C%80%E5%A4%A7%E5%A3%B0%E9%9F%B3%E5%8A%9F%E7%8E%87"><span class="nav-number">2.</span> <span class="nav-text">二、最大声音功率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%9F%B3%E9%87%8F%E6%9B%B2%E7%BA%BF"><span class="nav-number">3.</span> <span class="nav-text">三、音量曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81AVL%EF%BC%88AVC-%E8%BE%93%E5%85%A5%E7%81%B5%E6%95%8F%E5%BA%A6%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">四、AVL（AVC&#x2F;输入灵敏度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AB%98%E4%BD%8E%E9%9F%B3"><span class="nav-number">5.</span> <span class="nav-text">五、高低音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%A3%B0%E9%9F%B3%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">六、声音模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%85%B6%E4%BB%961"><span class="nav-number">7.</span> <span class="nav-text">七、其他1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%85%B6%E4%BB%962"><span class="nav-number">8.</span> <span class="nav-text">八、其他2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number"></span> <span class="nav-text">注意事项</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E5%93%8D%E6%9B%B2%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">频响曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%A3%B0%E9%9F%B3%E5%8A%9F%E7%8E%87"><span class="nav-number">2.</span> <span class="nav-text">最大声音功率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E9%87%8F%E6%9B%B2%E7%BA%BF"><span class="nav-number">3.</span> <span class="nav-text">音量曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AVL%EF%BC%88AVC-%E8%BE%93%E5%85%A5%E7%81%B5%E6%95%8F%E5%BA%A6%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">AVL（AVC&#x2F;输入灵敏度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E4%BD%8E%E9%9F%B3"><span class="nav-number">5.</span> <span class="nav-text">高低音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">声音模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%961"><span class="nav-number">7.</span> <span class="nav-text">其他1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%962"><span class="nav-number">8.</span> <span class="nav-text">其他2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">9.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -488,6 +492,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 

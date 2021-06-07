@@ -29,7 +29,7 @@
 <meta property="og:description" content="速查。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-06-03T16:20:13.088Z">
+<meta property="article:modified_time" content="2021-06-07T15:02:35.440Z">
 <meta property="article:author" content="XTG1800">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -216,6 +216,10 @@
         </h1>
 
         <div class="post-meta">
+
+	  <!-- 置顶插件添加 开始 -->
+	  
+	  <!-- 置顶插件添加 结束 -->
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -251,112 +255,59 @@
 
 <h2 id="Git使用"><a href="#Git使用" class="headerlink" title="Git使用"></a>Git使用</h2><ul>
 <li><p>把文件修改添加到暂存区：  </p>
-<blockquote>
-<p>git add  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>提交修改，把暂存区的内容提交到当前分支：  </p>
-<blockquote>
-<p>git commit  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>下载远程分支<code>rtk_base</code>的代码，并把根文件夹命名为<code>rtk_code_base</code>：  </p>
-<blockquote>
-<p>git clone -b rtk_base <a target="_blank" rel="noopener" href="http://123.45.6.78:9999/Hlkffm_Bndroid/2951_hlkffm_0402.git">http://123.45.6.78:9999/Hlkffm_Bndroid/2951_hlkffm_0402.git</a> rtk_code_base  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> -b rtk_base http://123.45.6.78:9999/Hlkffm_Bndroid/2951_hlkffm_0402.git rtk_code_base </span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>单行显示git记录，包括版本号和commit log：  </p>
-<blockquote>
-<p>git log --pretty=oneline  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --pretty=oneline</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>显示1个commit：  </p>
-<blockquote>
-<p>git log -1  </p>
-</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -1</span><br></pre></td></tr></tbody></table></figure>
 <p>  如果想显示5个，就-5，不指定的话，会从该commit一直往后显示</p>
 </li>
 <li><p>查看一段时间区间的提交信息：  </p>
-<blockquote>
-<p>git log --oneline --since=”2019-11-18 00:00:00” --until=”2019-12-01 00:00:00”  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --since=<span class="string">"2019-11-18 00:00:00"</span> --until=<span class="string">"2019-12-01 00:00:00"</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>查看具体某一个版本，包括修改的作者、时间、文件等，以及“shows number of added and deleted lines”：    </p>
-<blockquote>
-<p>git show 7f7c809c1f537a3ffff57667d41424e1cff8cad1 --numstat  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git show 7f7c809c1f537a3ffff57667d41424e1cff8cad1 --numstat</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>查看某行代码提交记录：  </p>
 <p>  查看index.js文件中第38行的提交修改记录：  </p>
-<blockquote>
-<p>git blame -L 38,38 src/component/BarCode/index.js</p>
-</blockquote>
-</li>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git blame -L 38,38 src/component/BarCode/index.js</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>查看某个文件中某个函数的提交记录：  </p>
-<blockquote>
-<p>git log -L :FunctionName:FilePath</p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -L :FunctionName:FilePath</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>查看单个文件的历史修改记录：  </p>
 <p>  首先切换到要查看的文件所在的目录  </p>
-<blockquote>
-<p>cd kernel/android/pie/vendor/realtek/app/HikeenMediaBrowser/app/src/main/java/com/hikeen/mediabrowser/activity/  </p>
-</blockquote>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> kernel/android/pie/vendor/realtek/app/HKMediaBrowser/app/src/main/java/com/hk/mediabrowser/activity/</span><br></pre></td></tr></tbody></table></figure>
+
 <p>  列出文件的所有改动历史  </p>
-<blockquote>
-<p>git log --pretty=oneline PhotoPlayerActivity.java  </p>
-</blockquote>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --pretty=oneline PhotoPlayerActivity.java</span><br></pre></td></tr></tbody></table></figure>
+
 <p>  显示该文件每次提交的diff  </p>
-<blockquote>
-<p>git log -p PhotoPlayerActivity.java  </p>
-</blockquote>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -p PhotoPlayerActivity.java</span><br></pre></td></tr></tbody></table></figure>
+
 <p>  查看某个提交中的某个文件的变化  </p>
-<blockquote>
-<p>git show 4a771319a90dad7d654dbd7ece50cd9add0fef30 PhotoPlayerActivity.java  </p>
-</blockquote>
-</li>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git show 4a771319a90dad7d654dbd7ece50cd9add0fef30 PhotoPlayerActivity.java</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>HEAD指向的版本就是当前版本，在版本的历史之间切换：  </p>
-<blockquote>
-<p>git reset --hard commit_id    </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard commit_id</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>在两个版本之间创建Diff：  </p>
-<blockquote>
-<p>git diff [旧版本 Commit ID] [新版本 Commit ID] &gt; [Diff文件名]  </p>
-</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff [旧版本 Commit ID] [新版本 Commit ID] &gt; [Diff文件名]</span><br></pre></td></tr></tbody></table></figure>
 <p>  eg:  </p>
-<blockquote>
-<p>git diff 5af260f2e3974e0d043a42f397b2d9165e6b4d3f e4c3cbd7700e5230e6b053cf3e231bced23f4edc &gt; patch.diff  </p>
-</blockquote>
-</li>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff 5af260f2e3974e0d043a42f397b2d9165e6b4d3f e4c3cbd7700e5230e6b053cf3e231bced23f4edc &gt; patch.diff</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>应用Diff：  </p>
 <p>  检查Diff文件  </p>
-<blockquote>
-<p>git apply --stat patch.diff  </p>
-</blockquote>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git apply --<span class="built_in">stat</span> patch.diff</span><br></pre></td></tr></tbody></table></figure>
+
 <p>  检查Diff文件是否能正常打入  </p>
-<blockquote>
-<p>git apply --check patch.diff  </p>
-</blockquote>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git apply --check patch.diff</span><br></pre></td></tr></tbody></table></figure>
+
 <p>  打入Diff  </p>
-<blockquote>
-<p>git apply patch.diff  </p>
-</blockquote>
-</li>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git apply patch.diff</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>查看命令历史：  </p>
-<blockquote>
-<p>git reflog  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>查看工作区和版本库里面最新版本的区别：  </p>
-<blockquote>
-<p>git diff HEAD -- readme.txt  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff HEAD -- readme.txt</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>丢弃工作区的修改：  </p>
-<blockquote>
-<p>git checkout -- readme.txt</p>
-</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></tbody></table></figure>
 <p>  把readme.txt文件在工作区的修改全部撤销，这里有两种情况：  </p>
 <ol>
 <li>readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；  </li>
@@ -364,20 +315,11 @@
 </ol>
 </li>
 <li><p>把暂存区的修改撤销掉(unstage)：  </p>
-<blockquote>
-<p>git reset HEAD &lt;file&gt;  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD &lt;file&gt;</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>合并某分支到当前分支:  </p>
-<blockquote>
-<p>git merge &lt;name&gt;  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge &lt;name&gt;</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>清理掉本地不受版本库控制的文件:  </p>
-<blockquote>
-<p>git clean -f  </p>
-</blockquote>
-</li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clean -f</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600/900388704535136">stash应用场景 - 处理临时任务前需要保存工作现场</a>  </p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600/900375748016320">多人协作</a>  </p>
@@ -390,51 +332,19 @@
 </li>
 <li><p>开发步骤  </p>
 <ol>
-<li>切换到最新的develop分支  <blockquote>
-<p>git fetch origin;git checkout origin/develop;git branch -D develop;git checkout -b develop  </p>
-</blockquote>
-</li>
-<li>新建一个自己的临时开发分支  <blockquote>
-<p>git checkout -b user_01  </p>
-</blockquote>
-</li>
-<li>添加修改  <blockquote>
-<p>git add path/file  </p>
-</blockquote>
-</li>
-<li>提交修改，并产生一个git_ID:0deaddead  <blockquote>
-<p>git commit -m “”””  </p>
-</blockquote>
-</li>
-<li>切换到最新的develop分支  <blockquote>
-<p>git fetch origin;git checkout origin/develop;git branch -D develop;git checkout -b develop  </p>
-</blockquote>
-</li>
-<li>拉取刚才的提交，到最新的develop分支  <blockquote>
-<p>git cherry-pick 0deaddead  </p>
-</blockquote>
-</li>
-<li>推送到服务器  <blockquote>
-<p>git push origin develop:develop  </p>
-</blockquote>
-</li>
-<li>删除自己临时的开发分支  <blockquote>
-<p>git branch -D user_01  </p>
-</blockquote>
-</li>
+<li>切换到最新的develop分支  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin;git checkout origin/develop;git branch -D develop;git checkout -b develop</span><br></pre></td></tr></tbody></table></figure></li>
+<li>新建一个自己的临时开发分支  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b user_01</span><br></pre></td></tr></tbody></table></figure></li>
+<li>添加修改  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add path/file</span><br></pre></td></tr></tbody></table></figure></li>
+<li>提交修改，并产生一个git_ID:0deaddead  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">""</span><span class="string">""</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>切换到最新的develop分支  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin;git checkout origin/develop;git branch -D develop;git checkout -b develop</span><br></pre></td></tr></tbody></table></figure></li>
+<li>拉取刚才的提交，到最新的develop分支  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git cherry-pick 0deaddead</span><br></pre></td></tr></tbody></table></figure></li>
+<li>推送到服务器  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin develop:develop</span><br></pre></td></tr></tbody></table></figure></li>
+<li>删除自己临时的开发分支  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D user_01</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 </li>
-</ul>
-<ul>
-<li>git不同code，修改相同路径相同的文件，直接抓取的修改文件的方法：    例如，谷歌TV抓取歌谷TV上的文件，在谷歌TV code执行：  <ol>
-<li>git remote add gegu <a href="mailto:git@123.45.6.78">git@123.45.6.78</a>:Android_RD/gegu_tv.git  </li>
-<li>git remount -v  </li>
-<li>git fetch gegu  </li>
-<li>git pull  </li>
-<li>git cherry-pick xxxxxxx(gegu上的gitid)  </li>
-<li>git push origin develop  </li>
-</ol>
-</li>
+<li><p>git不同code，修改相同路径相同的文件，直接抓取的修改文件的方法：  </p>
+<p>  例如，谷歌TV抓取歌谷TV上的文件，在谷歌TV code执行：  </p>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add gegu git@123.45.6.78:Android_RD/gegu_tv.git  </span><br><span class="line">$ git remount -v  </span><br><span class="line">$ git fetch gegu  </span><br><span class="line">$ git pull  </span><br><span class="line">$ git cherry-pick xxxxxxx(gegu上的gitid)  </span><br><span class="line">$ git push origin develop  </span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-show">git show</a>  </li>
@@ -565,6 +475,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 

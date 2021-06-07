@@ -29,7 +29,7 @@
 <meta property="og:description" content="前前后后配了好几次FTP Server，每次都要重新开始的样子各种百度谷歌。先记一次留着下次用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-01-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-06-03T16:15:00.116Z">
+<meta property="article:modified_time" content="2021-06-07T14:33:16.431Z">
 <meta property="article:author" content="XTG1800">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="ftp">
@@ -217,6 +217,10 @@
         </h1>
 
         <div class="post-meta">
+
+	  <!-- 置顶插件添加 开始 -->
+	  
+	  <!-- 置顶插件添加 结束 -->
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -258,33 +262,14 @@
 <li>sudo passwd xxx //为新建的FTP用户xxx设置密码 //可用cat /etc/passwd可以查看当前系统用户</li>
 </ol>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
-<li>vim /etc/vsftpd.conf  </li>
-</ol>
-<blockquote>
-<p>listen=YES</p>
-<p>listen_ipv6=NO</p>
-<p>anonymous_enable=YES<br>anon_root=/home/ftp_root/ftp_anonymous</p>
-<p>local_enable=YES</p>
-<p>write_enable=YES</p>
-<p>local_root=/home/ftp_root</p>
-<p>local_umask=022</p>
-<p>dirmessage_enable=YES</p>
-<p>use_localtime=YES</p>
-<p>xferlog_enable=YES</p>
-<p>connect_from_port_20=YES</p>
-<p>xferlog_file=/var/log/vsftpd.log</p>
-<p>ftpd_banner=Welcome to blah FTP service.</p>
-<p>chroot_local_user=YES<br>chroot_list_enable=YES</p>
-<p>chroot_list_file=/etc/vsftpd.chroot_list</p>
-<p>secure_chroot_dir=/var/run/vsftpd/empty</p>
-<p>#pam_service_name=vsftpd<br>pam_service_name=ftp</p>
-<p>rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem<br>rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key<br>ssl_enable=NO</p>
-<p>userlist_enable=YES<br>userlist_deny=NO<br>userlist_file=/etc/vsftpd.user_list  </p>
-</blockquote>
-<ol start="2">
-<li>vim /etc/vsftpd.user_list</li>
-<li>vim /etc/vsftpd.chroot_list</li>
-<li>其他</li>
+<li><p>vim /etc/vsftpd.conf  </p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">listen=YES</span><br><span class="line"></span><br><span class="line">listen_ipv6=NO</span><br><span class="line"></span><br><span class="line">anonymous_enable=YES</span><br><span class="line">anon_root=/home/ftp_root/ftp_anonymous</span><br><span class="line"></span><br><span class="line">local_enable=YES</span><br><span class="line"></span><br><span class="line">write_enable=YES</span><br><span class="line"></span><br><span class="line">local_root=/home/ftp_root</span><br><span class="line"></span><br><span class="line">local_umask=022</span><br><span class="line"></span><br><span class="line">dirmessage_enable=YES</span><br><span class="line"></span><br><span class="line">use_localtime=YES</span><br><span class="line"></span><br><span class="line">xferlog_enable=YES</span><br><span class="line"></span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"></span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.log</span><br><span class="line"></span><br><span class="line">ftpd_banner=Welcome to blah FTP service.</span><br><span class="line"></span><br><span class="line">chroot_local_user=YES</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line"></span><br><span class="line">chroot_list_file=/etc/vsftpd.chroot_list</span><br><span class="line"></span><br><span class="line">secure_chroot_dir=/var/run/vsftpd/empty</span><br><span class="line"></span><br><span class="line"><span class="comment">#pam_service_name=vsftpd</span></span><br><span class="line">pam_service_name=ftp</span><br><span class="line"></span><br><span class="line">rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem</span><br><span class="line">rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key</span><br><span class="line">ssl_enable=NO</span><br><span class="line"></span><br><span class="line">userlist_enable=YES</span><br><span class="line">userlist_deny=NO</span><br><span class="line">userlist_file=/etc/vsftpd.user_list</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>vim /etc/vsftpd.user_list</p>
+</li>
+<li><p>vim /etc/vsftpd.chroot_list</p>
+</li>
+<li><p>其他</p>
+</li>
 </ol>
 <ul>
 <li>防火墙：直接关闭或者开放端口</li>
@@ -457,6 +442,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 

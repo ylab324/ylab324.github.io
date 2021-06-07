@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de40ee6.png">
 <meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de414d7.png">
 <meta property="article:published_time" content="2017-08-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-06-03T16:13:23.549Z">
+<meta property="article:modified_time" content="2021-06-07T14:20:30.697Z">
 <meta property="article:author" content="XTG1800">
 <meta property="article:tag" content="tv">
 <meta property="article:tag" content="rda">
@@ -234,6 +234,10 @@
         </h1>
 
         <div class="post-meta">
+
+	  <!-- 置顶插件添加 开始 -->
+	  
+	  <!-- 置顶插件添加 结束 -->
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -312,7 +316,7 @@
 <li>Limiter：当输入信号超过Limite Level时开始压抑</li>
 <li>Pullup Gain：当信号小于-12dB时候，会依照Pullup Gain的定义将信号放大（但是放大信号容易失真，建议设置0dB）<br>【app_data_setting.c】</li>
 </ul>
-<p>下图为V56方案AVL曲线图，蓝线为Disable AVL时候的曲线，黄线为Enable AVL时候的曲线：<br><img src="https://i.loli.net/2018/02/27/5a95159ee5bbe.png"><br>与V56相比，海勤8501方案AVL曲线没有过零点，输入为0时，仍有3mV~4mV的输出，目前无解。如下图：<br><img src="https://i.loli.net/2018/02/27/5a9515bfe2d90.png"></p>
+<p>下图为V56方案AVL曲线图，蓝线为Disable AVL时候的曲线，黄线为Enable AVL时候的曲线：<br><img src="https://i.loli.net/2018/02/27/5a95159ee5bbe.png"><br>与V56相比，HK8501方案AVL曲线没有过零点，输入为0时，仍有3mV~4mV的输出，目前无解。如下图：<br><img src="https://i.loli.net/2018/02/27/5a9515bfe2d90.png"></p>
 <h2 id="高低音"><a href="#高低音" class="headerlink" title="高低音"></a>高低音</h2><p>即OSD -&gt; SOUND上的Treble/Bass，不同客户对声音模式的要求可能不同，一般是增益范围的差别。下图较高的红线（AB线）对应Treble=100，Bass=100，较低的红线（CD线）对应Treble=0，Bass=0，增益范围在±6dB~±8dB，每一根线都是Treble和Bass作用叠加的效果图：<br><img src="https://i.loli.net/2018/02/27/5a9515e332cbe.png">  </p>
 <p>调试点主要有A、B、C、D四个，标准是增益范围，即A到C的增益差，B到D的增益差，有以下几种情况：</p>
 <ol>
@@ -327,8 +331,8 @@
 <h2 id="失真度"><a href="#失真度" class="headerlink" title="失真度"></a>失真度</h2><p><img src="https://i.loli.net/2018/02/27/5a9516de38c7e.png"></p>
 <h2 id="信噪比"><a href="#信噪比" class="headerlink" title="信噪比"></a>信噪比</h2><p>信噪比是作为调制频率的 1KHz 音频信号的输出功率或电压与背景噪声的功率或电压之比，用分贝（ dB）表示。<br><img src="https://i.loli.net/2018/02/27/5a9516de40ee6.png"></p>
 <h2 id="增益差"><a href="#增益差" class="headerlink" title="增益差"></a>增益差</h2><p>指测量扬声器左右通道信号幅度不等性。<br><img src="https://i.loli.net/2018/02/27/5a9516de414d7.png"></p>
-<h2 id="耳机频响-耳机失真-耳机信噪比-耳机增益差"><a href="#耳机频响-耳机失真-耳机信噪比-耳机增益差" class="headerlink" title="耳机频响/耳机失真/耳机信噪比/耳机增益差"></a>耳机频响/耳机失真/耳机信噪比/耳机增益差</h2><p>海勤8501方案耳机跟喇叭共用一路，所以耳机项目的这几个测试结果跟喇叭一样。</p>
-<h2 id="AV-Out频响-失真-信噪比-增益差"><a href="#AV-Out频响-失真-信噪比-增益差" class="headerlink" title="AV Out频响/失真/信噪比/增益差"></a>AV Out频响/失真/信噪比/增益差</h2><p>海勤8501方案AV Out跟喇叭/耳机硬件上不是同一路。。。</p>
+<h2 id="耳机频响-耳机失真-耳机信噪比-耳机增益差"><a href="#耳机频响-耳机失真-耳机信噪比-耳机增益差" class="headerlink" title="耳机频响/耳机失真/耳机信噪比/耳机增益差"></a>耳机频响/耳机失真/耳机信噪比/耳机增益差</h2><p>HK8501方案耳机跟喇叭共用一路，所以耳机项目的这几个测试结果跟喇叭一样。</p>
+<h2 id="AV-Out频响-失真-信噪比-增益差"><a href="#AV-Out频响-失真-信噪比-增益差" class="headerlink" title="AV Out频响/失真/信噪比/增益差"></a>AV Out频响/失真/信噪比/增益差</h2><p>HK8501方案AV Out跟喇叭/耳机硬件上不是同一路。。。</p>
 <h2 id="AV-Out音频输出幅度"><a href="#AV-Out音频输出幅度" class="headerlink" title="AV Out音频输出幅度"></a>AV Out音频输出幅度</h2><p>带AV Out端子的板卡需要测试这一项目。【board_config.c】</p>
 <h2 id="唇音同步"><a href="#唇音同步" class="headerlink" title="唇音同步"></a>唇音同步</h2><p>即声音图像同步（AV Sync）<br>Audio –&gt; Misc. -&gt; Lipsync：调整 AV Sync，范围为 -200ms~200ms<br>【app_data_setting.c】</p>
 <h2 id="谐波失真"><a href="#谐波失真" class="headerlink" title="谐波失真"></a>谐波失真</h2><p>谐波失真是音频通道的非线性引起的正弦波信号的谐波分量。<br>。。。</p>
@@ -472,6 +476,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
