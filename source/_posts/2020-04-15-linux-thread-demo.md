@@ -1,8 +1,8 @@
 ---
 title: 'Linux下Thread使用demo'
 date: 2020-04-15
-categories: Linux
-tags: [linux,thread,demo,coding]
+categories: Coding
+tags: [linux,thread,demo]
 ---
 
 
