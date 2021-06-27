@@ -471,7 +471,7 @@ exturl_icon: true
 
 # Google Webmaster tools verification.
 # See: https://developers.google.com/search
-google_site_verification:
+google_site_verification: lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc
 
 # Bing Webmaster tools verification.
 # See: https://www.bing.com/webmasters
@@ -483,7 +483,7 @@ yandex_site_verification:
 
 # Baidu Webmaster tools verification.
 # See: https://ziyuan.baidu.com/site
-baidu_site_verification:
+baidu_site_verification: code-abAwAH8nFB
 
 
 # ---------------------------------------------------------------

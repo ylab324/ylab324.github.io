@@ -126,6 +126,11 @@ live2d:
   react:
     opacity: 0.9 #透明度
 
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
