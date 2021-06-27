@@ -7,5 +7,4 @@ public/
 .deploy*/
 _config.landscape.yml
 package-lock.json
-themes/
 .github/
