@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc">
+  <meta name="baidu-site-verification" content="code-abAwAH8nFB">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="已经有点烦了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVB-T自动搜台流程跟踪">
+<meta property="og:url" content="https://xtg1800.github.io/2020/01/16/rtk-dvbt-auto-scan/">
+<meta property="og:site_name" content="Debbie">
+<meta property="og:description" content="已经有点烦了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T15:27:30.861Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="tv">
+<meta property="article:tag" content="dvb">
+<meta property="article:tag" content="si">
+<meta property="article:tag" content="scan">
+<meta property="article:tag" content="dvb-t">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xtg1800.github.io/2020/01/16/rtk-dvbt-auto-scan/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2020/01/16/rtk-dvbt-auto-scan/","path":"2020/01/16/rtk-dvbt-auto-scan/","title":"DVB-T自动搜台流程跟踪"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>DVB-T自动搜台流程跟踪 | Debbie</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Debbie</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E6%90%9C%E5%8F%B0"><span class="nav-number">1.</span> <span class="nav-text">准备搜台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%90%9C%E5%8F%B0"><span class="nav-number">2.</span> <span class="nav-text">开始搜台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%9C%A8%E6%90%9C%E5%8F%B0"><span class="nav-number">3.</span> <span class="nav-text">正在搜台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FREQ-SCAN-STATE-BEGIN-FREQ"><span class="nav-number">3.1.</span> <span class="nav-text">FREQ_SCAN_STATE_BEGIN_FREQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FREQ-SCAN-STATE-CHECK-FRONTEND"><span class="nav-number">3.2.</span> <span class="nav-text">FREQ_SCAN_STATE_CHECK_FRONTEND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FREQ-SCAN-STATE-CHECK-SI"><span class="nav-number">3.3.</span> <span class="nav-text">FREQ_SCAN_STATE_CHECK_SI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E6%90%9C%E5%8F%B0"><span class="nav-number">4.</span> <span class="nav-text">完成搜台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FREQ-SCAN-STATE-END-FREQ"><span class="nav-number">4.1.</span> <span class="nav-text">FREQ_SCAN_STATE_END_FREQ</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2020/01/16/rtk-dvbt-auto-scan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debbie">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DVB-T自动搜台流程跟踪
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-16 00:00:00" itemprop="dateCreated datePublished" datetime="2020-01-16T00:00:00+08:00">2020-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TV/" itemprop="url" rel="index"><span itemprop="name">TV</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>已经有点烦了。  </p>
+<span id="more"></span>
+
+
+
+<p><code>kernel/android/pie/vendor/realtek/app/dtvinput/src/com/realtek/dtv/digitalsetup/dvb/DVBScanChannelFragment.java</code>，菜单上的最后一步，是创建一个<code>DigitalScanTask</code>：  </p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mDigitalScanTask = <span class="keyword">new</span> DigitalScanTask((DigitalChannelSetupActivity)getActivity());</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"> mDigitalScanTask.sendMessageDelayed(DigitalScanTask.MSG_CHANNEL_SACN, scanParam, <span class="number">500</span>);</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> MSG_CHANNEL_SACN:</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    mHandler.sendEmptyMessage(MSG_CHANNEL_TABLE_SACN);</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> MSG_CHANNEL_TABLE_SACN:</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    startTableScan();</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">success = mTvServiceHelper.startAutoScan(mScanChannelList,mModeType);<span class="comment">//auto table scan</span></span><br></pre></td></tr></tbody></table></figure>
+<p>向下传进一个频点表<code>mScanChannelList</code>。  </p>
+<p>调到了<code>kernel/android/pie/vendor/realtek/app/dtvinput/src/com/realtek/dtv/TvServiceHelper.java</code>的<code>startAutoScan</code>  </p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startAutoScan</span><span class="params">(ArrayList&lt;FreqTable&gt; freqtable,String type)</span></span>{</span><br><span class="line">	<span class="keyword">if</span> (mTv != <span class="keyword">null</span>) {</span><br><span class="line">		<span class="keyword">return</span> mTv.StartDtvAutoScan(freqtable.size(),freqtable,-<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>接着通过JNI，HIDL（依次调用了以下文件）<br><code>kernel/android/pie/vendor/realtek/frameworks/base/core/java/com/realtek/tv/Tv.java</code><br><code>kernel/android/pie/vendor/realtek/frameworks/base/core/jni/com_realtek_tv_Tv.cpp</code><br><code>kernel/android/pie/vendor/realtek/hardware/interfaces/tv/1.0/IRtkTv.hal</code><br><code>kernel/android/pie/vendor/realtek/hardware/interfaces/tv/1.0/default/RtkTv.cpp</code><br><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/tv/libtvsystem/tv/TvClient.cpp</code><br><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/tv/libtvservice/TvService.cpp</code><br><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/tv/libtvservice/Tv.cpp</code><br><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/tvapi/dtvcontrol/CDTVControl.cpp</code><br><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/mediacontrol/component/channel/scan/TableScanner.cpp</code>  </p>
+<p>终于创建一个<code>ScanThread</code>线程  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CTableScanner::AutoScanStart</span><span class="params">(<span class="keyword">int</span> tvsubtype, <span class="keyword">int</span> satelliteIndex,<span class="keyword">bool</span> bSkipPMT,<span class="keyword">bool</span> bSSUScan)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	RT_FRONTEND_TYPE feType = m_pFreqScanDetector-&gt;<span class="built_in">Mf_GetFrontendType</span>();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (m_threadIsRunning == <span class="literal">true</span> || (feType != RT_FRONTEND_DVB_SATELLITE &amp;&amp; m_freqListSize == <span class="number">0</span>))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (m_scanMode != CH_SCAN_MODE_IDLE)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	m_bRemoveAll = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> ENABLE_SUPPORT_DVB_S</span></span><br><span class="line">	<span class="keyword">if</span>(feType == RT_FRONTEND_DVB_SATELLITE &amp;&amp; m_pFreqList == <span class="literal">NULL</span>)</span><br><span class="line">	{</span><br><span class="line">		<span class="built_in">xLoadTable</span>(satelliteIndex);</span><br><span class="line">	}</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">	m_serviceID=<span class="number">0</span>;</span><br><span class="line">	m_scanMode = CH_SCAN_MODE_AUTO;</span><br><span class="line">	m_bSSUScan = bSSUScan;</span><br><span class="line">	m_bDelNosignalMux = <span class="literal">true</span>;</span><br><span class="line">	m_satelliteIndex = satelliteIndex;</span><br><span class="line">	m_bQuickScan=<span class="literal">false</span>;</span><br><span class="line">	m_bSkipPMT=bSkipPMT;</span><br><span class="line">	m_curFreqIndex = <span class="number">0</span>;</span><br><span class="line">	m_uiScanProgress = <span class="number">0</span>;</span><br><span class="line">	m_lastScanedFreqIndex =<span class="number">0</span>;</span><br><span class="line">	m_curFreq = m_pFreqList!=<span class="literal">NULL</span>?m_pFreqList[<span class="number">0</span>].frequency:<span class="number">0</span>;</span><br><span class="line">	m_curBandwidth = m_pFreqList!=<span class="literal">NULL</span>?m_pFreqList[<span class="number">0</span>].bandwidth:<span class="number">0</span>;</span><br><span class="line">	m_curChNum = m_pFreqList!=<span class="literal">NULL</span>?m_pFreqList[<span class="number">0</span>].channelNum:<span class="number">0</span>;</span><br><span class="line">	m_curModulation = m_pFreqList!=<span class="literal">NULL</span>?m_pFreqList[<span class="number">0</span>].modulation:RT_MOD_UNKNOWN;</span><br><span class="line">	m_curSymbolRate = m_pFreqList!=<span class="literal">NULL</span>?m_pFreqList[<span class="number">0</span>].symbolRate:<span class="number">0</span>;</span><br><span class="line">	m_curPolarization = m_pFreqList!=<span class="literal">NULL</span>?m_pFreqList[<span class="number">0</span>].polarization:<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">pthread_create</span>(&amp;m_thread, <span class="literal">NULL</span>, ScanThread, (<span class="keyword">void</span> *)<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Quick sleep to cause thread to be created.</span></span><br><span class="line">	<span class="keyword">while</span> (m_threadIsRunning == <span class="literal">false</span>)</span><br><span class="line">		<span class="built_in">usleep</span>(<span class="number">100000</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="准备搜台"><a href="#准备搜台" class="headerlink" title="准备搜台"></a>准备搜台</h3><p><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/mediacontrol/component/channel/scan/ChScanner.cpp</code><br><code>ScanThread</code>线程首先将<code>CH_SCAN_STATE</code>设定为<code>CH_SCAN_STATE_INIT</code>，然后进入一个<code>xWorkerThread</code>循环  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">CChScanner::ScanThread</span><span class="params">(<span class="keyword">void</span> *pParam)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	CChScanner *pThis = (CChScanner *)pParam;</span><br><span class="line">	pThis-&gt;m_scanState = CH_SCAN_STATE_INIT;</span><br><span class="line">	pThis-&gt;m_threadIsRunning = <span class="literal">true</span>;</span><br><span class="line">	pThis-&gt;m_runThread = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (pThis-&gt;m_runThread == <span class="literal">true</span>)</span><br><span class="line">		pThis-&gt;<span class="built_in">xWorkerThread</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Manual/seekscan needs to set this variable before ending scan message is sent out.</span></span><br><span class="line">	pThis-&gt;m_threadIsRunning = <span class="literal">false</span>;</span><br><span class="line">	pThis-&gt;m_cancelScan = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/mediacontrol/component/channel/scan/TableScanner.cpp</code><br><code>xWorkerThread</code>循环中首先处理了<code>case``CH_SCAN_STATE_INIT</code>  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CTableScanner::xWorkerThread</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="comment">// Verify scan mode is valid.</span></span><br><span class="line">	<span class="keyword">if</span> ((m_scanMode == CH_SCAN_MODE_IDLE) || (m_scanMode &gt;= CH_SCAN_MODE_MAX))</span><br><span class="line">		<span class="keyword">goto</span> EXIT_SCANNING;</span><br><span class="line"></span><br><span class="line">	<span class="built_in"><span class="keyword">switch</span></span> (m_scanState)</span><br><span class="line">	{</span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_INIT:</span><br><span class="line">		<span class="built_in">xStageInit</span>();</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_BEGIN_FREQ:</span><br><span class="line">		<span class="built_in">ALOGD</span>(<span class="string">"[%s %d] CH_SCAN_STATE_BEGIN_FREQ start\n"</span>, __func__, __LINE__);</span><br><span class="line">		<span class="built_in">xStageBeginFreq</span>();</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_SCANNING:</span><br><span class="line">		<span class="comment">// wait scan done</span></span><br><span class="line">		<span class="built_in">ALOGD</span>(<span class="string">"[%s %d] CH_SCAN_STATE_SCANNING start\n"</span>, __func__, __LINE__);</span><br><span class="line">		<span class="keyword">while</span> (!m_pFreqScanDetector-&gt;<span class="built_in">Mf_IsScanDone</span>()) {</span><br><span class="line">			<span class="keyword">if</span> (m_cancelScan == <span class="literal">true</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">			m_pFreqScanDetector-&gt;<span class="built_in">RunStateProc</span>();</span><br><span class="line">			<span class="keyword">if</span> (m_cancelScan != <span class="literal">true</span> &amp;&amp; !m_pFreqScanDetector-&gt;<span class="built_in">Mf_IsScanDone</span>()) {</span><br><span class="line">				<span class="keyword">if</span>(m_scanMode == CH_SCAN_MODE_BLIND_SCAN||m_scanMode == CH_SCAN_MODE_BLIND_SCAN_NETWORK)</span><br><span class="line">				{</span><br><span class="line">					<span class="keyword">int</span> Index = <span class="number">0</span>, Total = <span class="number">0</span>;</span><br><span class="line">					UINT32 freq = m_pFreqScanDetector-&gt;<span class="built_in">Mf_GetFrequency</span>(&amp;Index,&amp;Total);</span><br><span class="line">					<span class="keyword">if</span>(freq&gt;<span class="number">0</span>)</span><br><span class="line">					{</span><br><span class="line">						m_curFreqIndex = Index;</span><br><span class="line">						m_freqListSize = Total;</span><br><span class="line">						m_curFreq = freq;</span><br><span class="line">					}</span><br><span class="line">				}</span><br><span class="line">				<span class="built_in">usleep</span>(SCAN_THREAD_CS_TIME*<span class="number">1000</span>);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">ALOGD</span>(<span class="string">"[%s %d] CH_SCAN_STATE_SCANNING end\n"</span>, __func__, __LINE__);</span><br><span class="line">		m_scanState = CH_SCAN_STATE_END_FREQ;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_END_FREQ:</span><br><span class="line">		<span class="built_in">ALOGD</span>(<span class="string">"[%s %d] CH_SCAN_STATE_END_FREQ begin\n"</span>, __func__, __LINE__);</span><br><span class="line">		<span class="built_in">xStageEndFreq</span>();</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_SCAN_FAILED:</span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_EXIT:</span><br><span class="line">		<span class="built_in">xStageExit</span>();</span><br><span class="line">		<span class="keyword">goto</span> EXIT_SCANNING;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> CH_SCAN_STATE_IDLE:</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">goto</span> EXIT_SCANNING;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (m_cancelScan == <span class="literal">true</span>)</span><br><span class="line">		m_scanState = CH_SCAN_STATE_EXIT;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXIT_SCANNING:</span><br><span class="line">	m_runThread = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>跑的是<code>xStageInit()</code>函数，主要做了一件事  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m_pFreqScanDetector-&gt;<span class="built_in">Mf_ScanInit</span>(scanMode, param, m_bDelNosignalMux,scanModeEx);</span><br></pre></td></tr></tbody></table></figure>
+<p>这件事会跳到<code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/mediacontrol/component/channel/scan/DtvFreqDetector.cpp</code>  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDtvFreqDetector::Mf_ScanInit</span><span class="params">(CH_SCAN_MODE scanMode, UINT32 param, <span class="keyword">bool</span> bDelNoSignalMux, CH_SCAN_MODE_EX modeEx)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">ScanInit</span>(<span class="built_in">getSiScanType</span>(scanMode), param, typeEx);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>接着跳到<code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/mediacontrol/component/si/DvbSiMgr.cpp</code>  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDvbSiMgr::ScanInit</span><span class="params">(SI_MGR_SCAN_TYPE type, <span class="keyword">int</span> antennaIndex, SI_MGR_SCAN_TYPE_EX typeEx)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">if</span> (type == SI_MGR_SCAN_TYPE_AUTO||type==SI_MGR_SCAN_TYPE_AUTO_QUICK) {</span><br><span class="line">	<span class="built_in">SI_SetState</span>(siHandle, SI_STATE_AUTOSCAN);</span><br><span class="line">	<span class="built_in">SI_AutoScanInit</span>(siHandle,antennaIndex,type==SI_MGR_SCAN_TYPE_AUTO_QUICK?TRUE:FALSE,FALSE);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> (defined ENABLE_CI &amp;&amp; defined ENABLE_CIPLUS_1_4)</span></span><br><span class="line">	<span class="keyword">if</span>(m_CiCallbackObj.NotifyChannelErase != <span class="literal">NULL</span>) {</span><br><span class="line">		m_CiCallbackObj.<span class="built_in">NotifyChannelErase</span>();</span><br><span class="line">	}</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>xStageInit</code>最后把<code>CH_SCAN_STATE</code>状态设定为<code>CH_SCAN_STATE_BEGIN_FREQ</code>  </p>
+<h3 id="开始搜台"><a href="#开始搜台" class="headerlink" title="开始搜台"></a>开始搜台</h3><p><code>xWorkerThread``case``CH_SCAN_STATE_BEGIN_FREQ</code>执行<code>CTableScanner::xStageBeginFreq()</code><br>执行<code>m_pFreqScanDetector-&gt;Mf_ScanFrequency(param)</code><br>这里<code>FREQ_SCAN_STATE</code>被设置成状态<code>FREQ_SCAN_STATE_BEGIN_FREQ</code><br><code>CTableScanner::xStageBeginFreq()</code>的最后，<code>CH_SCAN_STATE</code>被设置成<code>CH_SCAN_STATE_SCANNING</code>  </p>
+<h3 id="正在搜台"><a href="#正在搜台" class="headerlink" title="正在搜台"></a>正在搜台</h3><p>搜台过程就是<code>CTableScanner::xWorkerThread()``case``CH_SCAN_STATE_SCANNING</code>，是一个<code>while</code>循环<br>先判断是否搜台结束  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m_pFreqScanDetector-&gt;<span class="built_in">Mf_IsScanDone</span>()</span><br></pre></td></tr></tbody></table></figure>
+<p>否则，跑  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m_pFreqScanDetector-&gt;<span class="built_in">RunStateProc</span>();</span><br></pre></td></tr></tbody></table></figure>
+<p>因为刚才<code>FREQ_SCAN_STATE</code>被设置为<code>FREQ_SCAN_STATE_BEGIN_FREQ</code>,所以跑<code>CDtvFreqDetector::xStageBeginFreq()</code>。在某一频点的搜台基本都是在<code>CDtvFreqDetector</code>这里处理啦。  </p>
+<p><code>m_pFreqScanDetector-&gt;RunStateProc()</code>做了什么？  </p>
+<ol>
+<li>Stop SI  </li>
+<li>Set tuner param  </li>
+<li>Notify demod to lock  </li>
+<li>Check frontend(Update modulation, bandwidth, and symbol rate)  </li>
+<li>Check SI  </li>
+</ol>
+<h4 id="FREQ-SCAN-STATE-BEGIN-FREQ"><a href="#FREQ-SCAN-STATE-BEGIN-FREQ" class="headerlink" title="FREQ_SCAN_STATE_BEGIN_FREQ"></a><code>FREQ_SCAN_STATE_BEGIN_FREQ</code></h4><p>跟下去能看到<code>tuner-&gt;tune(param)</code>和<code>tuner-&gt;isLocked()</code>都是在<code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/driverbaseddtvapp/TunerMgr.cpp</code>处理的  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TunerMgr::tune</span><span class="params">(UINT32 frequency, UINT32 bandwidth, RT_FRONTEND_TYPE feType, RT_MODULATION modulation, RT_SPECTRAL_INVERSION inversion, <span class="keyword">bool</span> isScanMode, UINT32 symbolRate, SatelliteInfo *pSatelliteInfo)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	mFreq = frequency;</span><br><span class="line">	mBandwidth = bandwidth;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">FrontendLib_SetTuner</span>(frequency, bandwidth, mTunerId, feType, modulation, inversion, isScanMode, symbolRate, pSatelliteInfo);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TunerMgr::isLocked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">uint8_t</span> lock = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">TunerControlGetLockStatus</span>(mTunerId, &amp;lock) == TUNER_CTRL_OK)</span><br><span class="line">		<span class="keyword">return</span> lock;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="FREQ-SCAN-STATE-CHECK-FRONTEND"><a href="#FREQ-SCAN-STATE-CHECK-FRONTEND" class="headerlink" title="FREQ_SCAN_STATE_CHECK_FRONTEND"></a><code>FREQ_SCAN_STATE_CHECK_FRONTEND</code></h4><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDtvFreqDetector::xStageCheckFrontend</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    m_modulation = <span class="built_in">getRtModVal</span>(m_feType, info);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">ScanStart</span>(m_curFreq, m_modulation, m_curBandwidth, symbolrate,  m_curPhyChNum, tuner-&gt;<span class="built_in">getRFStrength</span>(), tuner-&gt;<span class="built_in">getSignalSNR</span>(), m_serviceID);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDvbSiMgr::ScanStart</span><span class="params">(UINT32 frequency, RT_MODULATION modulation, UINT32 bandwidth, UINT32 symbolrate, UINT32 phyChNum,UINT32 strength,<span class="keyword">float</span> snr, UINT16 serviceID)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    SI* siHandle = (SI*)m_pTvMedia-&gt;<span class="built_in">GetDtvFlow</span>()-&gt;<span class="built_in">GetSiHandle</span>();</span><br><span class="line">    SI_DVB_MODULATION siModulation;</span><br><span class="line">    <span class="built_in"><span class="keyword">switch</span></span>(modulation)</span><br><span class="line">    {</span><br><span class="line">    <span class="keyword">case</span> RT_MOD_QAM16:</span><br><span class="line">        siModulation=SI_DVB_16_QAM;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> RT_MOD_QAM32:</span><br><span class="line">        siModulation=SI_DVB_32_QAM;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> RT_MOD_QAM64:</span><br><span class="line">        siModulation=SI_DVB_64_QAM;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> RT_MOD_QAM128:</span><br><span class="line">        siModulation=SI_DVB_128_QAM;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">case</span> RT_MOD_QAM256:</span><br><span class="line">        siModulation=SI_DVB_256_QAM;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="built_in">SI_SetState</span>(siHandle, SI_STATE_SCAN);</span><br><span class="line">    <span class="built_in">SI_ScanChannelEx</span>(siHandle, frequency, <span class="number">0</span>, bandwidth,siModulation,symbolrate, strength,snr,serviceID,(<span class="keyword">unsigned</span> <span class="keyword">char</span>)phyChNum);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><code>SI_ScanChannelEx</code>路径在<code>kernel/android/pie/vendor/realtek/frameworks/native/appclass/si/livetv_sidvb/librtd/si4/api/SI_Api.c</code>！  </p>
+<h4 id="FREQ-SCAN-STATE-CHECK-SI"><a href="#FREQ-SCAN-STATE-CHECK-SI" class="headerlink" title="FREQ_SCAN_STATE_CHECK_SI"></a><code>FREQ_SCAN_STATE_CHECK_SI</code></h4><p><code>CDtvFreqDetector::xStageCheckSi()</code>：Wait for SI to finish gathering tables  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDtvFreqDetector::xStageCheckSi</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">RETRY:</span><br><span class="line">	<span class="keyword">if</span> (m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">ScanIsDone</span>(&amp;m_bIsGetService) == <span class="literal">false</span>)</span><br><span class="line">	{</span><br><span class="line">		m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">SetSignalInfo</span>(tuner-&gt;<span class="built_in">getRFStrength</span>(), tuner-&gt;<span class="built_in">getSignalSNR</span>());</span><br><span class="line">		<span class="built_in">usleep</span>(<span class="number">10000</span>);</span><br><span class="line">                <span class="comment">//...</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">SetModulation</span>(m_curFreq, m_modulation);</span><br><span class="line">    m_scanState = FREQ_SCAN_STATE_END_FREQ;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CDvbSiMgr::ScanIsDone</span><span class="params">(<span class="keyword">bool</span> *bGetCh)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    SI_MESSAGE message;</span><br><span class="line">    UINT32 data = <span class="number">0</span>;</span><br><span class="line">    DriverBasedDtvApp *pDvbApp = m_pTvMedia-&gt;<span class="built_in">GetDtvFlow</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pDvbApp-&gt;<span class="built_in">GetSiMessage</span>(&amp;message, &amp;data) == <span class="literal">false</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (message == SI_MESSAGE_RESET_CHANNEL &amp;&amp; data&gt;<span class="number">0</span>) {</span><br><span class="line">        <span class="built_in">xResetChannel</span>(data);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(message == SI_MESSAGE_CHANNEL_UPDATE &amp;&amp; data&gt;<span class="number">0</span>) {</span><br><span class="line">        <span class="built_in">xUpdateChannelMgr</span>(data);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (message == SI_MESSAGE_CH_INFO_READY)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span>(bGetCh!=<span class="literal">NULL</span>)</span><br><span class="line">        {</span><br><span class="line">            *bGetCh = data == <span class="number">0</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (message == SI_MESSAGE_SSU_SW_NOT_FOUND||message == SI_MESSAGE_SSU_SWINFO_READY)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span>(bGetCh!=<span class="literal">NULL</span>)</span><br><span class="line">        {</span><br><span class="line">            *bGetCh = message == SI_MESSAGE_SSU_SWINFO_READY ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span><span class="comment">/* if (message != SI_MESSAGE_CH_INFO_READY)*/</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="完成搜台"><a href="#完成搜台" class="headerlink" title="完成搜台"></a>完成搜台</h3><h4 id="FREQ-SCAN-STATE-END-FREQ"><a href="#FREQ-SCAN-STATE-END-FREQ" class="headerlink" title="FREQ_SCAN_STATE_END_FREQ"></a><code>FREQ_SCAN_STATE_END_FREQ</code></h4><p>如果搜台完成了，<code>CDtvFreqDetector::xStageCheckSi()</code>之后会把<code>FREQ_SCAN_STATE</code>状态设定成<code>FREQ_SCAN_STATE_END_FREQ</code>，在<code>CTableScanner::xWorkerThread()</code>中，<code>CH_SCAN_STATE``CH_SCAN_STATE_SCANNING</code>会退出，变成<code>CH_SCAN_STATE_END_FREQ</code><br>接着跑<code>CTableScanner::xStageEndFreq()</code>,如果频点没搜完，接着搜下一个频点，否则，<code>CH_SCAN_STATE</code>设定为<code>CH_SCAN_STATE_SCAN_FAILED</code>，跑<code>CTableScanner::xStageExit()</code>，这里面跑<code>m_pFreqScanDetector-&gt;Mf_ScanDeInit()</code>以及把一些标志清空。  </p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CDtvFreqDetector::Mf_ScanDeInit</span><span class="params">(<span class="keyword">bool</span> bNoSaveInNoCh)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">SetMode</span>(SI_MGR_MODE_INACTIVE);</span><br><span class="line">	m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">ScanEnd</span>(bNoSaveInNoCh);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Flush SI queue.</span></span><br><span class="line">	m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">FlushMessageQueue</span>();</span><br><span class="line">	m_pIDtvMedia-&gt;<span class="built_in">GetSiMgr</span>()-&gt;<span class="built_in">SaveChannelToFile</span>(bNoSaveInNoCh);</span><br><span class="line"></span><br><span class="line">	DTV_STACK::TunerMgr* tuner = DTV_STACK::TunerMgr::<span class="built_in">getInstance</span>();</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> tunerId = <span class="number">-1</span>;</span><br><span class="line">	tuner-&gt;<span class="built_in">getTunerId</span>(tunerId);</span><br><span class="line">	<span class="built_in">TunerControlChannelScanModeEnable</span>(tunerId, <span class="number">0</span>);</span><br><span class="line">	tuner-&gt;<span class="built_in">reset</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tv/" rel="tag"># tv</a>
+              <a href="/tags/dvb/" rel="tag"># dvb</a>
+              <a href="/tags/si/" rel="tag"># si</a>
+              <a href="/tags/scan/" rel="tag"># scan</a>
+              <a href="/tags/dvb-t/" rel="tag"># dvb-t</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/12/30/tv-block-diagram/" rel="prev" title="电视信号大致流程">
+                  <i class="fa fa-chevron-left"></i> 电视信号大致流程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/28/ming-xiang/" rel="next" title="冥想">
+                  冥想 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

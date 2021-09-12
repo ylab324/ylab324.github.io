@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc">
+  <meta name="baidu-site-verification" content="code-abAwAH8nFB">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="复制下来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CRC查表">
+<meta property="og:url" content="https://xtg1800.github.io/2019/08/09/crc/">
+<meta property="og:site_name" content="Debbie">
+<meta property="og:description" content="复制下来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-03T16:22:22.068Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="crc">
+<meta property="article:tag" content="checksum">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xtg1800.github.io/2019/08/09/crc/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2019/08/09/crc/","path":"2019/08/09/crc/","title":"CRC查表"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CRC查表 | Debbie</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Debbie</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2019/08/09/crc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debbie">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CRC查表
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-09T00:00:00+08:00">2019-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>复制下来。</p>
+<span id="more"></span>
+
+
+<p>代码如下：  </p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> crcTable[<span class="number">256</span>] = {</span><br><span class="line"><span class="number">0x00000000</span>, <span class="number">0x77073096</span>, <span class="number">0xEE0E612C</span>, <span class="number">0x990951BA</span>, <span class="number">0x076DC419</span>, <span class="number">0x706AF48F</span>,</span><br><span class="line"><span class="number">0xE963A535</span>, <span class="number">0x9E6495A3</span>, <span class="number">0x0EDB8832</span>, <span class="number">0x79DCB8A4</span>, <span class="number">0xE0D5E91E</span>, <span class="number">0x97D2D988</span>,</span><br><span class="line"><span class="number">0x09B64C2B</span>, <span class="number">0x7EB17CBD</span>, <span class="number">0xE7B82D07</span>, <span class="number">0x90BF1D91</span>, <span class="number">0x1DB71064</span>, <span class="number">0x6AB020F2</span>,</span><br><span class="line"><span class="number">0xF3B97148</span>, <span class="number">0x84BE41DE</span>, <span class="number">0x1ADAD47D</span>, <span class="number">0x6DDDE4EB</span>, <span class="number">0xF4D4B551</span>, <span class="number">0x83D385C7</span>,</span><br><span class="line"><span class="number">0x136C9856</span>, <span class="number">0x646BA8C0</span>, <span class="number">0xFD62F97A</span>, <span class="number">0x8A65C9EC</span>, <span class="number">0x14015C4F</span>, <span class="number">0x63066CD9</span>,</span><br><span class="line"><span class="number">0xFA0F3D63</span>, <span class="number">0x8D080DF5</span>, <span class="number">0x3B6E20C8</span>, <span class="number">0x4C69105E</span>, <span class="number">0xD56041E4</span>, <span class="number">0xA2677172</span>,</span><br><span class="line"><span class="number">0x3C03E4D1</span>, <span class="number">0x4B04D447</span>, <span class="number">0xD20D85FD</span>, <span class="number">0xA50AB56B</span>, <span class="number">0x35B5A8FA</span>, <span class="number">0x42B2986C</span>,</span><br><span class="line"><span class="number">0xDBBBC9D6</span>, <span class="number">0xACBCF940</span>, <span class="number">0x32D86CE3</span>, <span class="number">0x45DF5C75</span>, <span class="number">0xDCD60DCF</span>, <span class="number">0xABD13D59</span>,</span><br><span class="line"><span class="number">0x26D930AC</span>, <span class="number">0x51DE003A</span>, <span class="number">0xC8D75180</span>, <span class="number">0xBFD06116</span>, <span class="number">0x21B4F4B5</span>, <span class="number">0x56B3C423</span>,</span><br><span class="line"><span class="number">0xCFBA9599</span>, <span class="number">0xB8BDA50F</span>, <span class="number">0x2802B89E</span>, <span class="number">0x5F058808</span>, <span class="number">0xC60CD9B2</span>, <span class="number">0xB10BE924</span>,</span><br><span class="line"><span class="number">0x2F6F7C87</span>, <span class="number">0x58684C11</span>, <span class="number">0xC1611DAB</span>, <span class="number">0xB6662D3D</span>, <span class="number">0x76DC4190</span>, <span class="number">0x01DB7106</span>,</span><br><span class="line"><span class="number">0x98D220BC</span>, <span class="number">0xEFD5102A</span>, <span class="number">0x71B18589</span>, <span class="number">0x06B6B51F</span>, <span class="number">0x9FBFE4A5</span>, <span class="number">0xE8B8D433</span>,</span><br><span class="line"><span class="number">0x7807C9A2</span>, <span class="number">0x0F00F934</span>, <span class="number">0x9609A88E</span>, <span class="number">0xE10E9818</span>, <span class="number">0x7F6A0DBB</span>, <span class="number">0x086D3D2D</span>,</span><br><span class="line"><span class="number">0x91646C97</span>, <span class="number">0xE6635C01</span>, <span class="number">0x6B6B51F4</span>, <span class="number">0x1C6C6162</span>, <span class="number">0x856530D8</span>, <span class="number">0xF262004E</span>,</span><br><span class="line"><span class="number">0x6C0695ED</span>, <span class="number">0x1B01A57B</span>, <span class="number">0x8208F4C1</span>, <span class="number">0xF50FC457</span>, <span class="number">0x65B0D9C6</span>, <span class="number">0x12B7E950</span>,</span><br><span class="line"><span class="number">0x8BBEB8EA</span>, <span class="number">0xFCB9887C</span>, <span class="number">0x62DD1DDF</span>, <span class="number">0x15DA2D49</span>, <span class="number">0x8CD37CF3</span>, <span class="number">0xFBD44C65</span>,</span><br><span class="line"><span class="number">0x4DB26158</span>, <span class="number">0x3AB551CE</span>, <span class="number">0xA3BC0074</span>, <span class="number">0xD4BB30E2</span>, <span class="number">0x4ADFA541</span>, <span class="number">0x3DD895D7</span>,</span><br><span class="line"><span class="number">0xA4D1C46D</span>, <span class="number">0xD3D6F4FB</span>, <span class="number">0x4369E96A</span>, <span class="number">0x346ED9FC</span>, <span class="number">0xAD678846</span>, <span class="number">0xDA60B8D0</span>,</span><br><span class="line"><span class="number">0x44042D73</span>, <span class="number">0x33031DE5</span>, <span class="number">0xAA0A4C5F</span>, <span class="number">0xDD0D7CC9</span>, <span class="number">0x5005713C</span>, <span class="number">0x270241AA</span>,</span><br><span class="line"><span class="number">0xBE0B1010</span>, <span class="number">0xC90C2086</span>, <span class="number">0x5768B525</span>, <span class="number">0x206F85B3</span>, <span class="number">0xB966D409</span>, <span class="number">0xCE61E49F</span>,</span><br><span class="line"><span class="number">0x5EDEF90E</span>, <span class="number">0x29D9C998</span>, <span class="number">0xB0D09822</span>, <span class="number">0xC7D7A8B4</span>, <span class="number">0x59B33D17</span>, <span class="number">0x2EB40D81</span>,</span><br><span class="line"><span class="number">0xB7BD5C3B</span>, <span class="number">0xC0BA6CAD</span>, <span class="number">0xEDB88320</span>, <span class="number">0x9ABFB3B6</span>, <span class="number">0x03B6E20C</span>, <span class="number">0x74B1D29A</span>,</span><br><span class="line"><span class="number">0xEAD54739</span>, <span class="number">0x9DD277AF</span>, <span class="number">0x04DB2615</span>, <span class="number">0x73DC1683</span>, <span class="number">0xE3630B12</span>, <span class="number">0x94643B84</span>,</span><br><span class="line"><span class="number">0x0D6D6A3E</span>, <span class="number">0x7A6A5AA8</span>, <span class="number">0xE40ECF0B</span>, <span class="number">0x9309FF9D</span>, <span class="number">0x0A00AE27</span>, <span class="number">0x7D079EB1</span>,</span><br><span class="line"><span class="number">0xF00F9344</span>, <span class="number">0x8708A3D2</span>, <span class="number">0x1E01F268</span>, <span class="number">0x6906C2FE</span>, <span class="number">0xF762575D</span>, <span class="number">0x806567CB</span>,</span><br><span class="line"><span class="number">0x196C3671</span>, <span class="number">0x6E6B06E7</span>, <span class="number">0xFED41B76</span>, <span class="number">0x89D32BE0</span>, <span class="number">0x10DA7A5A</span>, <span class="number">0x67DD4ACC</span>,</span><br><span class="line"><span class="number">0xF9B9DF6F</span>, <span class="number">0x8EBEEFF9</span>, <span class="number">0x17B7BE43</span>, <span class="number">0x60B08ED5</span>, <span class="number">0xD6D6A3E8</span>, <span class="number">0xA1D1937E</span>,</span><br><span class="line"><span class="number">0x38D8C2C4</span>, <span class="number">0x4FDFF252</span>, <span class="number">0xD1BB67F1</span>, <span class="number">0xA6BC5767</span>, <span class="number">0x3FB506DD</span>, <span class="number">0x48B2364B</span>,</span><br><span class="line"><span class="number">0xD80D2BDA</span>, <span class="number">0xAF0A1B4C</span>, <span class="number">0x36034AF6</span>, <span class="number">0x41047A60</span>, <span class="number">0xDF60EFC3</span>, <span class="number">0xA867DF55</span>,</span><br><span class="line"><span class="number">0x316E8EEF</span>, <span class="number">0x4669BE79</span>, <span class="number">0xCB61B38C</span>, <span class="number">0xBC66831A</span>, <span class="number">0x256FD2A0</span>, <span class="number">0x5268E236</span>,</span><br><span class="line"><span class="number">0xCC0C7795</span>, <span class="number">0xBB0B4703</span>, <span class="number">0x220216B9</span>, <span class="number">0x5505262F</span>, <span class="number">0xC5BA3BBE</span>, <span class="number">0xB2BD0B28</span>,</span><br><span class="line"><span class="number">0x2BB45A92</span>, <span class="number">0x5CB36A04</span>, <span class="number">0xC2D7FFA7</span>, <span class="number">0xB5D0CF31</span>, <span class="number">0x2CD99E8B</span>, <span class="number">0x5BDEAE1D</span>,</span><br><span class="line"><span class="number">0x9B64C2B0</span>, <span class="number">0xEC63F226</span>, <span class="number">0x756AA39C</span>, <span class="number">0x026D930A</span>, <span class="number">0x9C0906A9</span>, <span class="number">0xEB0E363F</span>,</span><br><span class="line"><span class="number">0x72076785</span>, <span class="number">0x05005713</span>, <span class="number">0x95BF4A82</span>, <span class="number">0xE2B87A14</span>, <span class="number">0x7BB12BAE</span>, <span class="number">0x0CB61B38</span>,</span><br><span class="line"><span class="number">0x92D28E9B</span>, <span class="number">0xE5D5BE0D</span>, <span class="number">0x7CDCEFB7</span>, <span class="number">0x0BDBDF21</span>, <span class="number">0x86D3D2D4</span>, <span class="number">0xF1D4E242</span>,</span><br><span class="line"><span class="number">0x68DDB3F8</span>, <span class="number">0x1FDA836E</span>, <span class="number">0x81BE16CD</span>, <span class="number">0xF6B9265B</span>, <span class="number">0x6FB077E1</span>, <span class="number">0x18B74777</span>,</span><br><span class="line"><span class="number">0x88085AE6</span>, <span class="number">0xFF0F6A70</span>, <span class="number">0x66063BCA</span>, <span class="number">0x11010B5C</span>, <span class="number">0x8F659EFF</span>, <span class="number">0xF862AE69</span>,</span><br><span class="line"><span class="number">0x616BFFD3</span>, <span class="number">0x166CCF45</span>, <span class="number">0xA00AE278</span>, <span class="number">0xD70DD2EE</span>, <span class="number">0x4E048354</span>, <span class="number">0x3903B3C2</span>,</span><br><span class="line"><span class="number">0xA7672661</span>, <span class="number">0xD06016F7</span>, <span class="number">0x4969474D</span>, <span class="number">0x3E6E77DB</span>, <span class="number">0xAED16A4A</span>, <span class="number">0xD9D65ADC</span>,</span><br><span class="line"><span class="number">0x40DF0B66</span>, <span class="number">0x37D83BF0</span>, <span class="number">0xA9BCAE53</span>, <span class="number">0xDEBB9EC5</span>, <span class="number">0x47B2CF7F</span>, <span class="number">0x30B5FFE9</span>,</span><br><span class="line"><span class="number">0xBDBDF21C</span>, <span class="number">0xCABAC28A</span>, <span class="number">0x53B39330</span>, <span class="number">0x24B4A3A6</span>, <span class="number">0xBAD03605</span>, <span class="number">0xCDD70693</span>,</span><br><span class="line"><span class="number">0x54DE5729</span>, <span class="number">0x23D967BF</span>, <span class="number">0xB3667A2E</span>, <span class="number">0xC4614AB8</span>, <span class="number">0x5D681B02</span>, <span class="number">0x2A6F2B94</span>,</span><br><span class="line"><span class="number">0xB40BBE37</span>, <span class="number">0xC30C8EA1</span>, <span class="number">0x5A05DF1B</span>, <span class="number">0x2D02EF8D</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">CountCRC32</span><span class="params">(<span class="keyword">char</span> *pData, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> crc;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> c;</span><br><span class="line"></span><br><span class="line">    crc = <span class="number">0xFFFFFFFF</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;len; i++)</span><br><span class="line">    {</span><br><span class="line">        c = (<span class="keyword">unsigned</span> <span class="keyword">long</span>)pData[i];</span><br><span class="line">        crc = ((crc&gt;&gt;<span class="number">8</span>) &amp; <span class="number">0x00FFFFFF</span>) ^ crcTable[ (crc^c) &amp; <span class="number">0xFF</span> ];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span>( crc^<span class="number">0xFFFFFFFF</span> );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liyuanbhu/article/details/7882789">循环冗余校验（CRC）算法入门引导</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/crc/" rel="tag"># crc</a>
+              <a href="/tags/checksum/" rel="tag"># checksum</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/08/08/kaike/" rel="prev" title="开始健身">
+                  <i class="fa fa-chevron-left"></i> 开始健身
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/08/10/java/" rel="next" title="Java">
+                  Java <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

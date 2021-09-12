@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc">
+  <meta name="baidu-site-verification" content="code-abAwAH8nFB">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="之前给创维做红外白平衡调试的几点记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="红外解码之Toshiba协议简单记录">
+<meta property="og:url" content="https://xtg1800.github.io/2018/08/22/ir-protocol-toshiba/">
+<meta property="og:site_name" content="Debbie">
+<meta property="og:description" content="之前给创维做红外白平衡调试的几点记录。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2018/08/22/5b7cde4b55468.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/08/22/5b7cde6b27243.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/08/22/5b7ce03d4c1d7.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/08/22/5b7cf86885007.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/12/06/5c0915a008d22.jpg">
+<meta property="article:published_time" content="2018-08-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-03T16:15:33.226Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="tv">
+<meta property="article:tag" content="rda">
+<meta property="article:tag" content="toshiba">
+<meta property="article:tag" content="remote">
+<meta property="article:tag" content="ir">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/22/5b7cde4b55468.jpg">
+
+
+<link rel="canonical" href="https://xtg1800.github.io/2018/08/22/ir-protocol-toshiba/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2018/08/22/ir-protocol-toshiba/","path":"2018/08/22/ir-protocol-toshiba/","title":"红外解码之Toshiba协议简单记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>红外解码之Toshiba协议简单记录 | Debbie</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Debbie</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">需求背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">设计规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">解码算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2018/08/22/ir-protocol-toshiba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debbie">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          红外解码之Toshiba协议简单记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-08-22 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-22T00:00:00+08:00">2018-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TV/" itemprop="url" rel="index"><span itemprop="name">TV</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>之前给创维做红外白平衡调试的几点记录。  </p>
+<span id="more"></span>
+
+<h3 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h3><p>客户出大货前需要做白平衡调试，上一年还是用串口来调试，今年全球工厂都用红外来调试了，想不清楚为什么要改用红外来代替串口，感觉用串口更可靠一点。以前的做法是直接用测试主机接到我的TV平台，测试主机通过串口直接给TV下值，现在的做法是测试主机通过串口发给一个红外发射器（看了一下是用STM32做的，不同的红外协议使用的发射器还不一样），发射器再把值通过红外的方式发给TV。  </p>
+<p>串口调试图例:<br><img src="https://i.loli.net/2018/08/22/5b7cde4b55468.jpg" alt="串口调试图例"><br>红外调试图例:<br><img src="https://i.loli.net/2018/08/22/5b7cde6b27243.jpg" alt="红外调试图例"></p>
+<h3 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h3><p><img src="https://i.loli.net/2018/08/22/5b7ce03d4c1d7.jpg" alt="红外白平衡设计规范"></p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>东芝协议除了引导码和结束位，一帧数据刚好是4个字节，包括两个字节客户码和两个字节的键值。<br><img src="https://i.loli.net/2018/08/22/5b7cf86885007.jpg" alt="frame"><br>而目前代码中对于一帧数据的用法是，客户码2个字节有利用到，但是键值只用了一个字节，反码的那个字节没有利用。原厂的解释是反码部分只是用于验证，目前规格没有利用这部分数据，一直也不影响遥控器使用。<br>我们只要把这4个字节的内容都解出来，就可以实现客户功能</p>
+<h3 id="解码算法"><a href="#解码算法" class="headerlink" title="解码算法"></a>解码算法</h3><p>对于“{0x0e0e, 0x11, UI_EVENT_MENU}”这个按键，客户码等于0x0e0e，Keycode等于0x11ee。按下此按键时可以看到如下打印信息：  </p>
+<blockquote>
+<p> [IR]IR_ISR    IR_len:33    reg0C:0x000010ef    reg54:0x0000e0e1<br> [IR]0    IR:00008877    tmpData:00000000    IR_Custom:00007070<br> [IR]1    IR:443b8000    tmp:000011ee    tmp_Custom:00000e0e<br> [IR]1st reg_single_sts received!!<br> [IR]Single Start Address  Address_  Cmd: 0xe,0xe, 0x11,0xee!!<br> [IR]IR_ISR    IR_len:2    reg0C:0x00000003    reg54:0x00000000<br> [IR]0    IR:00000001    tmpData:00000000    IR_Custom:00000000<br> [IR]1    IR:00008000    tmp:00000080    tmp_Custom:00000000<br> [IR]repeat key received!!<br>_APP_GUIOBJ_PopMsg_OnRelease is called<br> [IR]Single_end received!!  </p>
+</blockquote>
+<p>而代码中表现如下：  </p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sisir_toshiba_ParseData</span><span class="params">(UINT8* mmiobase, IR_IOC_IOData* dataBuf)</span></span></span><br><span class="line"><span class="function"></span>{	</span><br><span class="line">	<span class="keyword">volatile</span> UINT32 IR_Data, IR_Custom, IR_bit_len, tmp_data, tmp_Custom, i;</span><br><span class="line">	<span class="keyword">volatile</span> UINT16 tmp_1 = <span class="number">0xffff</span>;</span><br><span class="line">	<span class="keyword">volatile</span> UINT16 tmp_2 = <span class="number">0xffff</span>;</span><br><span class="line">	datBuf = dataBuf;</span><br><span class="line">	IR_Data = irdatas.Value &amp; <span class="number">0xffff</span>;</span><br><span class="line"></span><br><span class="line">	IR_Custom = GetMMIO_DWORD(mmiobase, <span class="number">0x54</span>);	<span class="comment">//read from IR decoder recevied custom code</span></span><br><span class="line"></span><br><span class="line">	IR_Custom = IR_Custom &amp; <span class="number">0x1ffff</span>;</span><br><span class="line"></span><br><span class="line">	IR_bit_len = (GetMMIO_DWORD(mmiobase, <span class="number">0x50</span>) &amp; <span class="number">0x3f00</span>) &gt;&gt; <span class="number">8</span>; <span class="comment">//read from IR decoder recevied bit length</span></span><br><span class="line">	DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]IR_ISR\tIR_len:%d\treg0C:0x%08x\treg54:0x%08x\n"</span>, IR_bit_len, IR_Data, IR_Custom);</span><br><span class="line">	IR_Data = IR_Data &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> ( (IR_Custom &amp; <span class="number">0x1</span> ) == <span class="number">1</span> )</span><br><span class="line">	{</span><br><span class="line">		IR_Data = IR_Data | <span class="number">0x8000</span>;</span><br><span class="line">	}</span><br><span class="line">	IR_Custom = IR_Custom &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	tmp_data = <span class="number">0</span>;</span><br><span class="line">	tmp_Custom = <span class="number">0</span>;</span><br><span class="line">	DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]0\tIR:%08x\ttmpData:%08x\tIR_Custom:%08x\n"</span>, IR_Data, tmp_data, IR_Custom);</span><br><span class="line"><span class="comment">//	for ( i=0;i&lt;7;i++ )</span></span><br><span class="line">	<span class="keyword">for</span> ( i=<span class="number">0</span>;i&lt;<span class="number">15</span>;i++ ) <span class="comment">//fenghl</span></span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">if</span> ( IR_Data &amp; <span class="number">0x8000</span> )</span><br><span class="line">		{</span><br><span class="line">			tmp_data = tmp_data | <span class="number">0x8000</span>;</span><br><span class="line">		}</span><br><span class="line">		tmp_data = tmp_data &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		IR_Data = IR_Data &lt;&lt; <span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> ( IR_Data &amp; <span class="number">0x8000</span> )</span><br><span class="line">	{</span><br><span class="line">		tmp_data = tmp_data | <span class="number">0x8000</span>;</span><br><span class="line">	}</span><br><span class="line"><span class="comment">/*****************************/</span></span><br><span class="line">	tmp_1 = tmp_data &gt;&gt; <span class="number">8</span>;</span><br><span class="line">	tmp_2 = tmp_data &lt;&lt; <span class="number">8</span>;</span><br><span class="line">	tmp_data = tmp_1 | tmp_2;</span><br><span class="line">	tmp_data = tmp_data &amp; <span class="number">0xffff</span>;</span><br><span class="line"><span class="comment">/*****************************/</span></span><br><span class="line">	<span class="keyword">for</span> ( i=<span class="number">0</span>;i&lt;<span class="number">15</span>; i++ )</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">if</span> ( IR_Custom &amp; <span class="number">0x8000</span> )</span><br><span class="line">		{</span><br><span class="line">			tmp_Custom = tmp_Custom | <span class="number">0x8000</span>;</span><br><span class="line">		}</span><br><span class="line">		tmp_Custom = tmp_Custom &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		IR_Custom = IR_Custom &lt;&lt; <span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span> ( IR_Custom &amp; <span class="number">0x8000</span> )</span><br><span class="line">	{</span><br><span class="line">		tmp_Custom = tmp_Custom | <span class="number">0x8000</span>;</span><br><span class="line">	}</span><br><span class="line"><span class="comment">/*****************************/</span></span><br><span class="line">	tmp_1 = tmp_Custom &gt;&gt; <span class="number">8</span>;</span><br><span class="line">	tmp_2 = tmp_Custom &lt;&lt; <span class="number">8</span>;</span><br><span class="line">	tmp_Custom = tmp_1 | tmp_2;</span><br><span class="line">	tmp_Custom = tmp_Custom &amp; <span class="number">0xffff</span>;</span><br><span class="line"><span class="comment">/*****************************/</span></span><br><span class="line">	DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]1\tIR:%08x\ttmp:%08x\ttmp_Custom:%08x\n"</span>, IR_Data, tmp_data, tmp_Custom);</span><br><span class="line">	<span class="comment">//IR_Data = tmp_data;</span></span><br><span class="line">	<span class="keyword">if</span> ( IR_bit_len == <span class="number">33</span>)</span><br><span class="line">	{	<span class="comment">// Single start</span></span><br><span class="line">		<span class="keyword">if</span> ( (singleKey == <span class="number">1</span>) || (rpt_cnt != <span class="number">0</span>) )</span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">if</span> ( ir_timer_flag )</span><br><span class="line">			{</span><br><span class="line">				del_timer(&amp;IR_ContiTimer);</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">if</span> ( singleKey == <span class="number">1</span> )</span><br><span class="line">			{</span><br><span class="line">				DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]2nd reg_single_sts received!!\n"</span>);</span><br><span class="line">				datBuf-&gt;Databuf[datBuf-&gt;Length].ContinueKey = SINGLE_KEY_END;	<span class="comment">// single end</span></span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			{</span><br><span class="line">				DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]reg_single_sts received during repeat!!\n"</span>);</span><br><span class="line">				datBuf-&gt;Databuf[datBuf-&gt;Length].ContinueKey = CONTINUE_KEY_START_END;	<span class="comment">// continue end</span></span><br><span class="line">			}</span><br><span class="line">			datBuf-&gt;Databuf[datBuf-&gt;Length].Command = tmp_irCmd;</span><br><span class="line">			datBuf-&gt;Databuf[datBuf-&gt;Length].Command_ = tmp_irCmd_;</span><br><span class="line">			datBuf-&gt;Databuf[datBuf-&gt;Length].Address = tmp_irAddress;</span><br><span class="line">			datBuf-&gt;Databuf[datBuf-&gt;Length].Address_ = tmp_irAddress_;</span><br><span class="line">			datBuf-&gt;Length++;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		{</span><br><span class="line">			DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]1st reg_single_sts received!!\n"</span>);</span><br><span class="line">		}</span><br><span class="line">		tmp_irCmd = dataBuf-&gt;Databuf[dataBuf-&gt;Length].Command = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(tmp_data &gt;&gt; <span class="number">8</span>);</span><br><span class="line">		tmp_irCmd_ = dataBuf-&gt;Databuf[dataBuf-&gt;Length].Command_ = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(tmp_data);</span><br><span class="line">		tmp_irAddress = dataBuf-&gt;Databuf[dataBuf-&gt;Length].Address = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(tmp_Custom &gt;&gt; <span class="number">8</span>);</span><br><span class="line">		tmp_irAddress_ = dataBuf-&gt;Databuf[dataBuf-&gt;Length].Address_ = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(tmp_Custom);;</span><br><span class="line">		DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]Single Start Address  Address_  Cmd: 0x%x,0x%x, 0x%x,0x%x!!\n"</span>, tmp_irAddress, tmp_irAddress_, tmp_irCmd, tmp_irCmd_);</span><br><span class="line">		dataBuf-&gt;Databuf[dataBuf-&gt;Length].ContinueKey = CONTINUE_KEY_HEAD;</span><br><span class="line">		dataBuf-&gt;Length++;</span><br><span class="line">		singleKey = <span class="number">1</span>;</span><br><span class="line">		rpt_cnt = <span class="number">0</span>;</span><br><span class="line">		init_IR_cont_timer(<span class="number">150</span>);		<span class="comment">// 150 ms</span></span><br><span class="line">		ir_timer_flag = <span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> ( IR_bit_len == <span class="number">2</span> )</span><br><span class="line">	{</span><br><span class="line">		DBG_MSG1(DBGCFG_IR, <span class="string">"[IR]repeat key received!!\n"</span>);</span><br><span class="line">		<span class="keyword">if</span> ( ir_timer_flag == <span class="number">1</span> )</span><br><span class="line">		{</span><br><span class="line">			del_timer(&amp;IR_ContiTimer);</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> ( rpt_cnt == <span class="number">0xff</span> )</span><br><span class="line">		{</span><br><span class="line">			rpt_cnt = <span class="number">1</span>;</span><br><span class="line">		}</span><br><span class="line">		rpt_cnt ++;</span><br><span class="line">		<span class="keyword">if</span> ( (rpt_cnt == <span class="number">4</span>) &amp;&amp; (singleKey == <span class="number">1</span>) )</span><br><span class="line">		{</span><br><span class="line">			singleKey = <span class="number">0</span>;</span><br><span class="line">			dataBuf-&gt;Databuf[dataBuf-&gt;Length].Command = tmp_irCmd;</span><br><span class="line">			dataBuf-&gt;Databuf[dataBuf-&gt;Length].Command_ = tmp_irCmd_;</span><br><span class="line">			dataBuf-&gt;Databuf[dataBuf-&gt;Length].Address = tmp_irAddress;</span><br><span class="line">			dataBuf-&gt;Databuf[dataBuf-&gt;Length].Address_= tmp_irAddress_;</span><br><span class="line">			dataBuf-&gt;Databuf[dataBuf-&gt;Length].ContinueKey = CONTINUE_KEY_START;</span><br><span class="line">			dataBuf-&gt;Length++;</span><br><span class="line">			DBG_MSG1(DBGCFG_IR, <span class="string">"[IR][IR]Continue_key_start\n"</span>);</span><br><span class="line">		}</span><br><span class="line">		init_IR_cont_timer(<span class="number">150</span>);		<span class="comment">// 150 ms</span></span><br><span class="line">		ir_timer_flag = <span class="number">1</span>;</span><br><span class="line">	} </span><br><span class="line">}</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">其中：  </span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line">irdatas.Value= GetMMIO_DWORD(mmiobase, <span class="number">0x0c</span>);	<span class="comment">//read from IR decoder recevied data</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ol>
+<li>Toshiba客户码的高8位和低8位都是一样的？Toshiba一定是一样的,或是反向,硬体那边应该会直接转好反向的,所以到软体这边收到的都会是一样的。  </li>
+<li>按遥控器MENU按键（custom code: 0x0E0E, data code: 0x11），示波器抓波形：<br><img src="https://i.loli.net/2018/12/06/5c0915a008d22.jpg" alt="UI_EVENT_MENU"><br>先发0x0E(0b00001110)，再发0x0E(0b00001110)，接着发0x11(0b00010001)，最后发0xEE(0b11101110)，由每个字节的低位开始发，所以示波器上按时间从早到晚（按图上从左到右）计算，得到：  <blockquote>
+<p>01110000 01110000 10001000 01110111  </p>
+</blockquote>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tv/" rel="tag"># tv</a>
+              <a href="/tags/rda/" rel="tag"># rda</a>
+              <a href="/tags/toshiba/" rel="tag"># toshiba</a>
+              <a href="/tags/remote/" rel="tag"># remote</a>
+              <a href="/tags/ir/" rel="tag"># ir</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/02/28/rda8501-aq-v2/" rel="prev" title="音频参数简单介绍">
+                  <i class="fa fa-chevron-left"></i> 音频参数简单介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/08/skw-skd/" rel="next" title="一次SKD生产异常">
+                  一次SKD生产异常 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

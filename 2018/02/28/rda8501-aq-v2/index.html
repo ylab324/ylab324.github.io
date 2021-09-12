@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc">
+  <meta name="baidu-site-verification" content="code-abAwAH8nFB">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="重写8501AQ相关，作为《RDA8501调AQ的几点记录》的补充或修正。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音频参数简单介绍">
+<meta property="og:url" content="https://xtg1800.github.io/2018/02/28/rda8501-aq-v2/">
+<meta property="og:site_name" content="Debbie">
+<meta property="og:description" content="重写8501AQ相关，作为《RDA8501调AQ的几点记录》的补充或修正。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2018/02/28/5a9642c0ab9f2.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a9515e332cbe.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a95166f73d1e.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a95166f67a2d.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a95166f671a4.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a95166f6ce43.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de46c4f.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de2dfc1.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de414d7.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de38c7e.png">
+<meta property="og:image" content="https://i.loli.net/2018/02/27/5a9516de40ee6.png">
+<meta property="article:published_time" content="2018-02-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T14:36:58.090Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="tv">
+<meta property="article:tag" content="rda">
+<meta property="article:tag" content="audio">
+<meta property="article:tag" content="aq">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2018/02/28/5a9642c0ab9f2.jpg">
+
+
+<link rel="canonical" href="https://xtg1800.github.io/2018/02/28/rda8501-aq-v2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2018/02/28/rda8501-aq-v2/","path":"2018/02/28/rda8501-aq-v2/","title":"音频参数简单介绍"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>音频参数简单介绍 | Debbie</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Debbie</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E5%93%8D%E6%9B%B2%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">频响曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%A3%B0%E9%9F%B3%E5%8A%9F%E7%8E%87"><span class="nav-number">2.</span> <span class="nav-text">最大声音功率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E9%87%8F%E6%9B%B2%E7%BA%BF"><span class="nav-number">3.</span> <span class="nav-text">音量曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AVL%EF%BC%88AVC-%E8%BE%93%E5%85%A5%E7%81%B5%E6%95%8F%E5%BA%A6%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">AVL（AVC&#x2F;输入灵敏度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E4%BD%8E%E9%9F%B3"><span class="nav-number">5.</span> <span class="nav-text">高低音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">声音模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%961"><span class="nav-number">7.</span> <span class="nav-text">其他1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%962"><span class="nav-number">8.</span> <span class="nav-text">其他2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">9.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2018/02/28/rda8501-aq-v2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debbie">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          音频参数简单介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TV/" itemprop="url" rel="index"><span itemprop="name">TV</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>重写8501AQ相关，作为《RDA8501调AQ的几点记录》的补充或修正。</p>
+<span id="more"></span>
+
+<h3 id="频响曲线"><a href="#频响曲线" class="headerlink" title="频响曲线"></a>频响曲线</h3><ul>
+<li>对频响的理解</li>
+</ul>
+<blockquote>
+<p>频响曲线是在测试电路中，使信号发生器的输出信号频率发生连续变化（即通常说的‘扫频’）并保持幅度不变，在输出端通过示波器或者其他一些记录仪将放大器对于这个连续变化相应的输出电平记录下来，就可以在一个坐标上描绘出一个电平对应频率的曲线。这个坐标的纵坐标是电平，横坐标是频率。纵坐标的单位是dB，横坐标的单位是Hz(或KHz)。为了记录方便，横坐标的标尺为对数型的，纵坐标则是线性的。看频响曲线的时候，不要被曲线的‘平滑’或者‘崎岖’所迷惑，首先要看看坐标的标尺，改变标尺的单位会使曲线看起来差别很大。如果把标尺加大10倍，你大概看到的差不多是一条完美的直线了。</p>
+</blockquote>
+<blockquote>
+<p>频响为什么会影响音质？一方面，人耳有心理声学的掩蔽效应，这个效应简而言之就是不同频率及不同的响度会相互影响，一部分声音的叠加，会导致另一部分声音无法听见。表现到重放系统，如果频响不够平，或者不同频率变化幅度过大，就会导致有部分本来应该听到的内容听不到。这就是细节的丢失。还有一方面，不同频率的频响不同，会导致声音呈现出非原义的表现形式。比如，一段音乐，本来是笛子和古筝交相辉映珠联璧合的，如果笛子那个频段频响过高而古筝那个频段频响较低，就会导致不和谐的情况发生。很恼人的感觉就会出现，本来好听的就不再好听了。</p>
+</blockquote>
+<blockquote>
+<p>在实际的调音中,  频响曲线要根据喇叭的特性进入调整以弥补喇叭自身的不足,  在哪些频点要提升或降低几个dB,  这就要考验音频工程师的功力。</p>
+</blockquote>
+<ul>
+<li><p>工厂菜单调试点</p>
+<ul>
+<li>EQ Setting<br>  作用：通过BandPass Filter来改变特定频率范围信号强度（目前分为7段）  <ul>
+<li>EQ Band：需要改变的EQ band  </li>
+<li>Gain：设置EQ band增益，范围-50~50（-12db ~ 12db）  </li>
+<li>Q Factor：调整EQ Band的影响频宽（0.1(宽)~5.0(窄)），预设1.5  </li>
+<li>Frequency：调整EQ Band的中心频率（20HZ~20KHZ）</li>
+</ul>
+</li>
+<li>PEQ Setting<br>  作用：用于EQ band不满足要求时候，对特定频率进行补偿使用  <ul>
+<li>PEQ1：用于设置第一个频率补偿点参数  </li>
+<li>Center Freq：设置中心频率  </li>
+<li>Q Factory：同上EQ Band Setting中Q Factor  </li>
+<li>Gain Step：同上EQ Band Setting中gain  </li>
+<li>PEQ2：用于设置第二频率补偿点参数  </li>
+<li>PEQ3：用于设置第三频率补偿点参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>举例：如图是8503P531板卡搭载RDA3118功放，软件使用默认设定，AP 500mV输入，喇叭功率为1W情况下得到的频响曲线<br>  <img src="https://i.loli.net/2018/02/28/5a9642c0ab9f2.jpg"></p>
+</li>
+<li><p>调好参数后把数值填充到结构体<strong>g_stSettingDefault_FactoryUser</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/app_data_setting.c</em>）和<strong>g_stAudioSoundModeEqualizerSetting</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/subcustomer_setting.c</em>）</p>
+</li>
+</ul>
+<h3 id="最大声音功率"><a href="#最大声音功率" class="headerlink" title="最大声音功率"></a>最大声音功率</h3><p>指TV音量为最大(100)时，喇叭最大功率。不同客户输入信号标准或许不同，一般使用1KHz/-12dB（500mV）输入。<br>比如调一个4W最大声音功率，步骤如下：</p>
+<ol>
+<li>令工厂菜单Audio-&gt;AVL-&gt;AVL Mode = Disable，Audio-&gt;Power Limiter-&gt; Sp Attack = 0（PLC用于限制后端输出）；</li>
+<li>令工厂菜单Function-&gt;Curve Setting-&gt;Volume Curve-&gt;OSD Volume Value（即TV系统音量）= 100，调Function-&gt;Curve Setting-&gt;Volume Curve-&gt;Vol.Pt.100，使功率达到4W，记录数值用于填回音量曲线表；</li>
+<li>调大输入源幅度或继续增大Vol.Pt.100，使输出大于4W；</li>
+<li>降低PLC Sp Attack，使输出小于等于4W，记录数值设为默认值；</li>
+<li>完成。需要记录的参数是Sp Attack（<strong>PLC_SP_ATTACK</strong>：<em>aps/customer/s2tek/hk8501/adaptable/board_config.h</em>）和Vol.Pt.100（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/subcustomer_setting.h</em>）。</li>
+</ol>
+<h3 id="音量曲线"><a href="#音量曲线" class="headerlink" title="音量曲线"></a>音量曲线</h3><p>要求制作的音量曲线不可有明显突变，各个通道的曲线尽量接近。<br>步骤：</p>
+<ol>
+<li>调最大声音功率</li>
+<li>依次调Function-&gt;Curve Setting-&gt;Volume Curve-&gt;Vol.Pt各个点，使每个音量点测量得到的功率基本满足客户要求，调试时注意Vol.Pt 值跟OSD Volume Value值匹配；</li>
+<li>记录数值写回音量曲线表（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/subcustomer_setting.h</em>）</li>
+</ol>
+<h3 id="AVL（AVC-输入灵敏度）"><a href="#AVL（AVC-输入灵敏度）" class="headerlink" title="AVL（AVC/输入灵敏度）"></a>AVL（AVC/输入灵敏度）</h3><p>AVL用于控制输入信号的强弱（限制前端IC输入）。</p>
+<ol>
+<li>工厂菜单内容：  <ul>
+<li>AVL Mode：Enable（开启AVL功能），Disable（关闭AVL功能）；AVL功能默认关闭，做输入灵敏度测试的时候先打开AVL功能；Audio -&gt; AVL -&gt; AVL Mode与OSD -&gt; SOUND上的 Auto Volume 功能一致  </li>
+<li>Attack Rate：控制压抑以及还原速度（时间）的比例，即开关AVL功能时，功率变化的快慢  </li>
+<li>Active Time：超过Limite Level时，每隔Active Time调整一次增益，每次减小0.1dB，直到降到Limite Level  </li>
+<li>Limiter：当输入信号超过Limite Level时开始压抑  </li>
+<li>Pullup Gain：当信号小于<strong>AGC_PULL_UP_ACTIVE_LEVEL</strong>的时候，会依照Pullup Gain的定义将信号放大（但是放大信号容易失真，建议设置0dB） </li>
+</ul>
+</li>
+<li>调好后记录数据<strong>g_stSettingDefault_FactoryUser</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/app_data_setting.c</em>）</li>
+</ol>
+<h3 id="高低音"><a href="#高低音" class="headerlink" title="高低音"></a>高低音</h3><p>即OSD -&gt; SOUND上的Treble/Bass，如图，当Treble=100，Bass=100时得到红线AB，当 Treble=0，Bass=0时得到红线CD，增益范围在±6dB~±8dB，每一根线都是Treble和Bass作用叠加的效果图：<br><img src="https://i.loli.net/2018/02/27/5a9515e332cbe.png"><br>调试点主要有A、B、C、D四个，标准是增益范围，即A到C的增益差，B到D的增益差，有以下几种情况：  </p>
+<ol>
+<li><p>如需使A点向下移，即需减小Bass=100时候的增益（Treble也有作用，只不过低频段主要影响的是Bass，所以这时一般不改动Treble的增益），<br><img src="https://i.loli.net/2018/02/27/5a95166f73d1e.png"><br>如需使A点向上移，同理；  </p>
+</li>
+<li><p>如需使C点向上移，即需增大Bass=0时候的增益（Treble也有作用，只不过低频段主要影响的是Bass，所以这时一般不改动Treble的增益），<br><img src="https://i.loli.net/2018/02/27/5a95166f67a2d.png"><br>如需使C点向下移，同理；  </p>
+</li>
+<li><p>如需使B点向下移，即需减小Treble=100时候的增益（Bass也有作用，只不过高频段主要影响的是Treble，所以这时一般不改动Bass的增益），<br><img src="https://i.loli.net/2018/02/27/5a95166f671a4.png"><br>如需使B点向上移，同理；  </p>
+</li>
+<li><p>如需使D点向上移，即需增大Treble=0时候的增益（Bass也有作用，只不过高频段主要影响的是Treble，所以这时一般不改动Bass的增益），<br><img src="https://i.loli.net/2018/02/27/5a95166f6ce43.png"><br>如需使D点向下移，同理。  </p>
+</li>
+</ol>
+<p>调好参数后把数据填入<strong>g_arAudioBassTable</strong> 和 <strong>g_arAudioTrebleTable</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/subcustomer_setting.c</em>）。</p>
+<h3 id="声音模式"><a href="#声音模式" class="headerlink" title="声音模式"></a>声音模式</h3><p>即OSD -&gt; SOUND上的四种音效模式，不同的声音模式的差别是高低音的设定的不同。不建议修改OSD -&gt; SOUNG上Treble/Bass的默认值，而是通过调整Bass/Treble曲线满足客户需求。调试方法参考高低音调试。<br>如图是8501某板卡的声音模式曲线：<br><img src="https://i.loli.net/2018/02/27/5a9516de46c4f.png"> </p>
+<h3 id="其他1"><a href="#其他1" class="headerlink" title="其他1"></a>其他1</h3><ul>
+<li><p>分离度：左、右两个声道相互串扰的程度<br><img src="https://i.loli.net/2018/02/27/5a9516de2dfc1.png">  </p>
+</li>
+<li><p>增益差：左、右两个声道的信号增益之差<br><img src="https://i.loli.net/2018/02/27/5a9516de414d7.png">  </p>
+</li>
+<li><p>失真度：表示喇叭对输入信号的还原程度，一般来说，输出功率为 1W 时，失真度须小于等于 1%。输出功率最大时须小于等于 7%<br><img src="https://i.loli.net/2018/02/27/5a9516de38c7e.png">  </p>
+</li>
+<li><p>信噪比：喇叭播放时，正常声音信号强度与噪声信号强度的比值<br><img src="https://i.loli.net/2018/02/27/5a9516de40ee6.png"></p>
+</li>
+</ul>
+<h3 id="其他2"><a href="#其他2" class="headerlink" title="其他2"></a>其他2</h3><ul>
+<li><p>AV Out音频输出幅度：带AV Out端子的板卡需要测试这一项目，修改<strong>g_arAudioAuxiliaryVolumeOffset</strong>（<em>aps/customer/s2tek/hk8501/adaptable/board_config.c</em>）</p>
+</li>
+<li><p>唇音同步：声音图像同步（AV Sync） Audio–&gt;Misc.-&gt;Lipsync：调整 AV Sync，范围为 -200ms~200ms。修改<strong>g_stSettingDefault_FactoryUser</strong>（<em>aps/customer/s2tek/sub_customer/s2tek/s2tek/system_setting/rda_atv/app_data_setting.c</em>）</p>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>测量声音相关参数时需220V交流供电；</li>
+<li>明确各个指标的测试方法和测试标准；测量频响前先确认客户是测电频响（测板卡的）还是声频响（测整机的）；</li>
+<li>调试顺序：首先调频响；最大声音功率 &gt; 声音曲线 &gt; 失真度；高低音&gt; 声音模式。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tv/" rel="tag"># tv</a>
+              <a href="/tags/rda/" rel="tag"># rda</a>
+              <a href="/tags/audio/" rel="tag"># audio</a>
+              <a href="/tags/aq/" rel="tag"># aq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/31/ftp-server/" rel="prev" title="Linux下搭建FTP服务器">
+                  <i class="fa fa-chevron-left"></i> Linux下搭建FTP服务器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/08/22/ir-protocol-toshiba/" rel="next" title="红外解码之Toshiba协议简单记录">
+                  红外解码之Toshiba协议简单记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

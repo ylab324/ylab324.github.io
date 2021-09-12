@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc">
+  <meta name="baidu-site-verification" content="code-abAwAH8nFB">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="💩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java">
+<meta property="og:url" content="https://xtg1800.github.io/2019/08/10/java/">
+<meta property="og:site_name" content="Debbie">
+<meta property="og:description" content="💩">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f4a9.png?v8">
+<meta property="article:published_time" content="2019-08-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-03T16:22:38.079Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f4a9.png?v8">
+
+
+<link rel="canonical" href="https://xtg1800.github.io/2019/08/10/java/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2019/08/10/java/","path":"2019/08/10/java/","title":"Java"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java | Debbie</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Debbie</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">基本程序设计结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F%E5%92%8C%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">静态域和静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">方法参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">接口和内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-number">5.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">多线程</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2019/08/10/java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debbie">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-10 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-10T00:00:00+08:00">2019-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><span class="github-emoji"><span>💩</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a9.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<span id="more"></span>
+
+
+<h2 id="基本程序设计结构"><a href="#基本程序设计结构" class="headerlink" title="基本程序设计结构"></a>基本程序设计结构</h2><ul>
+<li>变量：<br>  Java语言支持的变量类型有：  <pre><code>  1. 类变量：独立于方法之外的变量，用static修饰  
+  2. 实例变量：独立于方法之外的变量，不过没有static修饰  
+  3. 局部变量：类的方法中的变量  
+</code></pre>
+  实例：    <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Variable</span> </span>{</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> allClicks = <span class="number">0</span>; <span class="comment">//类变量</span></span><br><span class="line">	String str = <span class="string">"hello world"</span>; <span class="comment">//实例变量</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">//局部变量</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><ul>
+<li><p>Java中的受保护部分对于所有子类及同一个包中的所有其他类都可见。  </p>
+</li>
+<li><p>protected需要从以下两个点来分析说明：</p>
+<ol>
+<li>子类与基类在同一个包中：被声明为protected的变量、方法和构造器能被同一个包中的任何其他类访问；  </li>
+<li>子类与基类不在同一个包中：那么在子类中，子类实例可以访问其从基类继承而来的protected方法，而不能访问基类实例的protected方法。  </li>
+</ol>
+</li>
+<li><p>final  </p>
+<ul>
+<li>在Java中，用关键字final指示常量。  </li>
+<li>关键字final表示这个变量只能被赋值一次。一旦被赋值之后，就不能够再更改了。习惯上，常量名使用全大写。  </li>
+<li>在Java中，经常希望某个变量可以在一个类中的多个方法中使用，通常将这些常量称为类常量。可以使用关键字static final设置一个类常量。  </li>
+<li>final关键字声明类可以把类定义为不能继承的，即最终类；或者用于修饰方法，该方法不能被子类重写。（注：实例变量也可以被定义为final，被定义为final的变量不能被修改。被声明为final类的方法自动得声明为final，但是实例变量并不是final（如果将一个类声明为final，只有其中的方法自动地成为final，而不包括域））</li>
+</ul>
+</li>
+<li><p>构建字符串：StringBuilder  </p>
+<ol>
+<li>构建一个空的字符串构建器:   <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br></pre></td></tr></tbody></table></figure></li>
+<li>当每次需要添加一部分内容时，就调用append()方法:   <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">builder.append(ch); <span class="comment">//appends a single character</span></span><br><span class="line">builder.append(str); <span class="comment">//appends a string</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>在需要构建字符串时就调用toString()方法，将可以得到一个String对象，其中包括了构建器中的字符序列:   <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String completedString = builder.toString();</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+</li>
+<li><p>一旦创建了数组，就不能改变它的大小（尽管可以改变每一个数组元素）。如果经常需要在运行过程中扩展数组的大小，就应该使用另一种数据结构 -- 数组列表。  </p>
+</li>
+<li><p>初始化数据域的方法：  </p>
+<ol>
+<li>在构造器中设置值  </li>
+<li>在声明中赋值  </li>
+<li>初始化块（首先运行初始化块，然后才运行构造器的主体部分，这种机制不是必需的，也不常见，通常，直接将初始化代码放在构造器中）</li>
+</ol>
+</li>
+<li><p>在对象与对象变量之间存在着一个重要的区别。例如，语句 Date deadline；<br>  定义了一个对象变量deadline，它可以引用Date类型的对象，但是，一定要认识到：变量deadline不是一个对象，实际上也没有引用对象。此时，不能将任何Date方法应用于这个变量上。语句 s = deadline.toString(); 将产生编译错误。必须首先初始化变量deadline，这里有两个选择，可以用新构造的对象初始化这个变量：deadline = new Date(); 也可以让这个变量引用一个已存在的对象：deadline = birthday；  </p>
+</li>
+<li><p>一定要认识到：一个对象变量并没有实际包含一个对象，而仅仅是引用了一个对象。在Java中，任何对象变量的值都是对存储在另外一个地方的一个对象的引用。new操作符的返回值也是一个引用。  </p>
+</li>
+<li><p>可以显式地将对象变量设置为null，表明这个对象变量目前没有引用任何对象。deadline = null；  </p>
+</li>
+<li><p>局部变量不会自动地初始化为null，而必须通过调用new或将他们设置为null进行初始化。  </p>
+</li>
+<li><p>所有的Java对象都存储在堆中。  </p>
+</li>
+<li><p>在一个源文件中，只能有一个公有类，但可以有任意数目的非公有类。  </p>
+</li>
+<li><p>构造器总是伴随着new操作符的执行被调用，而不能对一个已经存在的对象调用构造器来达到重新设置实例域的目的。  </p>
+</li>
+<li><p>注意不要编写返回引用可变对象的访问器方法。如果需要返回一个可变对象的引用，应该首先对它进行克隆（clone）。如果需要返回一个可变数据域的拷贝，就应该使用clone。对象的克隆是指存放在另一个位置上的对象副本。修改前的代码：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>{</span><br><span class="line">	<span class="keyword">private</span> Date hireDay;</span><br><span class="line">	...</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Date <span class="title">getHireDay</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">return</span> hireDay;</span><br><span class="line">	}</span><br><span class="line">	...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  修改后的代码：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>{</span><br><span class="line">	...</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Date <span class="title">getHireDay</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">return</span> hireDay.clone();</span><br><span class="line">	}</span><br><span class="line">	...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>static游离块、一般游离块、子父类构造方法，执行顺序：父类静态游离块 &gt; 子类静态游离块 &gt; 父类游离块 &gt; 父类构造函数 &gt; 子类游离块 &gt; 子类构造函数  </p>
+</li>
+<li><p>块作用域：不能在嵌套的两个块中声明同名的变量。但是在C++中，可以在嵌套的块中重定义一个变量，在内层定义的变量会覆盖在外层定义的变量。  </p>
+</li>
+<li><p>一个方法可以访问所属类的所有对象的私有数据。  </p>
+</li>
+</ul>
+<h3 id="静态域和静态方法"><a href="#静态域和静态方法" class="headerlink" title="静态域和静态方法"></a>静态域和静态方法</h3><ul>
+<li><p>静态域：<br>  如果将域定义为static，每个类中只有一个这样的域，而每一个对象对于所有的实例域却都有自己的一份拷贝。例如，假定需要给每一个雇员赋予唯一的标识码。这里给Employee类添加一个实例域id和一个静态域nextId：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> </span>{</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  现在，每一个雇员对象都有一个自己的id域，但这个类的所有实例将共享一个nextId域。换句话说，如果有1000个Employee类的对象，则有1000个实例域id。但是，只有一个静态域nextId。即使没有一个雇员对象，静态域nextId也存在。它属于类，而不属于任何独立的对象。  </p>
+</li>
+<li><p>在下面两种情况下使用静态方法：  </p>
+<ol>
+<li>一个方法不需要访问对象状态，其所需参数都是通过显式参数提供（例如：Math.pow）。  </li>
+<li>一个方法只需要访问类的静态域（例如：Employee.getNextId）。  </li>
+</ol>
+</li>
+<li><p>静态方法在访问本类的成员时，只允许访问静态成员（即静态成员变量和静态方法），而不允许访问实例成员变量和实例方法；实例方法则无此限制。  </p>
+</li>
+<li><p>静态方法只能访问静态成员，实例方法可以访问静态和实例成员。  </p>
+</li>
+<li><p>之所以不允许静态方法访问实例成员变量，是因为实例成员变量是属于某个对象的，而静态方法在执行时，并不一定存在对象。  </p>
+</li>
+</ul>
+<h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><ul>
+<li><p>方法参数共有两种类型：  </p>
+<ol>
+<li>基本数据类型（数字、布尔值）  </li>
+<li>对象引用  </li>
+</ol>
+</li>
+<li><p>方法参数的使用情况：  </p>
+<ol>
+<li>一个方法不能修改一个基本数据类型的参数（即数值型和布尔型）。  </li>
+<li>一个方法可以改变一个对象参数的状态。（实现一个改变对象参数状态的方法并不是一件难事。理由很简单，方法得到的是对象引用的拷贝，对象引用及其他的拷贝同时引用同一个对象。）  </li>
+<li>一个方法不能让对象参数引用一个新的对象。 </li>
+</ol>
+</li>
+<li><p>调用：<br>  按值调用：表示方法接收的是调用者提供的值。<br>  按引用调用：表示方法接收的是调用者提供的变量地址。<br>  一个方法可以修改传递引用所对应的变量值，而不能修改传递值调用所对应的变量值。<br>  Java程序设计语言总是采用按值调用。也就是说，方法得到的是所有参数值的一个拷贝，特别是，方法不能修改传递给它的任何参数变量的内容。<br>  Java程序设计语言对对象采用的不是引用调用，实际上，对象引用进行的是值传递。</p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ParamTest</span></span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">	</span><br><span class="line">		<span class="comment">/* Test1: Methods can't modify numeric parameters*/</span></span><br><span class="line">		<span class="comment">//一个方法不能修改一个基本数据类型的参数（即数值型和布尔型）</span></span><br><span class="line">		System.out.println(<span class="string">"Testing tripleValue:"</span>);</span><br><span class="line">		<span class="keyword">double</span> percent = <span class="number">10</span>;</span><br><span class="line">		System.out.println(<span class="string">"Before: percent = "</span> + percent);</span><br><span class="line">		tripleValue(percent);</span><br><span class="line">		System.out.println(<span class="string">"After: percent = "</span> + percent);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* Test2: Methods can change the state of object parameters*/</span></span><br><span class="line">		<span class="comment">//一个方法可以改变一个对象参数的状态</span></span><br><span class="line">		System.out.println(<span class="string">"\nTesting tripleValue:"</span>);</span><br><span class="line">		Employee harry = <span class="keyword">new</span> Employee(<span class="string">"Harry"</span>,<span class="number">500000</span>);</span><br><span class="line">		System.out.println(<span class="string">"Before: salary = "</span> + harry.getSalary());</span><br><span class="line">		tripleSalary(harry);</span><br><span class="line">		System.out.println(<span class="string">"After: salary = "</span> + harry.getSalary());</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* Test3: Methods can't attach new objects to object parameters*/</span></span><br><span class="line">		<span class="comment">//一个方法不能让对象参数引用一个新的对象</span></span><br><span class="line">		System.out.println(<span class="string">"\nTesting swap:"</span>);</span><br><span class="line">		Employee a = <span class="keyword">new</span> Employee(<span class="string">"Alice"</span>, <span class="number">70000</span>);</span><br><span class="line">		Employee b = <span class="keyword">new</span> Employee(<span class="string">"Bob"</span>, <span class="number">60000</span>);</span><br><span class="line">		System.out.println(<span class="string">"Before: a = "</span> + a.getName());</span><br><span class="line">		System.out.println(<span class="string">"Before: b = "</span> + b.getName());</span><br><span class="line">		swap(a,b);</span><br><span class="line">		System.out.println(<span class="string">"After: a = "</span> + a.getName());</span><br><span class="line">		System.out.println(<span class="string">"After: b = "</span> + b.getName());</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">tripleValue</span><span class="params">(<span class="keyword">double</span> x)</span></span>{ <span class="comment">//doesn't work</span></span><br><span class="line">		x = <span class="number">3</span> * x;</span><br><span class="line">		System.out.println(<span class="string">"End of method: x = "</span> + x);</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">tripleSalary</span><span class="params">(Employee x)</span></span>{ <span class="comment">//works</span></span><br><span class="line">		x.raiseSalary(<span class="number">200</span>);</span><br><span class="line">		System.out.println(<span class="string">"End of method: salary = "</span> + x.getSalary());</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Employee x, Employee y)</span></span>{</span><br><span class="line">		Employee temp = x;</span><br><span class="line">		x = y;</span><br><span class="line">		y = temp;</span><br><span class="line">		System.out.println(<span class="string">"End of method: x = "</span> + x.getName());</span><br><span class="line">		System.out.println(<span class="string">"End of method: y = "</span> + y.getName());</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>{ <span class="comment">//simplified Employee class</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String n, <span class="keyword">double</span> s)</span></span>{</span><br><span class="line">		name = n;</span><br><span class="line">		salary = s;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>{</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span></span>{</span><br><span class="line">		<span class="keyword">return</span> salary;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">raiseSalary</span><span class="params">(<span class="keyword">double</span> byPercent)</span></span>{</span><br><span class="line">		<span class="keyword">double</span> raise = salary * byPercent / <span class="number">100</span>;</span><br><span class="line">		salary += raise;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li><p>在通过扩展超类定义子类的时候，仅需要指出子类与超类的不同之处。然而，超类中的有些方法对子类Manager并不一定适用。具体来说，Manager类中的getSalary方法应该返回薪水和奖金的总和。为此，需要提供一个新的方法来覆盖（override）超类中的这个方法。<br>  那么如何实现这个方法呢？乍看起来似乎很简单，只要返回salary和bonus域的总和就可以了：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span> </span>{</span><br><span class="line">	<span class="keyword">return</span> salary + bonus; <span class="comment">// won't work</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>然而，这个方法并不能运行。这是因为Manger类的getSalary方法不能地访问超类的私有域。也就是说，尽管每一个Manager对象都拥有一个名为salary的域，但在Manager类的getSalary方法中并不能直接地访问salary域。只有Employee类的方法才能够访问私有部分。如果Manager类的方法一定要访问私有域，就必须借助于公有的接口，Employee类中的公有方法getSalary正是这样一个接口。  </p>
+</li>
+<li><p>现在，再试一下。将对salary域的访问替换成调用getSalary方法。  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span> </span>{</span><br><span class="line">	<span class="keyword">double</span> baseSalary = getSalary(); <span class="comment">// still won't work</span></span><br><span class="line">	<span class="keyword">return</span> baseSalary + bonus;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  上面这段代码仍然不能访问。问题出现在调用getSalary的语句上，这是因为Manager类也有一个getSalary方法（就是正在实现的这个方法），所以这条语句将会导致无限次地调用自己，直到整个程序崩溃为止。  </p>
+</li>
+<li><p>这里需要指出：我们希望调用超类Employee中的getSalary方法，而不是当前类的这个方法。为此，可以使用特定的关键字super解决这个问题：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getSalary</span><span class="params">()</span> </span>{</span><br><span class="line">	<span class="keyword">double</span> baseSalary = <span class="keyword">super</span>.getSalary();</span><br><span class="line">	<span class="keyword">return</span> baseSalary + bonus;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>在子类中可以增加域、增加方法或覆盖超类的方法，然而绝对不能删除继承的任何域和方法。  </p>
+</li>
+<li><p>super在构造器中的应用：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Manager</span><span class="params">(String n, <span class="keyword">double</span> s, <span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span> </span>{</span><br><span class="line">	<span class="keyword">super</span>(n,s,year,month,day);</span><br><span class="line">	bonus = <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  这里的关键字super具有不同的含义。语句super(n,s,year,month,day);是“调用超类Employee中含有n、s、year、month和day参数的构造器”的简写形式。<br>  由于Manager类的构造器不能访问Employee类的私有域，所以必须利用Employee的构造器对这部分私有域进行初始化，我们可以通过super实现对超类构造器的调用。使用super调用构造器的语句必须是子类构造器的第一条语句。<br>  如果子类的构造器没有显式地调用超类的构造器，则将自动地调用超类默认（没有参数）的构造器。如果超类没有不带参数的构造器，并且在子类的构造器中又没有显式地调用其他构造器，则Java编译器将报告错误。（子类不能继承父类的构造器（构造方法或者构造函数），如果父类的构造器带有参数，则必须在子类的构造器中显式地通过super关键字调用父类的构造器并配以适当的参数列表。如果父类构造器没有参数，则在子类的构造器中不需要使用super关键字调用父类构造器，系统会自动调用父类的无参构造器。）  </p>
+</li>
+<li><p>关键字this的两个用途：  </p>
+<ol>
+<li>引用隐式参数  </li>
+<li>调用该类其他的构造器  </li>
+</ol>
+</li>
+<li><p>关键字super的两个用途：  </p>
+<ol>
+<li>调用超类方法  </li>
+<li>调用超类的构造器  </li>
+</ol>
+</li>
+<li><p>重写(override)：  </p>
+<ul>
+<li>声明为final的方法不能被重写  </li>
+<li>声明为static的方法不能被重写，但是能够被再次声明  </li>
+<li>构造方法不能被重写  </li>
+<li>如果不能继承一个方法，则不能重写这个方法  </li>
+</ul>
+</li>
+<li><p>重载(overload)：  </p>
+<ul>
+<li>被重载的方法必须改变参数列表（参数个数或类型不一样）  </li>
+<li>被重载的方法可以改变返回类型  </li>
+<li>被重载的方法可以改变访问修饰符  </li>
+<li>被重载的方法可以声明新的或更广的检查异常  </li>
+<li>方法能够在同一个类中或者在一个子类中被重载  </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>一个对象变量可以指示多种实际类型的现象被称为多态。在运行时能够自动地选择调用哪个方法的现象称为动态绑定。  </p>
+</li>
+<li><p>多态的实现方法：重写、接口、抽象类和抽象方法。  </p>
+</li>
+<li><p>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定。  </p>
+</li>
+<li><p>在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。  </p>
+</li>
+<li><p>如果一个方法没有被覆盖并且很短，编译器就能够对它进行优化处理，这个过程称为内联。如果方法很简短、被频繁调用且没有真正地被覆盖，那么虚拟机中的即时编译器就会将这个方法进行内联处理。  </p>
+</li>
+<li><p>强制类型转换：在将超类转换成子类之前，应该使用instanceof进行检查。  </p>
+</li>
+<li><p>abstract关键字：  </p>
+<ol>
+<li>包含一个或多个抽象方法的类本身必须声明为抽象的。  </li>
+<li>除抽象方法之外，抽象类还可以包含具体数据和具体方法。  </li>
+<li>抽象方法充当着占位的角色，它们的具体实现在子类中。  </li>
+<li>扩展抽象类可以有两种选择。一种是在子类中定义部分抽象方法或者抽象方法也不定义，这样就必须将子类也标记为抽象类；另一种是定义全部抽象方法，这样一来，子类就不是抽象的了。  </li>
+<li>类即使不含抽象方法，也可以将类声明为抽象类。  </li>
+<li>抽象类不能被实例化。也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。(抽象类不能直接通过new去实例化一个对象，那它就是不能实例化，要获取抽象类的对象，需要先用一个类继承抽象类，然后去实例化子类。也可以用匿名内部类，在抽象类中创建一个匿名的子类，继承抽象类，通过特殊的语法实例化子类的对象。)  </li>
+<li>可以定义一个抽象类的对象变量，但是它只能引用非抽象子类的对象。  </li>
+<li>构造方法、类方法（用static修饰的方法）不能声明为抽象方法。  </li>
+</ol>
+</li>
+</ul>
+<h2 id="接口和内部类"><a href="#接口和内部类" class="headerlink" title="接口和内部类"></a>接口和内部类</h2><ul>
+<li><p>接口绝不能含有实例域，也不能在接口中实现方法。提供实例域和方法实现的任务应该由实现接口的那个类来完成。因此，可以将接口看成是没有实例域的抽象类。  </p>
+</li>
+<li><p>接口不是类，尤其不能使用new运算符实例化一个接口：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="keyword">new</span> Compare(...); <span class="comment">//ERROR</span></span><br></pre></td></tr></tbody></table></figure>
+<p>  然而，尽管不能构造接口的对象，却能声明接口的变量：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Compare x; <span class="comment">//OK</span></span><br></pre></td></tr></tbody></table></figure>
+<p>  接口变量必须引用实现了接口的类对象：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="keyword">new</span> Employee(...); <span class="comment">//OK provided Employee implements Comparable</span></span><br></pre></td></tr></tbody></table></figure>
+<p>  接下来，如同使用instanceof检查一个对象是否属于某个特定类一样，也可以使用instanceof检查一个对象是否实现了某个特定的接口：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (anObject <span class="keyword">instanceof</span> Comparable) {...}</span><br></pre></td></tr></tbody></table></figure>
+<p>  与可以建立类的继承关系一样，接口也可以被扩展。这里允许存在多条从具有较高通用性的接口到较高专用性的接口的链。例如，假设有一个称为Moveable的接口：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Moveable</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">move</span> <span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  然后，可以以它为基础扩展一个叫做Powered的接口：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Powered</span> <span class="keyword">extends</span> <span class="title">Moveable</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">milePerGallon</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  虽然在接口中不能包含实例域或静态方法，但却可以包含常量。<br>  与接口中的方法都自动地被设置为public一样，接口中的域将被自动设为public static final。  </p>
+</li>
+<li><p>为什么要使用内部类？  </p>
+<ol>
+<li>内部类方法可以访问该类定义所在的作用域中的数据，包括私有数据。  </li>
+<li>内部类可以对同一个包中的其他类隐藏起来。  </li>
+<li>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。  </li>
+</ol>
+</li>
+<li><p>Java内部类还有另外一个功能，这使得它比C++的嵌套类更加丰富，用途更加广泛。内部类的对象有一个隐式引用，它引用了实例化该内部对象的外围类对象。通过这个指针，可以访问外围类对象的全部状态。内部类既可以访问自身的数据域，也可以访问创建它的外围类对象的数据域。  </p>
+</li>
+<li><p>局部内部类：<br>  局部内部类不能用public或private访问说明符进行声明。它的作用域被限定在声明这个局部类的块中。  </p>
+</li>
+<li><p>由外部方法访问final变量：<br>  局部类不仅能够访问包含它们的外部类，还可以访问局部变量，不过，这些局部变量必须被声明为final。  </p>
+</li>
+<li><p>final关键字可以应用于局部变量、实例变量和静态变量。在所有这些情况下，它们的含义都是：在创建这个变量之后，只能够为之赋值一次。此后，再也不能修改它的值了，这就是final。不过，在定义final变量的时候，不必进行初始化。  </p>
+</li>
+<li><p>匿名内部类：  </p>
+<ol>
+<li>如果构造器参数的闭圆括号跟一个开花括号，正在定义的就是匿名内部类。  </li>
+<li>由于构造器的名字必须与类名相同，而匿名类没有类名，所以，匿名类不能有构造器。取而代之的是，将构造器参数传递给超类的构造器。尤其是在内部类实现接口的时候，不能有任何构造参数。  </li>
+</ol>
+</li>
+<li><p>静态内部类：<br>  有时候，使用内部类只是为了把一个类隐藏在另一个类的内部，并不需要内部类引用外围类对象。为此，可以将内部类声明为static，以便取消产生的引用。    </p>
+</li>
+</ul>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><ul>
+<li><p>Throwable  </p>
+<ul>
+<li>Error(未检查异常)  </li>
+<li>Exception  <ul>
+<li>IOException(已检查异常)  </li>
+<li>RuntimeException(未检查异常)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>声明：方法应该在其首部声明所有可能抛出的异常。这样可以从首部反映出这个方法可能抛出哪类已检查异常。但是，不需要声明Java的内部错误，即从Error继承的错误。同样，也不应该声明从RuntimeException继承的那些未检查异常。总之，一个方法必须声明所有可能抛出的已检查异常，而未检查异常要么不可控制（Error），要么就应该避免发生（RuntimeException）。  </p>
+</li>
+<li><p>由于程序错误导致的异常属于RuntimeException，而程序本身没有问题，但由于像I/O错误这类问题导致的异常属于其他异常。<br>  派生于RuntimeException的异常包含下面几种情况：  </p>
+<ol>
+<li>错误的类型转换  </li>
+<li>数组访问越界  </li>
+<li>访问空指针  </li>
+</ol>
+<p>  不是派生于RuntimeException的异常包括：  </p>
+<ol>
+<li>试图在文件尾部后面读取数据  </li>
+<li>试图打开一个不存在的文件  </li>
+<li>试图根据给定的字符串查找Class对象，而这个字符串表示的类并不存在  </li>
+</ol>
+<p>  “如果出现RuntimeException异常，那么就一定是你的问题”是一条相当有道理的规格。  </p>
+</li>
+<li><p>如果在子类中覆盖了超类的一个方法，子类方法中声明的已检查异常不能比超类方法中声明的异常更通用（也就是说，子类方法中可以抛出更特定的异常，或者根本不抛出任何异常）。特别需要说明的是，如果超类方法没有抛出任何已检查异常，子类也不能抛出任何已检查异常。  </p>
+</li>
+<li><p>如果想传递一个异常，就必须在方法的首部添加一个throws说明符，以便告知调用者这个方法可能会抛出异常。  </p>
+</li>
+</ul>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><ul>
+<li><p>对于一个static方法而言，无法访问泛型类型的参数。如果静态方法要使用泛型的话，必须将静态方法也定义成泛型方法。  </p>
+</li>
+<li><p>泛型类：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pair</span>&lt;<span class="title">T</span>&gt; </span>{</span><br><span class="line">	<span class="keyword">private</span> T first;</span><br><span class="line">	<span class="keyword">private</span> T second;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">()</span> </span>{first = <span class="keyword">null</span>; second = <span class="keyword">null</span>;}</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">(T first, T second)</span> </span>{<span class="keyword">this</span>.first = first; <span class="keyword">this</span>.second = second;}</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getFirst</span><span class="params">()</span> </span>{<span class="keyword">return</span> first;}</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getSecond</span><span class="params">()</span> </span>{<span class="keyword">return</span> second;}</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirst</span><span class="params">(T newValue)</span> </span>{first = newValue;}</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(T newValue)</span> </span>{second = newValue;}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>泛型方法：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayAlg</span> </span>{</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T... a)</span> </span>{</span><br><span class="line">		<span class="keyword">return</span> a[a.length / <span class="number">2</span>];</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>  类型变量放在修饰符（这里是public static）的后面，返回类型的前面。<br>  泛型方法可以定义在普通类中，也可以定义在泛型类中。<br>  当调用一个泛型方法时，在方法名前的尖括号中放入具体的类型：  </p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String middle = ArrayAlg.&lt;String&gt;getMiddle(<span class="string">"John"</span>,<span class="string">"Q"</span>,<span class="string">"Public"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>  大多数情况下，方法调用中可以省略<string>类型参数。编译器有足够信息能够推断出所调用的方法。也就是说，可以调用：  </string></p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String middle = ArrayAlg.getMiddle(<span class="string">"John"</span>,<span class="string">"Q"</span>,<span class="string">"Public"</span>);</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
+<li><p>线程可以有如下6种状态：New(新创建)、Runnable(可运行)、Blocked(被阻塞)、Waiting(等待)、Timed waiting(计时等待)、Terminated(被终止)。  </p>
+<ul>
+<li>在任何给定时刻，一个可运行的线程可能正在运行也可能没有运行。  </li>
+<li>当一个线程试图获取一个内部的对象锁，而该锁被其他线程持有，则该线程进入阻塞状态。  </li>
+<li>当线程等待另一个线程通知调度器一个条件时，它自己进入等待状态。  </li>
+<li>有几个方法有一个超时参数，调用它们导致线程进入计时等待状态。  </li>
+<li>线程因如下两个原因之一而被终止：因为run方法正常退出而自然死亡；因为一个没有捕获的异常终止了run方法而意外死亡。  </li>
+</ul>
+</li>
+<li><p>同步：  </p>
+<ol>
+<li>锁和条件的关键之处：  <ul>
+<li>锁用来保护代码片段，任何时刻只能有一个线程执行被保护的代码。  </li>
+<li>锁可以管理试图进入被保护代码段的线程。  </li>
+<li>锁可以拥有一个或多个相关的条件对象。  </li>
+<li>每个条件对象管理那些已经进入被保护的代码段但还不能运行的线程。  </li>
+</ul>
+</li>
+<li>synchronize、wait()、notifyAll()  </li>
+<li>除了调用同步方法获得锁，线程还可以通过进入一个同步阻塞获得锁：   <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">synchronize(obj) {</span><br><span class="line">	critical section</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>volatile关键字为实例域的同步访问提供了一种免锁机制。如果声明一个域为volatile，那么编译器和虚拟机就知道该域是可能被另一个线程并发更新的。（volatile修饰的成员变量在每次被线程访问时，都强制从共享内存中重新读取该成员变量的值。而且，当成员变量发生变化时，会强制线程将变化值回写到共享内存。这样在任何时刻，两个不同的线程总是看到某个成员变量的同一个值。）  </li>
+</ol>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/08/09/crc/" rel="prev" title="CRC查表">
+                  <i class="fa fa-chevron-left"></i> CRC查表
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/09/24/android/" rel="next" title="安卓APP">
+                  安卓APP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

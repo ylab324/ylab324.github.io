@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <meta name="google-site-verification" content="lhV5cabuw1R5ZNw3egkRBdP3yiHpIpX4_8SvcqwxYAc">
+  <meta name="baidu-site-verification" content="code-abAwAH8nFB">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="DVBC搜台过程中，频点乱序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个DVB-C自动搜台的疑问">
+<meta property="og:url" content="https://xtg1800.github.io/2018/12/18/dvbc-auto-tuning/">
+<meta property="og:site_name" content="Debbie">
+<meta property="og:description" content="DVBC搜台过程中，频点乱序。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2018/12/18/5c18b1955d467.png">
+<meta property="article:published_time" content="2018-12-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T15:27:16.039Z">
+<meta property="article:author" content="XTG1800">
+<meta property="article:tag" content="tv">
+<meta property="article:tag" content="realtek">
+<meta property="article:tag" content="dvb">
+<meta property="article:tag" content="dvb-c">
+<meta property="article:tag" content="dtv">
+<meta property="article:tag" content="si">
+<meta property="article:tag" content="scan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/18/5c18b1955d467.png">
+
+
+<link rel="canonical" href="https://xtg1800.github.io/2018/12/18/dvbc-auto-tuning/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2018/12/18/dvbc-auto-tuning/","path":"2018/12/18/dvbc-auto-tuning/","title":"一个DVB-C自动搜台的疑问"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一个DVB-C自动搜台的疑问 | Debbie</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Debbie</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">所记更为简略，系备忘性质。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%90%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">材料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XTG1800"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <div class="site-description" itemprop="description">不要忘记我们终会有人宠爱</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:fghrle@gmail.com" title="E-Mail → mailto:fghrle@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2018/12/18/dvbc-auto-tuning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="description" content="不要忘记我们终会有人宠爱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debbie">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一个DVB-C自动搜台的疑问
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-18 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-18T00:00:00+08:00">2018-12-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TV/" itemprop="url" rel="index"><span itemprop="name">TV</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>DVBC搜台过程中，频点乱序。</p>
+<span id="more"></span>
+
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>Mantis提交了一条问题：DVBC搜台过程中，进度条在前进，频点也在跳动，但是乱序，并非从低到高。<br>实际情况是：码流机播放《610.750 Network ID 1536.ts》码流，频点设定到482MHz，DVBC搜台过程中，频率从低到高搜，但是搜到482MHz的时候，频率就乱了。  </p>
+<h3 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h3><p>截取部分log信息：  </p>
+<blockquote>
+<p>[virtual void CTableScanner::xWorkerThread() 139] CH_SCAN_STATE_BEGIN_FREQ start<br>[virtual void CTableScanner::xWorkerThread() 145] CH_SCAN_STATE_SCANNING start<br>xStageBeginFreq:161:: m_isDeleteAll = 1, m_curFreq = 474000000<br>[virtual void CDtvFreqDetector::xStageBeginFreq() 296] isScanMode = 1, m_curFreq = 474000000, m_curBandwidth = 8000000, tunerId = 0, m_feType = 2, m_modulation = 11,  m_symbolrate = 6900000<br>[bool FrontendLib_SetTuner(UINT32, UINT32, UINT8, RT_FRONTEND_TYPE, RT_MODULATION, RT_SPECTRAL_INVERSION, bool, UINT32, SatelliteInfo *) 156] isScanMode = 1, frequency = 474000000, bandwidth = 8000000, tunerId = 0, feType = 2, modulation = 11,  symbolRate = 6900000<br>[FrontendLib_SetTuner 174] frequency=474000000 bandwidth=8000000 tvSystem=19<br>[virtual void CDtvFreqDetector::xStageBeginFreq() 298] ret = 0<br>[virtual void CTableScanner::xWorkerThread() 166] CH_SCAN_STATE_SCANNING end<br>[virtual void CTableScanner::xWorkerThread() 171] CH_SCAN_STATE_END_FREQ begin<br>[xUpdateChannelMgr:197] freq=474000000, bSave=1, bUpdateCurChIndex=0, bKeepChannel=0, curFrequency=0, modulation=11<br>xUpdateChannelMgr 211 RemoveChannel 474000000<br>[xRemoveChannel:2220]<br>[bool CDvbTableScanner::xGetNitFreqList(bool) 139] errCode = 1900551, freqCount = 0<br>[virtual void CTableScanner::xWorkerThread() 139] CH_SCAN_STATE_BEGIN_FREQ start<br>[virtual void CTableScanner::xWorkerThread() 145] CH_SCAN_STATE_SCANNING start<br>xStageBeginFreq:161:: m_isDeleteAll = 1, m_curFreq = 482000000<br>[virtual void CDtvFreqDetector::xStageBeginFreq() 296] isScanMode = 1, m_curFreq = 482000000, m_curBandwidth = 8000000, tunerId = 0, m_feType = 2, m_modulation = 11,  m_symbolrate = 6900000<br>[bool FrontendLib_SetTuner(UINT32, UINT32, UINT8, RT_FRONTEND_TYPE, RT_MODULATION, RT_SPECTRAL_INVERSION, bool, UINT32, SatelliteInfo *) 156] isScanMode = 1, frequency = 482000000, bandwidth = 8000000, tunerId = 0, feType = 2, modulation = 11,  symbolRate = 6900000<br>[FrontendLib_SetTuner 174] frequency=482000000 bandwidth=8000000 tvSystem=19<br>[virtual void CDtvFreqDetector::xStageBeginFreq() 298] ret = 1<br>virtual void CDtvFreqDetector::xStageBeginFreq()_304 signal LOCKED !!!!!!!!<br>[virtual void CDtvFreqDetector::xStageCheckFrontend() 771] m_curFreq = 482000000, m_curBandwidth = 8000000 m_modulation = 11<br>[virtual void CTableScanner::xWorkerThread() 166] CH_SCAN_STATE_SCANNING end<br>[virtual void CTableScanner::xWorkerThread() 171] CH_SCAN_STATE_END_FREQ begin<br>[xUpdateChannelMgr:197] freq=482000000, bSave=1, bUpdateCurChIndex=0, bKeepChannel=0, curFrequency=0, modulation=11<br>xUpdateChannelMgr 211 RemoveChannel 482000000<br>[xRemoveChannel:2220]<br><strong>[bool CDvbTableScanner::xGetNitFreqList(bool) 139] errCode = 0, freqCount = 39</strong><br><strong>xGetNitFreqList..freq:482750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:458750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:124000000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:466750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:506750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:578750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:386750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:498750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:626750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:650750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:148000000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:714750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:698750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:706750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:762750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:826750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:858750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:642750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:778750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:810750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:834750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:746750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:298750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:602750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:610750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:850750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:140000000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:738750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:530750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:818750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:690750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:164000000, symbolRate:6900000, modulation:9, polarization:0</strong><br><strong>xGetNitFreqList..freq:842750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:666750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:682750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:156000000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:554750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:490750000, symbolRate:6900000, modulation:11, polarization:0</strong><br><strong>xGetNitFreqList..freq:132000000, symbolRate:6900000, modulation:11, polarization:0</strong><br>[Mf_ScanInit 1000] modeEx=0, param=-1, scanMode=7 m_deleteAll=1<br>[xRemoveChannel:2288] m_chVector.m_size=39<br>ScanInit….type 2 antennaIndex 0xffffffff typeEx 0 time 304186343<br>[virtual void CTableScanner::xWorkerThread() 139] CH_SCAN_STATE_BEGIN_FREQ start<br>[virtual void CTableScanner::xWorkerThread() 145] CH_SCAN_STATE_SCANNING start<br>xStageBeginFreq:161:: m_isDeleteAll = 1, m_curFreq = 482750000<br>[virtual void CDtvFreqDetector::xStageBeginFreq() 296] isScanMode = 1, m_curFreq = 482750000, m_curBandwidth = 8000000, tunerId = 0, m_feType = 2, m_modulation = 11,  m_symbolrate = 6900000<br>[bool FrontendLib_SetTuner(UINT32, UINT32, UINT8, RT_FRONTEND_TYPE, RT_MODULATION, RT_SPECTRAL_INVERSION, bool, UINT32, SatelliteInfo *) 156] isScanMode = 1, frequency = 482750000, bandwidth = 8000000, tunerId = 0, feType = 2, modulation = 11,  symbolRate = 6900000<br>[FrontendLib_SetTuner 174] frequency=482750000 bandwidth=8000000 tvSystem=19<br>[virtual void CDtvFreqDetector::xStageBeginFreq() 298] ret = 1<br>virtual void CDtvFreqDetector::xStageBeginFreq()_304 signal LOCKED !!!!!!!!<br>[virtual void CDtvFreqDetector::xStageCheckFrontend() 771] m_curFreq = 482750000, m_curBandwidth = 8000000 m_modulation = 11<br>[virtual void CTableScanner::xWorkerThread() 166] CH_SCAN_STATE_SCANNING end<br>[virtual void CTableScanner::xWorkerThread() 171] CH_SCAN_STATE_END_FREQ begin<br>[xUpdateChannelMgr:197] freq=482750000, bSave=1, bUpdateCurChIndex=0, bKeepChannel=0, curFrequency=0, modulation=11<br>bool CDvbSiMgr::xUpdateChannelMgr(__UINT32, INT16, bool, bool, bool, __UINT32, RT_MODULATION) 218 count 6<br>AddChannel:LCN=1,chName=Nederland 1 HD,frequency=482750000<br>AddChannel:LCN=2,chName=Nederland 2 HD,frequency=482750000<br>AddChannel:LCN=3,chName=RTL Lounge,frequency=482750000<br>AddChannel:LCN=4,chName=TVE,frequency=482750000<br>AddChannel:LCN=5,chName=HZN Barker 1,frequency=482750000<br>AddChannel:LCN=6,chName=HZN Barker 2,frequency=482750000<br>bool CDvbSiMgr::xUpdateChannelMgr(__UINT32, INT16, bool, bool, bool, __UINT32, RT_MODULATION) use time 0  </p>
+</blockquote>
+<p>使用码流分析工具查看码流：<br><img src="https://i.loli.net/2018/12/18/5c18b1955d467.png" alt="NIT">  </p>
+<p>代码片段[RTD2831]：  </p>
+<pre><code class="cpp">bool CDvbTableScanner::xGetNitFreqList(bool bDelete)
+{
+    int freqCount=0;
+    SI_DELIVERY_PARAM *pFreqList = NULL;
+    ErrCode errCode;
+    int startindex=0;
+    bool bDelFollow=false;
+    bool bAddCurrent=false;
+    bool bIncludeExistTP=false;
+    RT_FRONTEND_TYPE feType = m_pFreqScanDetector-&gt;Mf_GetFrontendType();
+    SI *siHandle = (SI*)((IDtvMedia*)m_pTvMedia)-&gt;GetDtvFlow()-&gt;GetSiHandle();
+    if(feType == RT_FRONTEND_DVB_CABLE &amp;&amp; !m_bRemoveAll)
+    {
+        bIncludeExistTP=true;
+    }
+
+    errCode = SI_GetFreqList(siHandle, &amp;freqCount, &amp;pFreqList, bIncludeExistTP);
+    ALOGD("[%s %d] errCode = %lu, freqCount = %d\n", __func__, __LINE__, errCode, freqCount);
+
+    if (errCode != SI_ERR_OK || freqCount==0 || pFreqList == NULL)
+    {
+        return FALSE; //如果freqCount为零，就返回了。
+    }
+
+    if(feType == RT_FRONTEND_DVB_SATELLITE &amp;&amp; m_HomeTp.count!=0)
+    {
+        bDelete=true;
+        if(m_HomeTp.onid!=0)
+        {
+            bDelete=false;
+            for(int i=0;i&lt;freqCount;i++)
+            {
+                if(pFreqList[i].onid==m_HomeTp.onid)
+                {
+                    bDelete=true;
+                    break;
+                }
+            }
+        }
+    }
+
+    if(feType == RT_FRONTEND_DVB_SATELLITE &amp;&amp; bDelete &amp;&amp; m_pFreqList!=NULL)
+    {
+        bDelFollow=true;
+        bDelete=false;
+    }
+
+    if(bDelete || m_pFreqList==NULL)
+    {
+        xFreeTable();
+        
+        m_pFreqList = (RT_PHY_CHANNEL *)malloc(sizeof(RT_PHY_CHANNEL) * (freqCount+1));
+        if(m_pFreqList == 0)
+            return false;
+        m_freqListSize = freqCount+1;
+        memset(m_pFreqList, 0, sizeof(RT_PHY_CHANNEL)* (m_freqListSize));
+        m_isMallocedList=true;
+        
+        if(feType == RT_FRONTEND_DVB_CABLE)
+        {
+            bAddCurrent=true;
+        }
+    }
+    else
+    {
+        RT_PHY_CHANNEL *pFreqList;
+        int sizeTmp=m_freqListSize;
+        pFreqList = (RT_PHY_CHANNEL *)malloc(sizeof(RT_PHY_CHANNEL)* (sizeTmp+freqCount));
+        if(pFreqList==NULL)
+        {
+            return false;
+        }
+        memcpy(pFreqList, m_pFreqList, sizeof(RT_PHY_CHANNEL)* (sizeTmp));
+        xFreeTable();
+        m_pFreqList=pFreqList;
+        if(bDelFollow)
+            startindex=m_curFreqIndex;
+        else
+            startindex=sizeTmp;
+        m_freqListSize=sizeTmp+freqCount;
+        m_isMallocedList=true;
+    }
+
+    for (int i = 0; i &lt; freqCount &amp;&amp; startindex&lt;m_freqListSize; i++)
+    {
+        m_pFreqList[startindex].channelNum = startindex;
+
+        m_pFreqList[startindex].frequency = pFreqList[i].frequency;
+
+        switch (pFreqList[startindex].modulation)    // Cable delivery system descriptor, defined in en300468 DVB-SI spec
+        {
+            case SI_DVB_16_QAM:      // 16QAM,
+                m_pFreqList[startindex].modulation = RT_MOD_QAM16;
+                break;
+            case SI_DVB_32_QAM:      // 32QAM,
+                m_pFreqList[startindex].modulation = RT_MOD_QAM32;
+                break;
+            case SI_DVB_64_QAM:      // 64QAM,
+                m_pFreqList[startindex].modulation = RT_MOD_QAM64;
+                break;
+            case SI_DVB_128_QAM:      // 128QAM,
+                m_pFreqList[startindex].modulation = RT_MOD_QAM128;
+                break;
+                        default:
+            case SI_DVB_256_QAM:      // 256QAM,
+                m_pFreqList[startindex].modulation = RT_MOD_QAM256;
+                break;
+        }
+        m_pFreqList[startindex].symbolRate = pFreqList[i].symbol_rate;
+
+
+        if(feType == RT_FRONTEND_DVB_SATELLITE)
+        {
+            m_pFreqList[startindex].modulation = pFreqList[i].modulation_system == 0 ? RT_MOD_DVB_S : RT_MOD_DVB_S2;
+            m_pFreqList[startindex].symbolRate = pFreqList[i].symbol_rate;
+        }
+
+
+        m_pFreqList[startindex].bandwidth = 8000000;
+        m_pFreqList[startindex].polarization= pFreqList[i].polarization%2;
+        if(bDelete || iSNewTP(m_pFreqList,startindex,&amp;m_pFreqList[startindex]))
+        {
+            ALOGD("%s..freq:%d, symbolRate:%d, modulation:%d, polarization:%d\n",__FUNCTION__,m_pFreqList[startindex].frequency,m_pFreqList[startindex].symbolRate,
+            m_pFreqList[startindex].modulation,m_pFreqList[startindex].polarization);
+                startindex++;
+        }
+
+        if(bAddCurrent &amp;&amp; startindex&lt;m_freqListSize)
+        {
+            if(m_curFreq/1000000 == m_pFreqList[startindex].frequency/1000000)
+            {
+                bAddCurrent=false;
+            }
+        }
+    }
+
+    if(bAddCurrent)
+    {
+        m_pFreqList[startindex].frequency = m_curFreq;
+        m_pFreqList[startindex].bandwidth = m_curBandwidth;
+        m_pFreqList[startindex].channelNum = m_curChNum;
+        m_pFreqList[startindex].modulation = m_curModulation;
+        m_pFreqList[startindex].symbolRate = m_curSymbolRate;
+        m_pFreqList[startindex].polarization = m_curPolarization;
+        startindex++;
+    }
+
+    m_freqListSize=startindex;
+    return true;
+}
+
+bool CDvbTableScanner::iSNewTP(RT_PHY_CHANNEL *src, int size, RT_PHY_CHANNEL *pTp)
+{
+    if(pTp-&gt;frequency == 0)
+        return FALSE;
+    for(int i=0;i&lt;size;i++)
+    {
+        if(abs((int)src[i].frequency/100000 - (int)pTp-&gt;frequency/100000) &lt; 3)
+        {
+            if(src[i].symbolRate != pTp-&gt;symbolRate)
+                continue;
+
+            if(src[i].polarization != pTp-&gt;polarization)
+                continue;
+
+            if(src[i].modulation != pTp-&gt;modulation)
+                continue;
+
+            return false;
+        }
+    }
+    return true;
+}
+</code></pre>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>可知是NIT的原因，自动搜台的时候（如果没有指定频点）会从频点由低往高搜台，搜到台后，解析NIT时发现有FreqList，就去FreqList里面的频点搜。  </p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>NIT(Network Information Table 网络信息表)。此DVB列表包含了有关网络的范围、转换器等信息。它总是位于PID 0x0010的位置。DVB定义了两种类型的NIT，NIT Actual与NIT Other。NIT Actual是一个包含有关正在被访问的网络的物理参数的一个命令列表。NIT Other包含了有关其他网络的物理参数，NIT Other是可选项。  </li>
+<li>NIT搜索就是从NIT表开始的搜索，NIT表中的第二个循环，给出了当前网络中的频点，调制方式，符号率。搜索NIT表知道这些消息以后，将得到的频点做一个列表，然后挨个锁频，在每个频点下搜索PAT,PMT，然后得到节目，搜索完所有的频点以后，当前网络所有的节目就得到了。  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/kkdestiny/article/details/12994675">【PSI/SI学习系列】2.PSI/SI深入学习3——SI信息解析1(NIT,BAT)</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/rongdeguoqian/article/details/40372097">DVB-SI理解入门</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.xjishu.com/zhuanli/62/200810067838.html">现有数字电视的搜台方式包含两大类全频点搜台和利用NIT (Network Information Table,网络信息表)快速搜台。前者的做法与模拟电视相似，根据频压曲线的变化和解码器相关数据当前的状态改变步进从低频到高频逐步扫描，这种过程一般会超过20分钟，并且由于无法利用NIT表，没有节目自动更新的功能；而后者先找到NIT并从NIT中提取Frequency List Descriptor(频率列表描述子)，利用频率列表描述子所带的频率信息，快速定位到每一个有信 号的频率点，从而完成快速搜台</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tv/" rel="tag"># tv</a>
+              <a href="/tags/realtek/" rel="tag"># realtek</a>
+              <a href="/tags/dvb/" rel="tag"># dvb</a>
+              <a href="/tags/dvb-c/" rel="tag"># dvb-c</a>
+              <a href="/tags/dtv/" rel="tag"># dtv</a>
+              <a href="/tags/si/" rel="tag"># si</a>
+              <a href="/tags/scan/" rel="tag"># scan</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/08/skw-skd/" rel="prev" title="一次SKD生产异常">
+                  <i class="fa fa-chevron-left"></i> 一次SKD生产异常
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/27/c/" rel="next" title="几个C语言知识点">
+                  几个C语言知识点 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
