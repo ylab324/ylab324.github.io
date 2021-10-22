@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xtg1800.github.io/2021/07/06/trace-stack/</loc>
+    <lastmod>2021-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://xtg1800.github.io/2021/10/20/scan-si/</loc>
+    <lastmod>2021-10-22</lastmod>
+  </url>
+  <url>
     <loc>https://xtg1800.github.io/2021/09/16/scan/</loc>
     <lastmod>2021-09-16</lastmod>
   </url>
@@ -31,10 +39,6 @@
   <url>
     <loc>https://xtg1800.github.io/2021/07/17/cpp-3/</loc>
     <lastmod>2021-07-17</lastmod>
-  </url>
-  <url>
-    <loc>https://xtg1800.github.io/2021/07/06/trace-stack/</loc>
-    <lastmod>2021-07-06</lastmod>
   </url>
   <url>
     <loc>https://xtg1800.github.io/2021/07/03/fsck/</loc>

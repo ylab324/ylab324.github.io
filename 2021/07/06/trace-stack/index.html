@@ -31,7 +31,7 @@
 <meta property="og:description" content="有时候希望知道函数被哪里调用了，但是源码太多，逐个加打印肯定是不方便的，以下记录跟踪函数调用栈信息的方法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-06T15:35:54.000Z">
-<meta property="article:modified_time" content="2021-07-06T15:50:34.435Z">
+<meta property="article:modified_time" content="2021-10-22T16:18:09.310Z">
 <meta property="article:author" content="XTG1800">
 <meta property="article:tag" content="debug">
 <meta property="article:tag" content="stack">
@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -282,22 +282,22 @@
 <li><p>头文件包含</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utils/CallStack.h&gt;</span></span></span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>在需要打印堆栈的地方添加</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">android::CallStack <span class="title">stack</span><span class="params">(<span class="string">"CS"</span>)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">android::CallStack <span class="title">stack</span><span class="params">(<span class="string">"CALLSTACK"</span>)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
 
-<p>CS是在<code>logcat</code>中输出的<code>TAG</code>。</p>
+<p>CALLSTACK是在<code>logcat</code>中输出的<code>TAG</code>。</p>
 </li>
 <li><p>Android.mk添加</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SHARED_LIBRARIES += libutilscallstack</span><br></pre></td></tr></tbody></table></figure></li>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SHARED_LIBRARIES += libutilscallstack</span><br><span class="line">LOCAL_SHARED_LIBRARIES += libutils</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 <h3 id="Native-C-1"><a href="#Native-C-1" class="headerlink" title="Native C"></a>Native C</h3><p>通过C语言调用C++的函数，即extern C。</p>
 <p>在项目里添加一个c++文件callstack.cpp</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utils/CallStack.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"callstack.h"</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> {</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dumping_callstack</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function">	</span>{</span><br><span class="line">		<span class="function">android::CallStack <span class="title">stack</span><span class="params">(<span class="string">"CS"</span>)</span></span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utils/CallStack.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"callstack.h"</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> {</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dumping_callstack</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function">	</span>{</span><br><span class="line">		<span class="function">android::CallStack <span class="title">stack</span><span class="params">(<span class="string">"CALLSTACK"</span>)</span></span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>添加一个callstack.h</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _CALLSTACK_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CALLSTACK_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> {</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dumping_callstack</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">}</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>修改Android.mk</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES += callstack.cpp</span><br><span class="line">LOCAL_SHARED_LIBRARIES += libutilscallstack</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES += callstack.cpp</span><br><span class="line">LOCAL_SHARED_LIBRARIES += libutilscallstack</span><br><span class="line">LOCAL_SHARED_LIBRARIES += libutils</span><br></pre></td></tr></tbody></table></figure>
 
 <p>在native C里面包含头文件</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"callstack.h"</span></span></span><br></pre></td></tr></tbody></table></figure>
@@ -307,11 +307,10 @@
 
 
 
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception e = <span class="keyword">new</span> Exception(<span class="string">"CS"</span>);</span><br><span class="line">e.printStackTrace();</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception e = <span class="keyword">new</span> Exception(<span class="string">"CALLSTACK"</span>);</span><br><span class="line">e.printStackTrace();</span><br></pre></td></tr></tbody></table></figure>
 
 <p>log在<code>logcat</code>中可以看到。</p>
 <h3 id="Linux-Kernel"><a href="#Linux-Kernel" class="headerlink" title="Linux Kernel"></a>Linux Kernel</h3><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump_stack();</span><br></pre></td></tr></tbody></table></figure>
-
 
 
 
