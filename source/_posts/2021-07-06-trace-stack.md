@@ -21,15 +21,16 @@ top:
 2. 在需要打印堆栈的地方添加
 
    ```c++
-   android::CallStack stack("CS");
+   android::CallStack stack("CALLSTACK");
    ```
 
-   CS是在`logcat`中输出的`TAG`。
+   CALLSTACK是在`logcat`中输出的`TAG`。
 
 3. Android.mk添加
 
    ```makefile
    LOCAL_SHARED_LIBRARIES += libutilscallstack
+   LOCAL_SHARED_LIBRARIES += libutils
    ```
 
 
@@ -46,7 +47,7 @@ top:
 extern "C" {
 	void dumping_callstack(void)
 	{
-		android::CallStack stack("CS");
+		android::CallStack stack("CALLSTACK");
 	}
 }
 ```
@@ -71,6 +72,7 @@ extern "C" {
 ```makefile
 LOCAL_SRC_FILES += callstack.cpp
 LOCAL_SHARED_LIBRARIES += libutilscallstack
+LOCAL_SHARED_LIBRARIES += libutils
 ```
 
 在native C里面包含头文件
@@ -90,7 +92,7 @@ dumping_callstack();
 ### Java
 
 ```java
-Exception e = new Exception("CS");
+Exception e = new Exception("CALLSTACK");
 e.printStackTrace();
 ```
 
@@ -103,7 +105,6 @@ log在`logcat`中可以看到。
 ```c
 dump_stack();
 ```
-
 
 
 
