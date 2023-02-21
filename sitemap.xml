@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xtg1800.github.io/about/</loc>
+    
+    <lastmod>2023-02-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xtg1800.github.io/2021/07/06/trace-stack/</loc>
     
     <lastmod>2021-10-22</lastmod>
@@ -23,13 +30,6 @@
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/2021/09/12/faye/</loc>
-    
-    <lastmod>2021-09-12</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xtg1800.github.io/2021/05/31/jq/</loc>
     
     <lastmod>2021-08-18</lastmod>
@@ -47,13 +47,6 @@
     <loc>https://xtg1800.github.io/2021/02/24/linux-shell/</loc>
     
     <lastmod>2021-07-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/about/</loc>
-    
-    <lastmod>2021-07-17</lastmod>
     
   </url>
   
@@ -248,13 +241,6 @@
   
   <url>
     <loc>https://xtg1800.github.io/1970/01/01/hello-world/</loc>
-    
-    <lastmod>2021-06-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/2020/03/28/kuai-le/</loc>
     
     <lastmod>2021-06-03</lastmod>
     
@@ -578,7 +564,7 @@
 
   <url>
     <loc>https://xtg1800.github.io/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -586,679 +572,672 @@
   
   <url>
     <loc>https://xtg1800.github.io/tags/reading/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/linux/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/manjaro/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/google/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/chrome/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/tv/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/edid/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/hexo/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/next/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/pcm/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/linux/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/coax/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/manjaro/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/dolby/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/google/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/chrome/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/ubuntu/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/tv/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/rda/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/audio/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/aq/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/ftp/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/pcm/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/lmao/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/coax/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/dolby/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/vps/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/lmao/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/toshiba/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/remote/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/ir/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/ftp/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/realtek/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/dvb/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/dvb-c/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/dtv/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/si/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/scan/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/edid/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/c/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/java/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/algorithm/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/sort/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/palm/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/ntscm/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/atv/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/android/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/ego/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/life/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/live/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/panel/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/search/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/hanoi/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/search/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/callback/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/interface/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/2851/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/service/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/git/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/gdb/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/debug/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/crc/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/checksum/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/fitness/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/bulking/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/workout/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/muscle/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/training/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/health/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/service/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/nutrition/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/protein/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/bulking/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/fitness/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/workout/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/muscle/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/training/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/health/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/crc/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/checksum/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/love/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/debbie/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/adc/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/gdb/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/debug/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/dvb-t/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/happiness/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/code/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/thread/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/demo/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/qrcode/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/wifi/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/demo/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/bluetooth/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/selinux/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/thread/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/usb/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/code/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/bluetooth/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/wifi/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/selinux/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/boot/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/kernel/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/cmdline/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/hidl/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/tuning/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/hdmi/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/cec/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/tuning/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/hid/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/property/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/image/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/json/</loc>
-    <lastmod>2021-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xtg1800.github.io/tags/jq/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/ui/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/ini/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/json/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/opensource/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/jq/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/repo/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/image/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xtg1800.github.io/tags/stack/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <loc>https://xtg1800.github.io/tags/property/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/fat/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/vfat/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/ini/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/opensource/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/stack/</loc>
+    <lastmod>2023-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xtg1800.github.io/tags/repo/</loc>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/demod/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/tuner/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/C/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/shell/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/script/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/tags/bash/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1267,42 +1246,42 @@
   
   <url>
     <loc>https://xtg1800.github.io/categories/Love/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/categories/Linux/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/categories/TV/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/categories/Algorithm/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/categories/Android/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://xtg1800.github.io/categories/Coding/</loc>
-    <lastmod>2021-10-22</lastmod>
+    <lastmod>2023-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
