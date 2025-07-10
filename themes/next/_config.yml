@@ -582,7 +582,7 @@ comments:
 # For more information: https://disqus.com
 disqus:
   enable: true
-  shortname: xtg1800
+  shortname: ylab324
   count: false
 
 # DisqusJS

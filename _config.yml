@@ -7,13 +7,13 @@ title: Debbie
 subtitle: '所记更为简略，系备忘性质。'
 description: "All I want out of life is a bit of peace and happiness. That's all."
 keywords:
-author: XTG1800
+author: ylab324
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://xtg1800.github.io
+url: https://ylab324.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -135,5 +135,5 @@ baidusitemap:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: https://github.com/XTG1800/XTG1800.github.io.git
+  repo: https://github.com/ylab324/ylab324.github.io.git
   branch: main

@@ -587,7 +587,7 @@ comments:
 # Disqus
 disqus:
   enable: true
-  shortname: xtg1800
+  shortname: ylab324
   count: false
   #post_meta_order: 0
 
