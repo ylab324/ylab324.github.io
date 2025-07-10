@@ -22,29 +22,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"xtg1800.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ylab324.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta name="description" content="使用json做客制化配置，一开始每份客制化用一份json配置，直接用复制替换的方式切换，虽然不高明但是很实用。后来领导的要求越来越花哨，大致需要先去解析json的内容，然后再去客制化，这里记录过程中用到的jq操作，方便以后有类似需求时直接参考。官方文档在这里  ，虽然是英文，但是还算方便，虽说不一定看懂。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jq使用">
-<meta property="og:url" content="https://xtg1800.github.io/2021/05/31/jq/">
+<meta property="og:url" content="https://ylab324.github.io/2021/05/31/jq/">
 <meta property="og:site_name" content="Debbie">
 <meta property="og:description" content="使用json做客制化配置，一开始每份客制化用一份json配置，直接用复制替换的方式切换，虽然不高明但是很实用。后来领导的要求越来越花哨，大致需要先去解析json的内容，然后再去客制化，这里记录过程中用到的jq操作，方便以后有类似需求时直接参考。官方文档在这里  ，虽然是英文，但是还算方便，虽说不一定看懂。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">
 <meta property="article:published_time" content="2021-05-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-08-18T14:48:54.197Z">
-<meta property="article:author" content="XTG1800">
+<meta property="article:modified_time" content="2025-07-10T15:14:11.921Z">
+<meta property="article:author" content="ylab324">
 <meta property="article:tag" content="json">
 <meta property="article:tag" content="jq">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">
 
 
-<link rel="canonical" href="https://xtg1800.github.io/2021/05/31/jq/">
+<link rel="canonical" href="https://ylab324.github.io/2021/05/31/jq/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xtg1800.github.io/2021/05/31/jq/","path":"2021/05/31/jq/","title":"jq使用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ylab324.github.io/2021/05/31/jq/","path":"2021/05/31/jq/","title":"jq使用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>jq使用 | Debbie</title>
@@ -163,9 +163,9 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="XTG1800"
+    <img class="site-author-image" itemprop="image" alt="ylab324"
       src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">XTG1800</p>
+  <p class="site-author-name" itemprop="name">ylab324</p>
   <div class="site-description" itemprop="description">All I want out of life is a bit of peace and happiness. That's all.</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -231,11 +231,11 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xtg1800.github.io/2021/05/31/jq/">
+    <link itemprop="mainEntityOfPage" href="https://ylab324.github.io/2021/05/31/jq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="XTG1800">
+      <meta itemprop="name" content="ylab324">
       <meta itemprop="description" content="All I want out of life is a bit of peace and happiness. That's all.">
     </span>
 
@@ -326,13 +326,13 @@
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/profile</span><br></pre></td></tr></tbody></table></figure>
 
 <p>添加</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/home/xtg1800/asdk-6.4.1-a55-EL-4.4-g2.26-a32nut-170810/bin</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/home/me/asdk-6.4.1-a55-EL-4.4-g2.26-a32nut-170810/bin</span><br></pre></td></tr></tbody></table></figure>
 
 <p>使环境变量即时生效</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></tbody></table></figure>
 
 <p>检查交叉编译链是否配置成功</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ arm-linux-gcc -v</span><br><span class="line">Using built-in specs.</span><br><span class="line">COLLECT_GCC=/home/xtg1800/asdk-6.4.1-a55-EL-4.4-g2.26-a32nut-170810/bin/arm-linux-gnueabi-xgcc</span><br><span class="line">COLLECT_LTO_WRAPPER=/home/xtg1800/asdk-6.4.1-a55-EL-4.4-g2.26-a32nut-170810/bin/../libexec/gcc/arm-linux-gnueabi/6.4.1/lto-wrapper</span><br><span class="line">Target: arm-linux-gnueabi</span><br><span class="line">Configured with: Realtek SDK Builder release 5</span><br><span class="line">Thread model: posix</span><br><span class="line">gcc version 6.4.1 20170707 (Realtek ASDK-6.4.1 Build 2641)</span><br></pre></td></tr></tbody></table></figure></li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ arm-linux-gcc -v</span><br><span class="line">Using built-in specs.</span><br><span class="line">COLLECT_GCC=/home/me/asdk-6.4.1-a55-EL-4.4-g2.26-a32nut-170810/bin/arm-linux-gnueabi-xgcc</span><br><span class="line">COLLECT_LTO_WRAPPER=/home/me/asdk-6.4.1-a55-EL-4.4-g2.26-a32nut-170810/bin/../libexec/gcc/arm-linux-gnueabi/6.4.1/lto-wrapper</span><br><span class="line">Target: arm-linux-gnueabi</span><br><span class="line">Configured with: Realtek SDK Builder release 5</span><br><span class="line">Thread model: posix</span><br><span class="line">gcc version 6.4.1 20170707 (Realtek ASDK-6.4.1 Build 2641)</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>准备<code>jq</code>代码</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/stedolan/jq.git</span><br><span class="line">$ <span class="built_in">cd</span> jq</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>配置并编译</p>
@@ -415,11 +415,11 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">XTG1800</span>
+  <span class="author" itemprop="copyrightHolder">ylab324</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -445,7 +445,7 @@
 
 
 
-<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"xtg1800","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"ylab324","count":false,"i18n":{"disqus":"disqus"}}</script>
 <script src="/js/third-party/comments/disqus.js"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
