@@ -116,13 +116,13 @@ live2d:
   tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
   debug: false # 调试, 是否在控制台输出日志
   model:
-    use: live2d-widget-model-koharu # npm-module package name # 填写你所需要的看板娘名称
+    use: live2d-widget-model-gf # npm-module package name # 填写你所需要的看板娘名称
   display:
     position: right  #左右放置
-    width: 200       #宽
-    height: 400       #高
+    width: 150       #宽
+    height: 300       #高
   mobile:
-    show: true # 手机中是否展示
+    show: false # 手机中是否展示
   react:
     opacity: 0.9 #透明度
 
